@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/tool_bar_layout" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:layout_marginBottom="100dp"
+        android:orientation="horizontal" >
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/theme_red"
+            style="@style/change_theme_style"
+            android:text="@string/theme_red"
+            app:corner="5dp"
+            app:left_bottom_corner="true"
+            app:left_top_corner="true"
+            app:right_bottom_corner="true"
+            app:right_top_corner="true"
+            app:solid="@color/red"/>
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/theme_pink"
+            style="@style/change_theme_style"
+            android:text="@string/theme_pink"
+            app:corner="5dp"
+            app:left_bottom_corner="true"
+            app:left_top_corner="true"
+            app:right_bottom_corner="true"
+            app:right_top_corner="true"
+            app:solid="@color/pink"/>
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/theme_violet"
+            style="@style/change_theme_style"
+            android:text="@string/theme_violet"
+            app:corner="5dp"
+            app:left_bottom_corner="true"
+            app:left_top_corner="true"
+            app:right_bottom_corner="true"
+            app:right_top_corner="true"
+            app:solid="@color/violet"/>
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/theme_blue"
+            style="@style/change_theme_style"
+            android:text="@string/theme_blue"
+            app:corner="5dp"
+            app:left_bottom_corner="true"
+            app:left_top_corner="true"
+            app:right_bottom_corner="true"
+            app:right_top_corner="true"
+            app:solid="@color/blue"/>
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/theme_green"
+            style="@style/change_theme_style"
+            android:text="@string/theme_green"
+            app:corner="5dp"
+            app:left_bottom_corner="true"
+            app:left_top_corner="true"
+            app:right_bottom_corner="true"
+            app:right_top_corner="true"
+            app:solid="@color/green"/>
+
+        <com.coorchice.library.SuperTextView
+            android:id="@+id/theme_black"
+            style="@style/change_theme_style"
+            android:text="@string/theme_black"
+            app:corner="5dp"
+            app:left_bottom_corner="true"
+            app:left_top_corner="true"
+            app:right_bottom_corner="true"
+            app:right_top_corner="true"
+            app:solid="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>

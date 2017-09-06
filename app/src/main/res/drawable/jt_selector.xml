@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 按下时效果 -->
+    <item android:drawable="@drawable/bottom_sjx" android:state_checked="true"/>
+    <!-- 默认效果 -->
+    <item android:drawable="@drawable/top_sjx"/>
+
+
+</selector>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center" >
+
+            <com.coorchice.library.SuperTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:focusable="false"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:text="黄浦区"
+                android:textColor="@color/baseColor"
+                android:textSize="15sp"
+                app:corner="5dp"
+                app:left_bottom_corner="true"
+                app:left_top_corner="true"
+                app:right_bottom_corner="true"
+                app:right_top_corner="true"
+                app:stroke_color="@color/baseColor"
+                app:stroke_width="1dp" />
+
+            <com.coorchice.library.SuperTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="false"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:text="静安区"
+                android:textColor="@color/baseColor"
+                android:textSize="15sp"
+                app:corner="5dp"
+                app:left_bottom_corner="true"
+                app:left_top_corner="true"
+                app:right_bottom_corner="true"
+                app:right_top_corner="true"
+                app:stroke_color="@color/baseColor"
+                app:stroke_width="1dp" />
+
+            <com.coorchice.library.SuperTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="false"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:text="浦东新区"
+                android:textColor="@color/baseColor"
+                android:textSize="15sp"
+                app:corner="5dp"
+                app:left_bottom_corner="true"
+                app:left_top_corner="true"
+                app:right_bottom_corner="true"
+                app:right_top_corner="true"
+                app:stroke_color="@color/baseColor"
+                app:stroke_width="1dp" />
+
+            <com.coorchice.library.SuperTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="false"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:text="徐汇区"
+                android:textColor="@color/baseColor"
+                android:textSize="15sp"
+                app:corner="5dp"
+                app:left_bottom_corner="true"
+                app:left_top_corner="true"
+                app:right_bottom_corner="true"
+                app:right_top_corner="true"
+                app:stroke_color="@color/baseColor"
+                app:stroke_width="1dp" />
+
+            <com.coorchice.library.SuperTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:focusable="false"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:text="由于RecyclerView设置了new GridLayoutManager(this, 2)，所以只能看到这么多"
+                android:textColor="@color/red"
+                android:textSize="15sp"
+                app:corner="5dp"
+                app:left_bottom_corner="true"
+                app:left_top_corner="true"
+                app:right_bottom_corner="true"
+                app:right_top_corner="true"
+                app:stroke_color="@color/red"
+                android:visibility="gone"
+                app:stroke_width="1dp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:src="@mipmap/logo"/>
+
+    <TextView
+        android:id="@+id/si_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+
+</LinearLayout>

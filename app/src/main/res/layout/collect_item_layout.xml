@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.official.read.weight.SwipeMenuView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/collect_item_rootView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?selectableItemBackground"
+        android:paddingTop="5dp" >
+
+        <ImageView
+            android:id="@+id/new_home_list_item_pic"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/new_home_list_item_pic"
+            android:layout_toEndOf="@+id/new_home_list_item_pic">
+
+            <TextView
+                android:id="@+id/collect_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/collect_item_date"
+                android:layout_alignParentTop="true"
+                android:layout_alignStart="@+id/collect_item_date"
+                android:layout_marginTop="15dp"
+                android:text="这是标题" />
+
+            <TextView
+                android:id="@+id/collect_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="收藏日期：2017-8-4"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="15dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="@color/gray"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@+id/new_home_list_item_pic"
+            android:layout_toEndOf="@+id/new_home_list_item_pic"
+            skin:enable="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/collect_item_delete"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="取消收藏"
+        android:textSize="14sp"
+        android:textColor="@color/white"
+        android:background="@color/baseColor"
+        skin:enable="true"/>
+
+</com.official.read.weight.SwipeMenuView>

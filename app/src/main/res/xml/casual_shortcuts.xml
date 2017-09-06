@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:shortcutId="static_one"
+        android:enabled="true"
+        android:icon="@drawable/collection"
+        android:shortcutLongLabel="@string/shortcuts_collect"
+        android:shortcutShortLabel="@string/shortcuts_collect">
+        <!--
+            一个shortcut，当有多个intents与之相关联时，在用户启动该shortcut时，最先呈现给用户的是
+            <intent>...</intent>集合中最后一个intent操作事件。
+            即这里创建了一个intent的回退栈，最后一个才是被快捷方式打开的那个。
+        -->
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.official.read"
+            android:targetClass="com.official.read.ui.CollectActivity"/>
+
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="static_two"
+        android:enabled="true"
+        android:icon="@drawable/theme"
+        android:shortcutLongLabel="@string/shortcuts_theme"
+        android:shortcutShortLabel="@string/shortcuts_theme">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.official.read"
+            android:targetClass="com.official.read.ui.ThemeActivity"/>
+
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="static_three"
+        android:enabled="true"
+        android:icon="@drawable/set"
+        android:shortcutLongLabel="@string/shortcuts_set"
+        android:shortcutShortLabel="@string/shortcuts_set">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.official.read"
+            android:targetClass="com.official.read.ui.SetActivity"/>
+
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="static_four"
+        android:enabled="true"
+        android:icon="@mipmap/logo"
+        android:shortcutLongLabel="@string/shortcuts_recommend"
+        android:shortcutShortLabel="@string/shortcuts_recommend">
+
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.official.read"
+            android:targetClass="com.official.read.ui.MainActivity"/>
+
+    </shortcut>
+
+</shortcuts>

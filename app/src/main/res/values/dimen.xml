@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="default_divider_height">1dp</dimen>
+    <dimen name="default_divider_padding">1dp</dimen>
+    <dimen name="detail_bottom_height">50dp</dimen>
+    <dimen name="change_theme_height">110dp</dimen>
+
+    <item type="id" name="statusbarutil_fake_status_bar_view" />
+    <item type="id" name="statusbarutil_translucent_view" />
+
+    <dimen name="new_md_bottomPadding">3dp</dimen>
+
+</resources>

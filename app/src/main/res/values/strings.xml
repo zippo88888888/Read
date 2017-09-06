@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">PIECE</string>
+    <string name="input_hint">请输入要搜索的内容</string>
+    <string name="theme_red">姨\n\n妈\n\n红</string>
+    <string name="theme_pink">脑\n\n残\n\n粉</string>
+    <string name="theme_violet">基\n\n佬\n\n紫</string>
+    <string name="theme_blue">猥\n\n琐\n\n蓝</string>
+    <string name="theme_green">原\n\n谅\n\n绿</string>
+    <string name="theme_black">高\n\n级\n\n黑</string>
+    <string name="egg_message">I haven\'t figured out what the interface is doing. So that\'s all there is to it</string>
+    <string name="the_mode_that_shield_an_eye">The mode that shield an eye, But it has not happened yet</string>
+    <string name="header_msg">I may not be prefect\nbut I\'m always me</string>
+
+    <string name="hot_hp">黄浦区</string>
+    <string name="hot_ja">静安区</string>
+    <string name="hot_pd">浦东新区</string>
+    <string name="hot_xh">徐汇区</string>
+
+    <string name="shortcuts_collect">我的收藏</string>
+    <string name="shortcuts_theme">主题切换</string>
+    <string name="shortcuts_set">功能设置</string>
+    <string name="shortcuts_recommend">热门推荐</string>
+
+    <string name="mvpView_message">attachView(MvpView)未调用未与View建立连接或mvpView已经被销毁</string>
+
+    <string-array name="titles">
+        <item>推荐</item>
+        <item>司法</item>
+        <item>历史</item>
+        <item>TEST</item>
+    </string-array>
+
+    <string-array name="colors">
+        <item>姨妈红</item>
+        <item>脑残粉</item>
+        <item>基佬紫</item>
+        <item>猥琐蓝</item>
+        <item>原谅绿</item>
+        <item>高级黑</item>
+    </string-array>
+</resources>

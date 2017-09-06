@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--标题栏颜色-->
+    <color name="colorPrimary">@color/baseColor</color>
+    <!--状态栏颜色-->
+    <color name="colorPrimaryDark">@color/baseColor</color>
+
+    <!--主题色-->
+    <color name="baseColor">@color/red</color>
+
+    <!--经典红-->
+    <color name="red">#e01d07</color>
+    <!--少女粉-->
+    <color name="pink">#ff4081</color>
+    <!--基佬紫-->
+    <color name="violet">#912699</color>
+    <!--青春蓝-->
+    <color name="blue">#0b9ce6</color>
+    <!--老王绿-->
+    <color name="green">#2c832e</color>
+    <!--炫酷黑-->
+    <color name="black">#000000</color>
+
+    <color name="gray">#666666</color>
+    <color name="white">#ffffff</color>
+    <color name="transparent">@android:color/transparent</color>
+
+    <!--搜索弹窗背景色-->
+    <color name="search_dialog_bg_color">#65000000</color>
+</resources>

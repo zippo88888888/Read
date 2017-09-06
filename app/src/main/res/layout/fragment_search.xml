@@ -1,0 +1,253 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/searchRoot"
+    android:background="@color/search_dialog_bg_color"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical" >
+
+    <io.codetail.widget.RevealFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="2dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
+
+        <LinearLayout
+            android:id="@+id/search_ContentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <io.codetail.widget.RevealLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/search_edit_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#ffffff"
+                    android:gravity="center"
+                    android:paddingLeft="10dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/edit_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="5dp"
+                            android:hint="@string/input_hint"
+                            android:imeOptions="actionSearch"
+                            android:inputType="textPersonName"
+                            skin:enable="true"
+                            android:textColor="@color/baseColor"
+                            android:textColorHint="@color/gray"
+                            android:textSize="14sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            skin:enable="true"
+                            android:background="@color/baseColor" />
+
+                    </LinearLayout>
+
+                    <com.coorchice.library.SuperTextView
+                        android:id="@+id/img_search"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        app:corner="15dp"
+                        app:isShowState="true"
+                        app:left_bottom_corner="true"
+                        app:left_top_corner="true"
+                        app:right_bottom_corner="true"
+                        app:right_top_corner="true"
+                        app:stroke_color="@color/baseColor"
+                        app:stroke_width="15dp"
+                        skin:enable="true"
+                        app:state_drawable="@drawable/search" />
+
+                </LinearLayout>
+
+            </io.codetail.widget.RevealLinearLayout>
+
+            <LinearLayout
+                android:id="@+id/search_itemsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/black"
+                    android:text="热门搜索" />
+
+                <!-- 搜索记录ListView -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp">
+
+                    <com.coorchice.library.SuperTextView
+                        android:id="@+id/search1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:focusable="false"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:text="黄浦区"
+                        android:textColor="@color/baseColor"
+                        android:textSize="15sp"
+                        skin:enable="true"
+                        app:corner="5dp"
+                        app:left_bottom_corner="true"
+                        app:left_top_corner="true"
+                        app:right_bottom_corner="true"
+                        app:right_top_corner="true"
+                        app:stroke_color="@color/baseColor"
+                        app:stroke_width="1dp" />
+
+                    <com.coorchice.library.SuperTextView
+                        android:id="@+id/search2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:focusable="false"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:text="静安区"
+                        android:textColor="@color/baseColor"
+                        android:textSize="15sp"
+                        skin:enable="true"
+                        app:corner="5dp"
+                        app:left_bottom_corner="true"
+                        app:left_top_corner="true"
+                        app:right_bottom_corner="true"
+                        app:right_top_corner="true"
+                        app:stroke_color="@color/baseColor"
+                        app:stroke_width="1dp" />
+
+                    <com.coorchice.library.SuperTextView
+                        android:id="@+id/search3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:focusable="false"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:text="浦东新区"
+                        android:textColor="@color/baseColor"
+                        android:textSize="15sp"
+                        skin:enable="true"
+                        app:corner="5dp"
+                        app:left_bottom_corner="true"
+                        app:left_top_corner="true"
+                        app:right_bottom_corner="true"
+                        app:right_top_corner="true"
+                        app:stroke_color="@color/baseColor"
+                        app:stroke_width="1dp" />
+
+                    <com.coorchice.library.SuperTextView
+                        android:id="@+id/search4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:focusable="false"
+                        android:paddingBottom="2dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="2dp"
+                        android:text="徐汇区"
+                        android:textColor="@color/baseColor"
+                        android:textSize="15sp"
+                        android:visibility="gone"
+                        skin:enable="true"
+                        app:corner="5dp"
+                        app:left_bottom_corner="true"
+                        app:left_top_corner="true"
+                        app:right_bottom_corner="true"
+                        app:right_top_corner="true"
+                        app:stroke_color="@color/baseColor"
+                        app:stroke_width="1dp" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="搜索历史" />
+
+                    <TextView
+                        android:id="@+id/clear_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:textColor="@color/black"
+                        android:text="清空历史记录"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/baseColor"/>
+
+                <com.github.jdsjlzx.recyclerview.LuRecyclerView
+                    android:id="@+id/search_RecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </com.github.jdsjlzx.recyclerview.LuRecyclerView>
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/search_bgLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent" />
+
+        </LinearLayout>
+
+    </io.codetail.widget.RevealFrameLayout>
+
+</LinearLayout>

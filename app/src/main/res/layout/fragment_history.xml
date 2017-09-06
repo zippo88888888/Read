@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RadioGroup
+        android:id="@+id/history_RadioGroup"
+        style="@style/radioGroup_style">
+
+        <RadioButton
+            android:id="@+id/history_district"
+            style="@style/radioButton_history_style"
+            android:text="所有区域"/>
+
+        <RadioButton
+            android:id="@+id/history_type"
+            style="@style/radioButton_history_style"
+            android:text="所有类型"/>
+
+        <RadioButton
+            android:id="@+id/history_price"
+            style="@style/radioButton_history_style"
+            android:text="所有价格"/>
+
+        <RadioButton
+            android:id="@+id/history_area"
+            style="@style/radioButton_history_style"
+            android:text="所有面积"/>
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        skin:enable="true"
+        android:background="@color/gray"/>
+
+    <include layout="@layout/fragment_item" />
+
+</LinearLayout>

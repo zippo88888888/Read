@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="read" ></dbname>
+
+    <version value="1" ></version>
+
+    <list>
+        <mapping class="com.official.read.content.bean.SearchHistoryBean"></mapping>
+        <mapping class="com.official.read.content.bean.CollectBean"></mapping>
+        <mapping class="com.official.read.content.bean.HistoryBean"></mapping>
+    </list>
+</litepal>
