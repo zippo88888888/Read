@@ -128,6 +128,7 @@ public class RadarView extends View {
         }
     }
 
+    // 清除定时器
     public void clear() {
         if (timer != null) {
             timer.cancel();
