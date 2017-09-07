@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * com.official.read.weight
  * Created by ZP on 2017/9/5.
- * description: 我行你也行
+ * description: 我行你也行！后期改动：直接根据比例去创建坐标和图标
  * version: 1.0
  */
 
