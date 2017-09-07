@@ -5,4 +5,24 @@
         <attr name="ios" format="boolean"/>
         <attr name="leftSwipe" format="boolean"/>
     </declare-styleable>
+    
+    <declare-styleable name="StatisticsView">
+        
+        <!-- X Y 轴名称 -->
+        <attr name="y_name" format="string"/>
+        <attr name="x_name" format="string" />
+        <!-- 矩形图表最大值的颜色 -->
+        <attr name="maxRectangleColor" format="color" />
+        <!-- 矩形图表常规颜色 -->
+        <attr name="rectangleColor" format="color" />
+        <!-- 所有的文字说明颜色（偷下懒） -->
+        <attr name="allTextColor" format="color" />
+        <!-- 折线表的折线颜色 -->
+        <attr name="discountColor" format="color" />
+
+        <!-- 显示矩形图（折线图会隐藏） -->
+        <attr name="showRectangle" format="boolean" />
+        <!-- 显示折线图(矩形图会隐藏) -->
+        <attr name="showDiscount" format="boolean" />
+    </declare-styleable>
 </resources>
