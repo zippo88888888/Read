@@ -2,25 +2,22 @@ package com.official.read.ui;
 
 import android.support.annotation.IdRes;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.RadioGroup;
 
 import com.github.jdsjlzx.recyclerview.LuRecyclerView;
 import com.official.read.R;
 import com.official.read.base.BaseActivity;
 import com.official.read.base.BasePresenter;
-import com.official.read.util.L;
 import com.official.read.util.Toaster;
 import com.official.read.weight.StatisticsView;
-import com.official.read.weight.TwoView;
+import com.official.read.weight.RadarView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DIYActivity extends BaseActivity {
 
-    TwoView twoView;
+    RadarView twoView;
     StatisticsView statisticsView;
     RadioGroup group;
 
@@ -37,8 +34,8 @@ public class DIYActivity extends BaseActivity {
     @Override
     protected void initView() {
         setTitle("TEST-DIY-PAGE");
-        twoView = (TwoView) $(R.id.diy_twoView);
-        twoView.setRadarClickListener(new TwoView.RadarClickListener() {
+        twoView = (RadarView) $(R.id.diy_twoView);
+        twoView.setRadarClickListener(new RadarView.RadarClickListener() {
             @Override
             public void start() {
                 Toaster.makeText("雷达开始工作");
@@ -68,6 +65,12 @@ public class DIYActivity extends BaseActivity {
 
         statisticsView = (StatisticsView) $(R.id.diy_statisticsView);
         statisticsView.setData(getData());
+        statisticsView.setStatisticsClickListener(new StatisticsView.StatisticsClickListener() {
+            @Override
+            public void click(int position, StatisticsView.Statistics statistics) {
+                Toaster.makeText("当前查看的是：" + statistics.name + "，份数为：" + statistics.data);
+            }
+        });
     }
 
     @Override
@@ -99,10 +102,10 @@ public class DIYActivity extends BaseActivity {
     private List<StatisticsView.Statistics> getData() {
         List<StatisticsView.Statistics> list = new ArrayList<>();
         StatisticsView.Statistics statistics1 = new StatisticsView.Statistics();
-        statistics1.data = 400;
+        statistics1.data = 500;
         statistics1.name = "java";
         StatisticsView.Statistics statistics2 = new StatisticsView.Statistics();
-        statistics2.data = 80;
+        statistics2.data = 400;
         statistics2.name = "C++";
         StatisticsView.Statistics statistics3 = new StatisticsView.Statistics();
         statistics3.data = 60;

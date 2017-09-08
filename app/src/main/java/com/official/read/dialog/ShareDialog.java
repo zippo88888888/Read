@@ -16,7 +16,7 @@ public class ShareDialog extends BaseDialog {
     }
 
     @Override
-    protected int getDialogView() {
+    protected int getDialogContentView() {
         return R.layout.dialog_share;
     }
 

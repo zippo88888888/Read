@@ -225,7 +225,7 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
             case R.id.snackBar_FButton: {
                 ShareDialog dialog = new ShareDialog();
                 dialog.setDialogItemClickListener(this);
-                dialog.show(getSupportFragmentManager(), "shareDialog");
+                dialog.show(getSupportFragmentManager(), Content.DIALOG_SHARE_TAG);
                 break;
             }
             default:

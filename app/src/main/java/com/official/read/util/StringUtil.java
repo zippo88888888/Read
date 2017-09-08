@@ -29,4 +29,9 @@ public class StringUtil {
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(number);
     }
+
+    public static String getTelMsg(String msg) {
+        String str = msg.substring(msg.indexOf(":") + 1, msg.length());
+        return str.trim();
+    }
 }

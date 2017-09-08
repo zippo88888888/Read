@@ -1,6 +1,7 @@
 package com.official.read.util;
 
 import android.app.Activity;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Point;
 import android.support.design.internal.NavigationMenuView;
@@ -89,6 +90,15 @@ public class AndroidUtil {
         if (navigationMenuView != null) {
             navigationMenuView.setVerticalScrollBarEnabled(false);
         }
+    }
+
+    /**
+     * 复制到剪贴板管理器
+     */
+    public static void copy(String content, Context context) {
+        ClipboardManager cmb = (ClipboardManager) context
+                .getSystemService(Context.CLIPBOARD_SERVICE);
+        cmb.setText(content.trim());
     }
 
 }

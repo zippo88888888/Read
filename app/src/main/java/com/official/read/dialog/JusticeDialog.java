@@ -3,7 +3,6 @@ package com.official.read.dialog;
 import android.os.Bundle;
 import android.view.View;
 
-import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.github.jdsjlzx.recyclerview.LuRecyclerView;
 import com.github.jdsjlzx.recyclerview.LuRecyclerViewAdapter;
 import com.official.read.R;
@@ -22,7 +21,7 @@ import java.util.List;
  * version: 1.0
  */
 
-public class JusticeDialog extends BaseDialog implements OnItemClickListener {
+public class JusticeDialog extends BaseDialog{
 
     LuRecyclerView recyclerView;
     List<JusticeBean> data;
@@ -42,7 +41,7 @@ public class JusticeDialog extends BaseDialog implements OnItemClickListener {
     }
 
     @Override
-    protected int getDialogView() {
+    protected int getDialogContentView() {
         return R.layout.dialog_justice;
     }
 

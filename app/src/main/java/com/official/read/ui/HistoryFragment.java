@@ -170,7 +170,7 @@ public class HistoryFragment extends BaseFragment<HistoryPresenterImpl,HistoryVi
             List<JusticeBean> data = presenter.getJusticeDataByID(id);
             JusticeDialog dialog = JusticeDialog.newInstance(data);
             dialog.setDialogItemClickListener(HistoryFragment.this);
-            dialog.show(getChildFragmentManager(), "historyDialog");
+            dialog.show(getChildFragmentManager(), Content.DIALOG_HISTORY_TAG);
         }
     };
 

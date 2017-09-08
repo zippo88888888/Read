@@ -55,6 +55,16 @@ public class Content {
     }
 
     /**
+     * 刷新状态
+     */
+    public static final int REFRESH = 0;
+
+    /**
+     * 加载更多状态
+     */
+    public static final int LOADMORE = 1;
+
+    /**
      * 是否是正式版
      */
     public static final boolean IS_OFFICIAL = BuildConfig.IS_OFFICIAL;
@@ -101,6 +111,29 @@ public class Content {
 
     public final static String URL2 = "http://pic.qiantucdn.com/58pic/11/21/22/14C58PIC4Ut.jpg!/fw/780/watermark" +
             "/url/L3dhdGVybWFyay12MS4zLnBuZw==/align/center";
+
+    // Dialog Tag ------------------------------------------------------------------------------------
+
+    /**
+     *  JusticeFragment Dialog Tag
+     */
+    public static final String DIALOG_JUSTICE_TAG = "justiceDialog";
+
+    /**
+     *  HistoryFragment Dialog Tag
+     */
+    public static final String DIALOG_HISTORY_TAG = "historyDialog";
+
+    /**
+     *  DetailActivity Dialog Tag
+     */
+    public static final String DIALOG_SHARE_TAG = "shareDialog";
+
+    /**
+     *  AboutActivity Dialog Tag
+     */
+    public static final String DIALOG_TEL_TAG = "telDialog";
+
 
     // Disposable ------------------------------------------------------------------------------------
 

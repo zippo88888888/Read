@@ -22,6 +22,10 @@
     <string name="shortcuts_recommend">热门推荐</string>
 
     <string name="mvpView_message">attachView(MvpView)未调用未与View建立连接或mvpView已经被销毁</string>
+    <string name="about_author">关于作者</string>
+    <string name="tel_qq">QQ : 2902188182</string>
+    <string name="tel_email">Email : zp1025411146@163.com</string>
+    <string name="tel_gitHub">GitHub : https://github.com/zippo88888888/Read</string>
 
     <string-array name="titles">
         <item>推荐</item>

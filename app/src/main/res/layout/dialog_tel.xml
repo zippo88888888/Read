@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_shape"
+    xmlns:skin="http://schemas.android.com/android/skin">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        skin:enable="true"
+        android:textColor="@color/baseColor"
+        android:textSize="18sp"
+        android:text="@string/about_author"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/baseColor"
+        skin:enable="true"/>
+
+    <TextView
+        android:id="@+id/dialog_tel_qq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="?selectableItemBackground"
+        android:text="@string/tel_qq"/>
+
+    <TextView
+        android:id="@+id/dialog_tel_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center"
+        android:background="?selectableItemBackground"
+        android:text="@string/tel_email"/>
+
+    <TextView
+        android:id="@+id/dialog_tel_gitHub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:background="?selectableItemBackground"
+        android:text="@string/tel_gitHub"/>
+
+</LinearLayout>

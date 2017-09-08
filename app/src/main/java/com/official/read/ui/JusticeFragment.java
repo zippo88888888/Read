@@ -162,7 +162,7 @@ public class JusticeFragment extends BaseFragment<JusticePresenterImpl, JusticeV
             List<JusticeBean> data = presenter.getJusticeDataByID(id);
             JusticeDialog dialog = JusticeDialog.newInstance(data);
             dialog.setDialogItemClickListener(JusticeFragment.this);
-            dialog.show(getChildFragmentManager(), "justiceDialog");
+            dialog.show(getChildFragmentManager(), Content.DIALOG_JUSTICE_TAG);
         }
     };
 

@@ -17,6 +17,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 
+import com.github.jdsjlzx.interfaces.OnItemClickListener;
 import com.official.read.R;
 
 
@@ -50,8 +51,8 @@ import com.official.read.R;
  * .............................................
  *          佛祖保佑             永无BUG
  */
-public abstract class BaseDialog extends AppCompatDialogFragment
-        implements View.OnClickListener, AdapterView.OnItemClickListener {
+public abstract class BaseDialog extends AppCompatDialogFragment implements View.OnClickListener,
+        OnItemClickListener {
 
     protected int dialogType = -1;
 
@@ -59,7 +60,8 @@ public abstract class BaseDialog extends AppCompatDialogFragment
     protected final static int DIALOG_TOP = 0x1;
     protected final static int DIALOG_CENTER = 0x2;
 
-    protected final static String TAG = BaseDialog.class.getName();
+    /** 默认的Dialog style */
+    private final static int DEFAULT_DIALOG_STYLE = R.style.Dialog_FS;
 
     protected View rootView;
 
@@ -76,7 +78,7 @@ public abstract class BaseDialog extends AppCompatDialogFragment
                 return new BottomSheetDialog(getContext(), getTheme());
             case DIALOG_CENTER: /** 中心弹出 */
                 dialogType = DIALOG_CENTER;
-                return new Dialog(getContext(), R.style.Dialog_FS);
+                return new Dialog(getContext(), checkStyle());
             case DIALOG_TOP: /** 顶部弹出 */
                 dialogType = DIALOG_TOP;
                 return getTopDialog();
@@ -88,7 +90,7 @@ public abstract class BaseDialog extends AppCompatDialogFragment
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        int layoutID = getDialogView();
+        int layoutID = getDialogContentView();
         if (layoutID <= 0) {
             throw new NullPointerException("Dialog layout is not null");
         } else {
@@ -105,10 +107,7 @@ public abstract class BaseDialog extends AppCompatDialogFragment
     @Override
     public void onStart() {
         super.onStart();
-        if (dialogType == DIALOG_TOP) {
-            getDialog().getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
-            setDialog(0, 0);
-        } else if (dialogType == DIALOG_CENTER) {
+        if (dialogType == DIALOG_TOP || dialogType == DIALOG_CENTER) {
             setDialog(0, 0);
         }
         setDialogProperty();
@@ -119,9 +118,25 @@ public abstract class BaseDialog extends AppCompatDialogFragment
         super.onConfigurationChanged(newConfig);
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             // 横屏
+            changeToLand();
         } else {
             // 竖屏
+            changeToPort();
         }
+    }
+
+    /**
+     * 横屏调用
+     */
+    protected void changeToLand() {
+
+    }
+
+    /**
+     * 竖屏调用
+     */
+    protected void changeToPort() {
+
     }
 
     /**
@@ -145,10 +160,17 @@ public abstract class BaseDialog extends AppCompatDialogFragment
     }
 
     /**
+     * 设置Dialog 弹窗动画
+     */
+    protected final void setDialogAnimations(int animations) {
+        getDialog().getWindow().setWindowAnimations(animations);
+    }
+
+    /**
      * 得到Display
      * @return Display
      */
-    protected final Display getDisplay() {
+    private Display getDisplay() {
         WindowManager manager = (WindowManager) getContext()
                 .getSystemService(Context.WINDOW_SERVICE);
         return manager.getDefaultDisplay();
@@ -164,11 +186,15 @@ public abstract class BaseDialog extends AppCompatDialogFragment
         return point.x;
     }
 
+    /** 获取弹窗的样式 */
+    protected int getDialogStyle() {
+        return DEFAULT_DIALOG_STYLE;
+    }
     /** 获取弹窗的类型 */
     protected abstract int getDialogType();
-    /** 获取弹窗的Layout */
-    protected abstract int getDialogView();
-    /** 初始化弹窗中的Layout */
+    /** 获取弹窗的 Layout */
+    protected abstract int getDialogContentView();
+    /** 初始化弹窗中的 View */
     protected abstract void initDialogView(View view, Bundle bundle);
     /** 设置弹窗的属性 */
     protected abstract void setDialogProperty();
@@ -196,12 +222,19 @@ public abstract class BaseDialog extends AppCompatDialogFragment
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(View view, int position) {
 
     }
 
+    private int checkStyle() {
+        if (dialogType == DIALOG_BOTTOM) {
+            return DEFAULT_DIALOG_STYLE;
+        }
+        return getDialogStyle() <= 0 ? DEFAULT_DIALOG_STYLE : getDialogStyle();
+    }
+
     private Dialog getTopDialog () {
-        Dialog dialog = new Dialog(getContext(), R.style.Dialog_FS);
+        Dialog dialog = new Dialog(getContext(), checkStyle());
         Window window = dialog.getWindow();
         if (window != null) {
             window.setGravity(Gravity.TOP);

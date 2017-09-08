@@ -11,11 +11,15 @@ import com.official.read.base.BaseActivity;
 import com.official.read.base.BasePresenter;
 import com.official.read.content.Content;
 import com.official.read.content.URL;
+import com.official.read.dialog.TelDialog;
+import com.official.read.util.StringUtil;
 import com.official.read.util.UpdateNewUtil;
 import com.official.read.weight.lu_recycler_view.LuActivity;
 import com.official.read.util.Toaster;
 
 public class AboutActivity extends BaseActivity {
+
+    boolean isNew = false;
 
     @Override
     protected int getContentView() {
@@ -31,6 +35,7 @@ public class AboutActivity extends BaseActivity {
     protected void initView() {
         setTitle("关于");
         $(R.id.about_KY).setOnClickListener(this);
+        $(R.id.about_tel).setOnClickListener(this);
         $(R.id.about_home).setOnClickListener(this);
         $(R.id.about_diy_page).setOnClickListener(this);
         $(R.id.about_diy).setOnClickListener(this);
@@ -46,6 +51,11 @@ public class AboutActivity extends BaseActivity {
                 map.put("url", "file:///android_asset/license.html");
                 jumpActivity(map, WebViewActivity.class);
                 break;
+            case R.id.about_tel:
+                TelDialog telDialog = new TelDialog();
+                telDialog.setDialogItemClickListener(this);
+                telDialog.show(getSupportFragmentManager(), Content.DIALOG_TEL_TAG);
+                break;
             case R.id.about_home:
                 jumpActivity(LuActivity.class);
                 break;
@@ -59,7 +69,7 @@ public class AboutActivity extends BaseActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-//                        checkNew();
+                        checkNew();
                         Toaster.makeText("已是最新版本");
                     }
                 }, 1500);
@@ -68,9 +78,18 @@ public class AboutActivity extends BaseActivity {
     }
 
     private void checkNew() {
-        UpdateNewUtil updateNewUtil = new UpdateNewUtil(this);
-        updateNewUtil.showDialog("", "1、签到，抽奖震撼上线了。新品多多，诚意满满" +
-                "\n2、程序员小哥说：我们已经修复了N项问题了，保证流畅运行\n3、改动太多太多，等你来发现");
+        if (isNew) {
+            UpdateNewUtil updateNewUtil = new UpdateNewUtil(this);
+            updateNewUtil.showDialog("", "1、签到，抽奖震撼上线了。新品多多，诚意满满" +
+                    "\n2、程序员小哥说：我们已经修复了N项问题了，保证流畅运行\n3、改动太多太多，等你来发现");
+        }
+    }
+
+    @Override
+    public void dialogClick(View view, Object obj) {
+        ArrayMap<String, Object> map = new ArrayMap<>();
+        map.put("url", StringUtil.getTelMsg(getResources().getString(R.string.tel_gitHub)));
+        jumpActivity(map, WebViewActivity.class);
     }
 
     @Override

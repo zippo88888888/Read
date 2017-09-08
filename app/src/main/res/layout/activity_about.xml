@@ -71,6 +71,39 @@
 
             <RelativeLayout
                 android:background="?attr/selectableItemBackground"
+                android:id="@+id/about_tel"
+                android:layout_width="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="关于作者"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    android:textSize="16sp"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/right_jt"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                skin:enable="true"
+                android:background="@color/baseColor" />
+
+            <RelativeLayout
+                android:background="?attr/selectableItemBackground"
                 android:id="@+id/about_check"
                 android:layout_width="match_parent"
                 android:paddingLeft="10dp"
