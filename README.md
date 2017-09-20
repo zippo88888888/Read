@@ -1,6 +1,8 @@
 # Read
 基于RxJava+Retrofit+MVP，仅供参考！请勿当成商业模式
 
+写得不好，勿喷，勿喷，勿喷！
+
 App 遵循谷歌Material design风格
 
 主要功能
