@@ -38,7 +38,6 @@ public class AboutActivity extends BaseActivity {
         $(R.id.about_tel).setOnClickListener(this);
         $(R.id.about_home).setOnClickListener(this);
         $(R.id.about_diy_page).setOnClickListener(this);
-        $(R.id.about_diy).setOnClickListener(this);
         $(R.id.about_check).setOnClickListener(this);
     }
 
@@ -61,9 +60,6 @@ public class AboutActivity extends BaseActivity {
                 break;
             case R.id.about_diy_page:
                 jumpActivity(DIYActivity.class);
-                break;
-            case R.id.about_diy:
-                $(R.id.about_testPageLayout).setVisibility(View.VISIBLE);
                 break;
             case R.id.about_check:
                 new Handler().postDelayed(new Runnable() {
