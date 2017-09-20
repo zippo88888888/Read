@@ -112,13 +112,4 @@
         <item name="android:textColor">#3a3a3a</item>
     </style>
 
-    <style name="new_account_jt">
-        <item name="android:layout_width">15dp</item>
-        <item name="android:layout_height">15dp</item>
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_alignParentEnd">true</item>
-        <item name="android:src">@drawable/textside</item>
-    </style>
-
 </resources>
