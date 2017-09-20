@@ -40,6 +40,11 @@ public class SPUtil {
      */
     public static final String OPEN_ANIM = "anim_open";
 
+    /**
+     * 兼容性错误
+     */
+    public static final String ERROR_STATE = "error_state";
+
     public static final String EGG = "egg";
 
     public static final String CANCEL_COLLECT = "cancel_collect";

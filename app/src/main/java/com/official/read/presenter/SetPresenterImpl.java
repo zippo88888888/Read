@@ -31,4 +31,22 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     public void setAnimState(boolean isOpen) {
         SPUtil.put(SPUtil.OPEN_ANIM, isOpen);
     }
+
+    @Override
+    public void checkErrorState(boolean state) {
+        if (state) {
+            getMvpView().showErrorLayout();
+        }
+    }
+
+    @Override
+    public void getErrorState() {
+        boolean errorSet = themeModel.getErrorSet();
+        getMvpView().setErrorState(errorSet);
+    }
+
+    @Override
+    public void setErrorState(boolean isError) {
+        SPUtil.put(SPUtil.ERROR_STATE, isError);
+    }
 }

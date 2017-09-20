@@ -38,4 +38,6 @@ public interface ThemeModel {
 
     boolean getAnimSet();
 
+    boolean getErrorSet();
+
 }

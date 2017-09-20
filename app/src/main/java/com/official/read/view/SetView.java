@@ -13,4 +13,7 @@ public interface SetView extends BaseView {
 
     void setAnimState(boolean state);
 
+    void showErrorLayout();
+
+    void setErrorState(boolean state);
 }

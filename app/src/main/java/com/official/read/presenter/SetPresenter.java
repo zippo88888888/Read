@@ -12,4 +12,10 @@ public interface SetPresenter {
     void getAnimState();
 
     void setAnimState(boolean isOpen);
+
+    void checkErrorState(boolean state);
+
+    void getErrorState();
+
+    void setErrorState(boolean isError);
 }

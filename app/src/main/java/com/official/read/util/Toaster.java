@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.official.read.R;
+import com.official.read.content.Content;
 
 /**
  * com.test.zzs.text.util
@@ -74,7 +75,12 @@ public class Toaster extends Toast {
         TextView msg = (TextView) v.findViewById(R.id.toast_msg);
         msg.setText(text);
         if (color == 0) {
-            msg.setBackgroundColor(context.getResources().getColor(R.color.red));
+            int color = Content.getBaseColorByTheme((String) SPUtil.get(SPUtil.BASE_COLOR, Content.THEME_RED));
+            if (color == R.color.red) {
+                msg.setBackgroundColor(context.getResources().getColor(R.color.green));
+            } else {
+                msg.setBackgroundColor(context.getResources().getColor(R.color.red));
+            }
         } else {
             msg.setBackgroundColor(color);
         }

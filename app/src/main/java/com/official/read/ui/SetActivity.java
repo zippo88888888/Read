@@ -4,6 +4,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.LuRecyclerView;
@@ -21,6 +22,9 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     SwitchCompat switchCompat;
     TextView cacheSize;
 
+    LinearLayout errorLayout;
+    SwitchCompat errorSwitch;
+
     @Override
     protected int getContentView() {
         return R.layout.activity_set;
@@ -34,6 +38,9 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     @Override
     protected void initView() {
         setTitle("设置");
+        errorLayout = $(R.id.set_errorLayout);
+        errorSwitch = $(R.id.set_error);
+        errorSwitch.setOnCheckedChangeListener(this);
         switchCompat = $(R.id.set_switch);
         switchCompat.setOnCheckedChangeListener(this);
         cacheSize = $(R.id.set_cacheSize);
@@ -43,6 +50,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
 
     @Override
     protected void initData() {
+        presenter.checkErrorState(isTabletDevice());
         getSize();
         presenter.getAnimState();
     }
@@ -94,6 +102,17 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     }
 
     @Override
+    public void showErrorLayout() {
+        errorLayout.setVisibility(View.VISIBLE);
+        presenter.getErrorState();
+    }
+
+    @Override
+    public void setErrorState(boolean state) {
+        errorSwitch.setChecked(state);
+    }
+
+    @Override
     protected int getStatusColor() {
         return 0;
     }
@@ -110,6 +129,13 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        presenter.setAnimState(isChecked);
+        switch (buttonView.getId()) {
+            case R.id.set_switch:
+                presenter.setAnimState(isChecked);
+                break;
+            case R.id.set_error:
+                presenter.setErrorState(isChecked);
+                break;
+        }
     }
 }

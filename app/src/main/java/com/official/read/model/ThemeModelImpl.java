@@ -63,4 +63,9 @@ public class ThemeModelImpl implements ThemeModel {
     public boolean getAnimSet() {
         return (boolean) SPUtil.get(SPUtil.OPEN_ANIM, false);
     }
+
+    @Override
+    public boolean getErrorSet() {
+        return (boolean) SPUtil.get(SPUtil.ERROR_STATE, false);
+    }
 }

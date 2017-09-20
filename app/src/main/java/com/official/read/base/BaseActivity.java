@@ -26,6 +26,7 @@ import com.official.read.content.Content;
 import com.official.read.content.ReadException;
 import com.official.read.util.L;
 import com.official.read.util.RecyclerUtil;
+import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.util.anim.EasyTransition;
 import com.official.read.util.anim.EasyTransitionOptions;
@@ -64,7 +65,10 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
             setContentView(layoutID);
         }
         if (isTabletDevice()) {
-            Toaster.makeText(Toaster.TOP, R.string.error_notPhone);
+            boolean isError = (boolean) SPUtil.get(SPUtil.ERROR_STATE, false);
+            if(!isError){
+                Toaster.makeText(Toaster.TOP, R.string.error_notPhone);
+            }
         }
         presenter = initPresenter();
         if (presenter != null) {
@@ -178,7 +182,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
     }
 
-    private boolean isTabletDevice() {
+    protected final boolean isTabletDevice() {
         return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >=
                 Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
