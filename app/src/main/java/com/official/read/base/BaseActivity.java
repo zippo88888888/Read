@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
@@ -61,6 +62,9 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
             throw new NullPointerException("Layout is not null");
         } else {
             setContentView(layoutID);
+        }
+        if (isTabletDevice()) {
+            Toaster.makeText(Toaster.TOP, R.string.error_notPhone);
         }
         presenter = initPresenter();
         if (presenter != null) {
@@ -172,6 +176,11 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     @Override
     public void reload() {
 
+    }
+
+    private boolean isTabletDevice() {
+        return (getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     private Dialog createDialog() {

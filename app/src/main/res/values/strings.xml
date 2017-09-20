@@ -10,6 +10,7 @@
     <string name="egg_message">I haven\'t figured out what the interface is doing. So that\'s all there is to it</string>
     <string name="the_mode_that_shield_an_eye">The mode that shield an eye, But it has not happened yet</string>
     <string name="header_msg">I may not be prefect\nbut I\'m always me</string>
+    <string name="error_notPhone">请注意：App可能不兼容该设备！</string>
 
     <string name="hot_hp">黄浦区</string>
     <string name="hot_ja">静安区</string>
