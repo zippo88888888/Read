@@ -326,13 +326,14 @@ public class StatisticsView extends View {
     public static class Statistics {
         public String name; // 名称
         public int data; // 具体数据
-        public int percentage; // 百分比
+        public double percentage; // 百分比
 
         @Override
         public String toString() {
             return "Statistics{" +
                     "name='" + name + '\'' +
                     ", data=" + data +
+                    ", percentage=" + percentage +
                     '}';
         }
     }

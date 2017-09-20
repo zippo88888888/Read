@@ -30,6 +30,13 @@ public class AndroidUtil {
     }
 
     /**
+     * 返回ToolBar的高度
+     */
+    public static int getToolBarHeight(Context context) {
+        return dip2px(context, 55f);
+    }
+
+    /**
      * 获取屏幕的宽，高
      * @param context   Context
      * @return int[] 0--width;1--height

@@ -4,7 +4,7 @@
     xmlns:skin="http://schemas.android.com/android/skin"
     android:id="@+id/tool_app_barLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="55dp"
     android:background="@color/colorPrimaryDark"
     skin:enable="true"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">

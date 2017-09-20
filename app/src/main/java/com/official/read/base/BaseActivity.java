@@ -55,7 +55,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//竖屏
+        setRequestedOrientation(getDisplayState());
         int layoutID = getContentView();
         if (layoutID <= 0) {
             throw new NullPointerException("Layout is not null");
@@ -73,6 +73,16 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
         initView();
         initData();
+    }
+
+    /**
+     * 获取屏幕状态
+     * @return int
+     *      ActivityInfo.SCREEN_ORIENTATION_PORTRAIT 竖屏
+     *      ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE 横屏
+     */
+    protected int getDisplayState() {
+        return ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
     }
 
     protected abstract int getContentView();
@@ -220,6 +230,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
         startActivity(intent);
     }
 
+    // view 的id必须相同
     protected void jumpActivity(ArrayMap<String, Object> map, Class clazz, View... views) {
         if (map.isEmpty()) {
             throw new NullPointerException("ArrayMap<String, Object> map is not null");

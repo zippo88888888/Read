@@ -2,9 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:zp="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/tool_bar_layout" />
+
+    <com.official.read.weight.SuperStatisticsView
+        android:id="@+id/diy_superStatisticsView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        zp:maxRectangleColor="@color/baseColor"
+        zp:rectangleColor="@color/green"
+        android:visibility="gone"/>
 
     <com.official.read.weight.RadarView
         android:id="@+id/diy_twoView"
