@@ -4,15 +4,16 @@
     xmlns:skin="http://schemas.android.com/android/skin"
     android:id="@+id/tool_app_barLayout"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="@dimen/toolBarHeight"
     android:background="@color/colorPrimaryDark"
     skin:enable="true"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
+    <!-- ?attr/actionBarSize -->
     <android.support.v7.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="@dimen/toolBarHeight"
         app:layout_scrollFlags="scroll|enterAlways"
         android:background="@color/colorPrimaryDark"
         skin:enable="true"
@@ -26,7 +27,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:layout_gravity="center" />
+            android:layout_gravity="left" />
 
     </android.support.v7.widget.Toolbar>
 

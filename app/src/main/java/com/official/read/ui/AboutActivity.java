@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.ArrayMap;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.LuRecyclerView;
 import com.official.read.R;
@@ -12,6 +13,7 @@ import com.official.read.base.BasePresenter;
 import com.official.read.content.Content;
 import com.official.read.content.URL;
 import com.official.read.dialog.TelDialog;
+import com.official.read.util.AndroidUtil;
 import com.official.read.util.StringUtil;
 import com.official.read.util.UpdateNewUtil;
 import com.official.read.weight.lu_recycler_view.LuActivity;
@@ -20,6 +22,7 @@ import com.official.read.util.Toaster;
 public class AboutActivity extends BaseActivity {
 
     boolean isNew = false;
+    TextView version;
 
     @Override
     protected int getContentView() {
@@ -34,11 +37,13 @@ public class AboutActivity extends BaseActivity {
     @Override
     protected void initView() {
         setTitle("关于");
-        $(R.id.about_KY).setOnClickListener(this);
         $(R.id.about_tel).setOnClickListener(this);
+        $(R.id.about_KY).setOnClickListener(this);
         $(R.id.about_home).setOnClickListener(this);
         $(R.id.about_diy_page).setOnClickListener(this);
         $(R.id.about_check).setOnClickListener(this);
+        version = (TextView) $(R.id.about_version);
+        version.setText("V " + AndroidUtil.getAppVersionName(this));
     }
 
     @Override

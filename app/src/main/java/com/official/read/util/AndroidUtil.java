@@ -3,6 +3,8 @@ package com.official.read.util;
 import android.app.Activity;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
@@ -10,6 +12,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import com.official.read.R;
+import com.official.read.content.Content;
 
 /**
  * com.official.casual.util
@@ -33,7 +36,8 @@ public class AndroidUtil {
      * 返回ToolBar的高度
      */
     public static int getToolBarHeight(Context context) {
-        return dip2px(context, 55f);
+        float height = context.getResources().getDimension(R.dimen.toolBarHeight);
+        return dip2px(context, height);
     }
 
     /**
@@ -87,6 +91,27 @@ public class AndroidUtil {
             m.hideSoftInputFromWindow(((Activity) context).getCurrentFocus().getWindowToken()
                     , InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    /**
+     * 返回当前程序版本名
+     */
+    public static String getAppVersionName(Context context) {
+        String versionName = "";
+        try {
+            // ---get the package info---
+            PackageManager pm = context.getPackageManager();
+            PackageInfo pi = pm.getPackageInfo(context.getPackageName(), 0);
+            versionName = pi.versionName;
+            if (versionName == null || versionName.length() <= 0) {
+                return "";
+            }
+        } catch (Exception e) {
+            if(!Content.IS_OFFICIAL){
+                e.printStackTrace();
+            }
+        }
+        return versionName;
     }
 
     /**

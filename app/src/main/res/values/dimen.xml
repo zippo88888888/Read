@@ -6,9 +6,9 @@
     <dimen name="detail_bottom_height">50dp</dimen>
     <dimen name="change_theme_height">110dp</dimen>
 
-    <item type="id" name="statusbarutil_fake_status_bar_view" />
-    <item type="id" name="statusbarutil_translucent_view" />
-
     <dimen name="new_md_bottomPadding">3dp</dimen>
+
+    <!-- ToolBar的高度 -->
+    <dimen name="toolBarHeight">57dp</dimen>
 
 </resources>

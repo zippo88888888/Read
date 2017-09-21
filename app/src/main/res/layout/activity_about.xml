@@ -25,6 +25,16 @@
         skin:enable="true"
         android:text="@string/app_name"/>
 
+    <TextView
+        android:id="@+id/about_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/gray"
+        android:text="V1.2"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
