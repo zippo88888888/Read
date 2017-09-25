@@ -269,7 +269,8 @@ public class SearchFragment extends BaseFragment<SearchPresenterImpl,SearchView>
                 presenter.setStatusBarState(Content.STATUE_NORMAL);
             }
         });
-        mRevealAnimator.setDuration(200);
+        // 开始动画200 + 200，结束动画相应
+        mRevealAnimator.setDuration(400);
         mRevealAnimator.setStartDelay(100);
         mRevealAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
         mRevealAnimator.start();

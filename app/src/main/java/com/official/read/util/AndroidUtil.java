@@ -37,7 +37,8 @@ public class AndroidUtil {
      */
     public static int getToolBarHeight(Context context) {
         float height = context.getResources().getDimension(R.dimen.toolBarHeight);
-        return dip2px(context, height);
+        return (int) height;
+//        return dip2px(context, height);
     }
 
     /**

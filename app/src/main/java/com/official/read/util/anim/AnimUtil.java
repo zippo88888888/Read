@@ -135,7 +135,7 @@ public final class AnimUtil {
         view.setAlpha(0);
         view.setTranslationY(-100);
         view.animate()
-                .setDuration(100)
+                .setDuration(200)
                 .alpha(1)
                 .translationY(0);
     }

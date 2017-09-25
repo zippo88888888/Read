@@ -124,10 +124,13 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
     @Override
     protected void onDestroy() {
+//        if (presenter != null) {
+//            presenter.detachView();
+//        }
+        super.onDestroy();
         if (presenter != null) {
             presenter.detachView();
         }
-        super.onDestroy();
     }
 
     protected void back() {
