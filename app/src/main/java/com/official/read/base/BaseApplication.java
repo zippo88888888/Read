@@ -8,6 +8,7 @@ import com.official.themelibrary.SkinConfig;
 import com.official.themelibrary.attr.SkinAttr;
 import com.official.themelibrary.loader.SkinManager;
 import com.official.themelibrary.utils.SkinFileUtils;
+import com.squareup.leakcanary.LeakCanary;
 
 import org.litepal.LitePalApplication;
 
@@ -27,6 +28,7 @@ public class BaseApplication extends LitePalApplication {
     public void onCreate() {
         super.onCreate();
         Toaster.init(getApplicationContext());
+        LeakCanary.install(this);
         initSkinLoader();
         if (!SkinConfig.isInNightMode(this)) {
             SkinManager.getInstance().loadSkin(null);

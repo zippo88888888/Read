@@ -7,7 +7,7 @@ android {
         applicationId "com.official.read"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 15
+        versionCode 19
         versionName "2.0"
     }
     buildTypes {
@@ -54,4 +54,6 @@ dependencies {
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'com.itkimi.group:MobikeTags:1.0.1'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }
