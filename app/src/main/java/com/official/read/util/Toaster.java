@@ -48,12 +48,9 @@ public class Toaster extends Toast {
         toast.show();
     }
 
-    public static void makeText(int str) {
-        if (toast != null) {
-            toast.cancel();
-        }
-        toast = Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT);
-        toast.show();
+    public static void makeText(int textID) {
+        String s = context.getResources().getString(textID);
+        makeText(s);
     }
 
     /**
