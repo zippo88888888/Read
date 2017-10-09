@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_map_line"
+        android:title="路线"
+        android:icon="@drawable/map_lx"
+        android:visible="false"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_map_dh"
+        android:title="导航"
+        android:icon="@drawable/bar_map_dh"
+        app:showAsAction="always"/>
+
+</menu>

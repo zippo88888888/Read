@@ -1,5 +1,6 @@
 package com.official.read.ui;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -55,7 +56,7 @@ public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> impl
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 
         drawerLayout = $(R.id.navigation_DrawerLayout);
         navigationView = $(R.id.navigation_view);
@@ -80,7 +81,7 @@ public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> impl
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         presenter.initVPData();
     }
 

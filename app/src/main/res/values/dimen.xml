@@ -10,5 +10,7 @@
 
     <!-- ToolBar的高度 -->
     <dimen name="toolBarHeight">57dp</dimen>
+    <!-- Dialog的圆角 -->
+    <dimen name="dialogRadius">3dp</dimen>
 
 </resources>

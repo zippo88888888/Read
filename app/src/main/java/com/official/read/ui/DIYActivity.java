@@ -1,5 +1,6 @@
 package com.official.read.ui;
 
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.RadioGroup;
@@ -41,7 +42,7 @@ public class DIYActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("TEST-DIY-PAGE");
         twoView = (RadarView) $(R.id.diy_twoView);
         twoView.setRadarClickListener(new RadarView.RadarClickListener() {
@@ -91,7 +92,7 @@ public class DIYActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
 
     }
 

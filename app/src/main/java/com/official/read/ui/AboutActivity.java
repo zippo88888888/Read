@@ -1,5 +1,6 @@
 package com.official.read.ui;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.ArrayMap;
@@ -35,7 +36,7 @@ public class AboutActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("关于");
         $(R.id.about_tel).setOnClickListener(this);
         $(R.id.about_KY).setOnClickListener(this);
@@ -94,7 +95,7 @@ public class AboutActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
 
     }
 

@@ -1,6 +1,7 @@
 package com.official.read.ui;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
@@ -31,7 +32,7 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 //        setTitle("详情");
         webView = (WebView) $(R.id.webView);
         WebSettings webSettings = webView.getSettings();
@@ -97,7 +98,7 @@ public class WebViewActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
 
     }
 

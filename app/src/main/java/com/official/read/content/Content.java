@@ -22,7 +22,54 @@ public class Content {
     public static final String HOT_PD = Toaster.getContext().getResources().getString(R.string.hot_pd);
     public static final String HOT_XH = Toaster.getContext().getResources().getString(R.string.hot_xh);
 
-    public final static String SEARCH_FRAGMENT_TAG = "fragment_search";
+    public static final String SEARCH_FRAGMENT_TAG = "fragment_search";
+
+    // GDMap ---------------------------------------------------------------------------------------------------
+
+    /**
+     * 讯飞APP_ID
+     * 请替换你自己的AppId，地址：http://www.xfyun.cn/
+     */
+    public static final String APP_ID = BuildConfig.APP_ID;
+
+    /**
+     * 默认的当前定位位置
+     */
+    public static final double NO_LAT_LON_POINT_DATA = -1;
+
+    /**
+     * 驾车模式
+     */
+    public static final int NAVIGATE_CAR = 1;
+    /**
+     * 步行模式
+     */
+    public static final int NAVIGATE_WALK = 2;
+    /**
+     * 骑行模式
+     */
+    public static final int NAVIGATE_CYCLING = 3;
+
+    public static final String MARKER_KEY_METRO = "地铁";
+    public static final String MARKER_KEY_BUS = "公交";
+    public static final String MARKER_KEY_BANK = "银行";
+    public static final String MARKER_KEY_MEDICAL = "医疗";
+    public static final String MARKER_KEY_EDUCATION = "教育";
+    public static final String MARKER_KEY_EAT = "餐饮";
+    public static final String MARKER_KEY_SHOPPING = "购物";
+
+    public static final int[] MARKERS = {
+            R.drawable.poi_marker_1,
+            R.drawable.poi_marker_2,
+            R.drawable.poi_marker_3,
+            R.drawable.poi_marker_4,
+            R.drawable.poi_marker_5,
+            R.drawable.poi_marker_6,
+            R.drawable.poi_marker_7,
+            R.drawable.poi_marker_8,
+            R.drawable.poi_marker_9,
+            R.drawable.poi_marker_10
+    };
 
     /**
      * 主题
@@ -35,23 +82,21 @@ public class Content {
     public static final String THEME_BLACK = "black_skin.skin";
 
     public static int getBaseColorByTheme(String theme) {
-        int color;
         if (Content.THEME_RED.equals(theme)) {
-            color = R.color.red;
+            return R.color.red;
         } else if (Content.THEME_PINK.equals(theme)) {
-            color = R.color.pink;
+            return R.color.pink;
         } else if (Content.THEME_VIOLET.equals(theme)) {
-            color = R.color.violet;
+            return R.color.violet;
         } else if (Content.THEME_BLUE.equals(theme)) {
-            color = R.color.blue;
+            return R.color.blue;
         } else if (Content.THEME_GREEN.equals(theme)) {
-            color = R.color.green;
+            return R.color.green;
         } else if (Content.THEME_BLACK.equals(theme)) {
-            color = R.color.black;
+            return R.color.black;
         } else {
-            color = R.color.red;
+            return R.color.red;
         }
-        return color;
     }
 
     /**
@@ -77,8 +122,8 @@ public class Content {
     private static final String BASE_URL = BuildConfig.BASE_URL;
     public static final String PATH = BuildConfig.PATH + BASE_URL;
 
-    public final static int STATUE_TRANSPARENT = 1;
-    public final static int STATUE_NORMAL = 2;
+    public static final int STATUE_TRANSPARENT = 1;
+    public static final int STATUE_NORMAL = 2;
 
     /**
      * 创建连接
@@ -133,6 +178,11 @@ public class Content {
      *  AboutActivity Dialog Tag
      */
     public static final String DIALOG_TEL_TAG = "telDialog";
+
+    /**
+     * GDMapActivity Dialog Tag
+     */
+    public static final String DIALOG_MAP_SELECT_TAG = "mapSelectDialog";
 
 
     // Disposable ------------------------------------------------------------------------------------

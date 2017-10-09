@@ -1,7 +1,7 @@
 package com.official.read.ui;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.ArrayMap;
 import android.view.Menu;
@@ -19,8 +19,6 @@ import com.official.read.content.bean.CollectBean;
 import com.official.read.presenter.CollectPresenterImpl;
 import com.official.read.util.RecyclerUtil;
 import com.official.read.util.Toaster;
-import com.official.read.util.anim.EasyTransition;
-import com.official.read.util.anim.EasyTransitionOptions;
 import com.official.read.view.CollectView;
 
 import java.util.ArrayList;
@@ -46,12 +44,12 @@ public class CollectActivity extends BaseActivity<CollectPresenterImpl, CollectV
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.collect_menu, menu);
+        getMenuInflater().inflate(R.menu.menu_collect, menu);
         return true;
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("我的收藏");
         setToolbarInMenu();
         setOnMenuItemClickListener(this);
@@ -73,7 +71,7 @@ public class CollectActivity extends BaseActivity<CollectPresenterImpl, CollectV
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         presenter.getCollectData();
     }
 

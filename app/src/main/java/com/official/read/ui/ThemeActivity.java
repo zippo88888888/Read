@@ -1,5 +1,6 @@
 package com.official.read.ui;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
@@ -24,7 +25,7 @@ public class ThemeActivity extends BaseActivity<ThemePresenterImpl,ThemeView> im
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("主题");
         $(R.id.theme_red).setOnClickListener(this);
         $(R.id.theme_pink).setOnClickListener(this);
@@ -35,7 +36,7 @@ public class ThemeActivity extends BaseActivity<ThemePresenterImpl,ThemeView> im
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
 
     }
 

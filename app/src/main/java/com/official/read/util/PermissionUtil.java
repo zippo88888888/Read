@@ -18,13 +18,13 @@ import android.support.v4.content.ContextCompat;
 
 public class PermissionUtil {
 
-    public static final int LOCATION = 0x1001;
-    public static final int STORAGE = 0x1002;
-    public static final int PHONE = 0x1003;
-    public static final int NETWORK = 0x1004;
+    public static final int LOCATION_CODE = 0x1001;
+    public static final int STORAGE_CODE = 0x1002;
+    public static final int PHONE_CODE = 0x1003;
+    public static final int CAMERA_CODE = 0x1004;
 
     /** 定位权限 */
-    public static final String ACCESS_FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    public static final String ACCESS_COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
 
     /** 读写SD卡权限 */
     public static final String WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
@@ -35,13 +35,10 @@ public class PermissionUtil {
     /** 调用相机权限 */
     public static final String CAMERA = Manifest.permission.CAMERA;
 
-    /** 获取网络状态权限 */
-    public static final String ACCESS_NETWORK_STATE = Manifest.permission.ACCESS_NETWORK_STATE;
-
     /**
      * 判断是否申请过权限
-     * @param context
-     * @param permissions
+     * @param context   Context
+     * @param permissions   权限
      * @return true表示没有申请过
      */
     public static boolean hasPermission(Context context, String... permissions) {
@@ -54,9 +51,9 @@ public class PermissionUtil {
 
     /**
      * 请求权限
-     * @param a
-     * @param code
-     * @param requestPermission
+     * @param a Activity
+     * @param code  请求码
+     * @param requestPermission 权限
      */
     public static void requestPermission(Activity a, int code, String... requestPermission) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

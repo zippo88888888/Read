@@ -1,5 +1,7 @@
 package com.official.read.presenter;
 
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeResult;
 import com.official.read.content.bean.CollectBean;
 import com.official.read.content.bean.DetailBean;
 
@@ -14,9 +16,11 @@ public interface DetailPresenter {
 
     void getDetailData(String fID);
 
-    void checkPermission();
+    void checkTelPermission();
 
-    void checkPermission2(int requestCode, int[] grantResults);
+    void checkLocationPermission();
+
+    void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults);
 
     void isShowOrHidden(boolean isShow);
 
@@ -33,9 +37,14 @@ public interface DetailPresenter {
     /**
      * 检查DetailBean是否为空
      * @param bean 实体
-     * @param state 1--收藏；2--咨询
+     * @param state 1--收藏；2--咨询；3--地图
      */
     void checkDetailBean(DetailBean bean, int state);
+
+    /**
+     * 检查LatLonPoint 是否为空
+     */
+    void checkLatLonPoint(DetailBean bean, LatLonPoint point);
 
     /**
      * 检查状态
@@ -54,4 +63,9 @@ public interface DetailPresenter {
     void hiddenBottomLayout(boolean isShow);
 
     void checkSkipAnim(boolean isFirst);
+
+    /**
+     * 地理编码查询回调
+     */
+    void onGeocodeSearched(GeocodeResult result, int rCode);
 }

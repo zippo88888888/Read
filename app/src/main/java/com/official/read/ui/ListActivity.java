@@ -1,6 +1,7 @@
 package com.official.read.ui;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.ArrayMap;
 import android.view.View;
@@ -47,7 +48,7 @@ public class ListActivity extends BaseActivity<ListPresenterImpl,ListView> imple
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("搜索结果");
         swipeRefreshLayout = $(R.id.list_swipeRefresh);
         recyclerView = $(R.id.list_RecyclerView);
@@ -63,7 +64,7 @@ public class ListActivity extends BaseActivity<ListPresenterImpl,ListView> imple
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         page = 1;
         msg = getIntent().getStringExtra("history");
         onRefresh();

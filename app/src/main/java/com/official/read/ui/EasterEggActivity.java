@@ -7,6 +7,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -54,7 +55,7 @@ public class EasterEggActivity extends BaseActivity implements
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("Easter Egg");
         mobikeView = (MobikeView) $(R.id.eggMobikeView);
         bombSwitch = (SwitchCompat) $(R.id.eggBomb);
@@ -87,7 +88,7 @@ public class EasterEggActivity extends BaseActivity implements
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
 
     }
 

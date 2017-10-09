@@ -79,8 +79,8 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
             initBar();
         }
 
-        initView();
-        initData();
+        initView(savedInstanceState);
+        initData(savedInstanceState);
     }
 
     /**
@@ -97,9 +97,9 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
     protected abstract P initPresenter();
 
-    protected abstract void initView();
+    protected abstract void initView(Bundle savedInstanceState);
 
-    protected abstract void initData();
+    protected abstract void initData(Bundle savedInstanceState);
 
     protected abstract int getStatusColor();
 

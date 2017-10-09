@@ -7,8 +7,13 @@ android {
         applicationId "com.official.read"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 19
+        versionCode 20
         versionName "2.0"
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "arm64-v8a", "x86_64"
+        }
     }
     buildTypes {
 
@@ -16,6 +21,7 @@ android {
             buildConfigField "Boolean", "IS_OFFICIAL", "false"
             buildConfigField "String", "PATH", "\"http://testing.91als.com\""
             buildConfigField "String", "BASE_URL", "\"/api/app_new/\""
+            buildConfigField "String", "APP_ID", "\"59cdb790\""
         }
 
         release {
@@ -24,6 +30,7 @@ android {
             buildConfigField "Boolean", "IS_OFFICIAL", "true"
             buildConfigField "String", "PATH", "\"http://testing.91als.com\""
             buildConfigField "String", "BASE_URL", "\"/api/app_new/\""
+            buildConfigField "String", "APP_ID", "\"59cdb790\""
         }
     }
 
@@ -33,7 +40,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':themelibrary')
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -54,6 +61,12 @@ dependencies {
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'com.itkimi.group:MobikeTags:1.0.1'
+//    compile 'com.amap.api:3dmap:latest.integration'
+    compile 'com.amap.api:map2d:latest.integration'
+    compile 'com.amap.api:navi-3dmap:latest.integration'
+    compile 'com.amap.api:search:latest.integration'
+    compile 'com.amap.api:location:latest.integration'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    compile files('libs/Msc.jar')
 }

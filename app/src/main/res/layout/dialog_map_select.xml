@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_shape"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="7dp"
+    android:paddingBottom="7dp" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:padding="7dp"
+        android:textColor="@color/black"
+        android:text="请选择筛选内容"/>
+
+    <RadioGroup
+        android:orientation="vertical"
+        android:id="@+id/dialog_map_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="7dp"
+        android:paddingStart="7dp">
+
+        <RadioButton
+            android:id="@+id/dialog_map_metro"
+            style="@style/map_bottomItemStyle"
+            android:text="地铁"/>
+
+        <RadioButton
+            android:id="@+id/dialog_map_bus"
+            style="@style/map_bottomItemStyle"
+            android:text="公交"/>
+
+        <RadioButton
+            android:id="@+id/dialog_map_bank"
+            style="@style/map_bottomItemStyle"
+            android:text="银行"/>
+
+        <RadioButton
+            android:id="@+id/dialog_map_medical"
+            style="@style/map_bottomItemStyle"
+            android:text="医疗"/>
+
+        <RadioButton
+            android:id="@+id/dialog_map_education"
+            style="@style/map_bottomItemStyle"
+            android:text="教育"/>
+
+        <RadioButton
+            android:id="@+id/dialog_map_eat"
+            style="@style/map_bottomItemStyle"
+            android:text="餐饮"/>
+
+        <RadioButton
+            android:id="@+id/dialog_map_shopping"
+            style="@style/map_bottomItemStyle"
+            android:text="购物"/>
+
+    </RadioGroup>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/dialog_map_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:background="?selectableItemBackground"
+            android:text="取消"
+            android:padding="7dp"
+            android:layout_toLeftOf="@+id/dialog_map_ok"
+            android:layout_toStartOf="@+id/dialog_map_ok"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"/>
+
+        <TextView
+            android:id="@+id/dialog_map_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackground"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="7dp"
+            android:layout_marginEnd="7dp"
+            android:padding="7dp"
+            android:textColor="@color/green"
+            android:text="确定"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

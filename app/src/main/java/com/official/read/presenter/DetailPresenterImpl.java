@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Build;
 
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeAddress;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.official.read.R;
 import com.official.read.base.BasePresenterImpl;
 import com.official.read.content.Content;
 import com.official.read.content.listener.MyObserver;
@@ -16,7 +21,6 @@ import com.official.read.model.DetailModel;
 import com.official.read.model.DetailModelImpl;
 import com.official.read.model.ThemeModel;
 import com.official.read.model.ThemeModelImpl;
-import com.official.read.util.L;
 import com.official.read.util.PermissionUtil;
 import com.official.read.util.StringUtil;
 import com.official.read.util.Toaster;
@@ -35,6 +39,9 @@ import java.util.List;
  */
 
 public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implements DetailPresenter {
+
+    // 地理编码查询失败的次数
+    private int errorLatLonPoint = 0;
 
     private DetailModel model;
     private ThemeModel themeModel;
@@ -66,12 +73,12 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     }
 
     @Override
-    public void checkPermission() {
+    public void checkTelPermission() {
         // 权限判断
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             Activity context = (Activity) getMvpView().getBaseViewContext();
             if (PermissionUtil.hasPermission(getMvpView().getBaseViewContext(), PermissionUtil.CALL_PHONE)) {
-                PermissionUtil.requestPermission(context, PermissionUtil.PHONE, PermissionUtil.CALL_PHONE);
+                PermissionUtil.requestPermission(context, PermissionUtil.PHONE_CODE, PermissionUtil.CALL_PHONE);
             } else {
                 getMvpView().tel();
             }
@@ -81,12 +88,33 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     }
 
     @Override
-    public void checkPermission2(int requestCode, int[] grantResults) {
-        if(requestCode == PermissionUtil.PHONE) {
+    public void checkLocationPermission() {
+        // 权限判断
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Activity context = (Activity) getMvpView().getBaseViewContext();
+            if (PermissionUtil.hasPermission(getMvpView().getBaseViewContext(), PermissionUtil.ACCESS_COARSE_LOCATION)) {
+                PermissionUtil.requestPermission(context, PermissionUtil.LOCATION_CODE, PermissionUtil.ACCESS_COARSE_LOCATION);
+            } else {
+                getMvpView().skipMapView();
+            }
+        } else {
+            getMvpView().skipMapView();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if(requestCode == PermissionUtil.PHONE_CODE) {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toaster.makeText("您已拒绝程序申请拨打电话权限，该功能将暂时无法使用！");
             } else {
                 getMvpView().tel();
+            }
+        } else if (requestCode == PermissionUtil.LOCATION_CODE) {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toaster.makeText("您已拒绝程序申请定位权限，暂时无法查看相关地图信息！");
+            } else {
+                getMvpView().skipMapView();
             }
         }
     }
@@ -121,9 +149,32 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
                 connectionBean.imgURL = bean.imgs.get(0).imgs;
                 connectionBean.title = bean.house_name;
                 connection(connectionBean);
+            } else if (state == 2) {
+                checkTelPermission();
             } else {
-                checkPermission();
+                checkLocationPermission();
             }
+        } else {
+            Toaster.makeText("正在请求数据中");
+        }
+    }
+
+    @Override
+    public void checkLatLonPoint(DetailBean bean, LatLonPoint point) {
+        if (bean == null) {
+            Toaster.makeText("正在请求数据中");
+            return;
+        }
+        if (point == null) {
+            if (errorLatLonPoint > 3) {
+                Toaster.makeText("当前网络不稳定，请稍后再试！");
+            } else {
+                getMvpView().showDialog(null);
+                errorLatLonPoint ++;
+                getMvpView().getLatLonPoint();
+            }
+        } else {
+            checkLocationPermission();
         }
     }
 
@@ -302,6 +353,21 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
             } else {
                 getMvpView().useAnim();
             }
+        }
+    }
+
+    @Override
+    public void onGeocodeSearched(GeocodeResult result, int rCode) {
+        getMvpView().dismissDialog();
+        if (rCode == AMapException.CODE_AMAP_SUCCESS) {
+            if (result != null && result.getGeocodeAddressList() != null && result.getGeocodeAddressList().size() > 0) {
+                GeocodeAddress address = result.getGeocodeAddressList().get(0);
+                getMvpView().setLatLonPoint(address.getLatLonPoint());
+            } else {
+                Toaster.makeText(R.string.map_error_data);
+            }
+        } else {
+            Toaster.makeText(R.string.map_error_data);
         }
     }
 }

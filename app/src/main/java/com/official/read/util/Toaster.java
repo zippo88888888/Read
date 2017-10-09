@@ -41,11 +41,12 @@ public class Toaster extends Toast {
     }
 
     public static void makeText(String str) {
-        if (toast != null) {
-            toast.cancel();
-        }
-        toast = Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT);
-        toast.show();
+//        if (toast != null) {
+//            toast.cancel();
+//        }
+//        toast = Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT);
+//        toast.show();
+        makeText(TOP, str);
     }
 
     public static void makeText(int textID) {

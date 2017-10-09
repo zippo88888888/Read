@@ -13,6 +13,30 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!--获取运营商信息，用于支持提供运营商信息相关的接口-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--用于访问wifi网络信息，wifi信息会用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+
+    <!-- 需要运行时注册的权限 -->
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--用于提高GPS定位速度-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+
+    <!-- 更改设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <!-- 3.2.0版本增加 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 3.2.0版本增加-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
     <application
         android:name=".base.BaseApplication"
@@ -22,6 +46,14 @@
         android:roundIcon="@drawable/logo_white"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService"></service>
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="4881a14665bac7e4cbea2fdc12a5454c" />
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.official.read.fileProvider"
@@ -53,7 +85,9 @@
         <activity android:name=".ui.ThemeActivity" />
         <activity android:name=".ui.EasterEggActivity" />
         <activity android:name=".ui.SetActivity" />
-        <activity android:name=".ui.DIYActivity"></activity>
+        <activity android:name=".ui.DIYActivity" />
+        <activity android:name=".ui.GDMapActivity" />
+        <activity android:name=".ui.NavigateActivity"></activity>
     </application>
 
 </manifest>

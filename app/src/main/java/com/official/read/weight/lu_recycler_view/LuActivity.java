@@ -1,5 +1,6 @@
 package com.official.read.weight.lu_recycler_view;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -43,7 +44,7 @@ public class LuActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("TEST-MAIN-PAGE");
         luRecyclerView = (LuRecyclerView) $(R.id.recycler_view);
         swipeRefreshLayout = (SwipeRefreshLayout) $(R.id.swipeRefresh);
@@ -108,7 +109,7 @@ public class LuActivity extends BaseActivity {
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
 
     }
 

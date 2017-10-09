@@ -2,10 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
     <corners
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp"
-        android:bottomLeftRadius="10dp"
-        android:bottomRightRadius="10dp"/>
+        android:topLeftRadius="@dimen/dialogRadius"
+        android:topRightRadius="@dimen/dialogRadius"
+        android:bottomLeftRadius="@dimen/dialogRadius"
+        android:bottomRightRadius="@dimen/dialogRadius"/>
 
     <solid android:color="@color/white" />
 

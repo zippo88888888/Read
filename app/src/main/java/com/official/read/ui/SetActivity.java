@@ -1,5 +1,6 @@
 package com.official.read.ui;
 
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
@@ -36,7 +37,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         setTitle("设置");
         errorLayout = $(R.id.set_errorLayout);
         errorSwitch = $(R.id.set_error);
@@ -49,7 +50,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         presenter.checkErrorState(isTabletDevice());
         getSize();
         presenter.getAnimState();

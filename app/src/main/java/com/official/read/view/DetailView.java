@@ -1,5 +1,6 @@
 package com.official.read.view;
 
+import com.amap.api.services.core.LatLonPoint;
 import com.official.read.base.BaseView;
 import com.official.read.content.bean.DetailBean;
 
@@ -16,6 +17,9 @@ public interface DetailView extends BaseView {
 
     void initDetailData(DetailBean bean);
 
+    /**
+     * 拨打电话咨询
+     */
     void tel();
 
     /**
@@ -56,15 +60,49 @@ public interface DetailView extends BaseView {
      */
     void setConnectionState(String state);
 
+    /**
+     * 显示底部Layout
+     */
     void showBottomLayout();
 
+    /**
+     * 隐藏底部Layout
+     */
     void hiddenBottomLayout();
 
+    /**
+     * 开始底部使用动画，隐藏底部（前个页面跳转至本页面）
+     */
     void firstUseAnim();
 
+    /**
+     * 开始底部Layout不使用动画（前个页面跳转至本页面）
+     */
     void firstNotUseAnim();
 
+    /**
+     * 跳转使用动画（前个页面跳转至本页面）
+     */
     void useAnim();
 
+    /**
+     * 跳转不使用动画（前个页面跳转至本页面）
+     */
     void notUseAnim();
+
+    /**
+     * 跳转至地图
+     */
+    void skipMapView();
+
+    /**
+     * 地理编码查询失败后再次调用
+     */
+    void getLatLonPoint();
+
+    /**
+     * 设置LatLonPoint
+     */
+    void setLatLonPoint(LatLonPoint point);
+
 }

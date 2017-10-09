@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -19,6 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.geocoder.GeocodeAddress;
+import com.amap.api.services.geocoder.GeocodeQuery;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.RegeocodeResult;
 import com.github.jdsjlzx.recyclerview.LuRecyclerView;
 import com.official.read.R;
 import com.official.read.base.BaseActivity;
@@ -28,6 +36,7 @@ import com.official.read.content.bean.DetailBean;
 import com.official.read.dialog.ShareDialog;
 import com.official.read.presenter.DetailPresenterImpl;
 import com.official.read.util.GlideImageLoader;
+import com.official.read.util.L;
 import com.official.read.util.Toaster;
 import com.official.read.util.anim.AnimUtil;
 import com.official.read.util.anim.EasyTransition;
@@ -41,7 +50,7 @@ import com.youth.banner.BannerConfig;
 import java.util.List;
 
 public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView> implements
-        DetailView, MyNestedScrollView.ScrollChangeListener {
+        DetailView, MyNestedScrollView.ScrollChangeListener, GeocodeSearch.OnGeocodeSearchListener {
 
     AppBarLayout appBarLayout;
 
@@ -56,6 +65,9 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
     /** 地图 */
     ImageView mapView;
+    // 地理编码类
+    private GeocodeSearch search;
+    private LatLonPoint point;
 
     Banner banner;
 
@@ -113,7 +125,7 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         appBarLayout = $(R.id.new_home_list_item_pic);
         scrollView = $(R.id.detailScrollView);
         scrollView.setScrollChangeListener(this);
@@ -186,7 +198,9 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
+        search = new GeocodeSearch(this);
+        search.setOnGeocodeSearchListener(this);
         String fID = getIntent().getStringExtra("fID");
         presenter.getDetailData(fID);
     }
@@ -207,6 +221,9 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
             }
             case R.id.house_info_mapView:
             case R.id.house_info_mapInfo:
+//                presenter.checkDetailBean(bean, 3);
+                presenter.checkLatLonPoint(bean, point);
+                break;
             case R.id.house_info_record:
                 Toaster.makeText("BUILDING...");
                 break;
@@ -268,6 +285,10 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
         houseLease.setText(bean.is_rent);
         houseAddress.setText(bean.detail_address);
+
+        // 查询经纬度
+        getLatLonPoint();
+
         // 房源介绍
         houseType2.setText(bean.house_type);
         houseLease2.setText(bean.is_rent);
@@ -291,12 +312,6 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
         appBarLayout.addOnOffsetChangedListener(appBarChangeListener);
         presenter.setLightGridViewData(bean.tag);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        DisposeManager.getInstance().cancel(Content.DISPOSABLE_DETAIL_DATA);
     }
 
     @Override
@@ -360,7 +375,7 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        presenter.checkPermission2(requestCode, grantResults);
+        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     @Override
@@ -448,5 +463,51 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
     public void notUseAnim() {
         actionButton.setVisibility(View.VISIBLE);
         detailRootLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void skipMapView() {
+//        Intent intent = new Intent(DetailActivity.this, GDMapActivity.class);
+//        intent.putExtra("title", bean.house_name);
+//        Bundle bundle = new Bundle();
+//        bundle.putParcelable("point", point);
+//        intent.putExtras(bundle);
+//        startActivity(intent);
+        ArrayMap<String, Object> map = new ArrayMap<>();
+        map.put("title", bean.house_name);
+        map.put("point", point);
+        jumpActivity(map, GDMapActivity.class);
+    }
+
+    @Override
+    public void getLatLonPoint() {
+        GeocodeQuery query = new GeocodeQuery(bean.detail_address, "上海");
+        search.getFromLocationNameAsyn(query);// 设置同步地理编码请求
+    }
+
+    @Override
+    public void setLatLonPoint(LatLonPoint point) {
+        L.e("Latitude--->>>" + point.getLatitude());
+        L.e("Longitude--->>>" + point.getLongitude());
+        this.point = point;
+    }
+
+    /**
+     * 地理编码查询回调
+     */
+    @Override
+    public void onGeocodeSearched(GeocodeResult result, int rCode) {
+        presenter.onGeocodeSearched(result, rCode);
+    }
+
+    @Override
+    public void onRegeocodeSearched(RegeocodeResult regeocodeResult, int i) {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DisposeManager.getInstance().cancel(Content.DISPOSABLE_DETAIL_DATA);
     }
 }

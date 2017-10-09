@@ -2,6 +2,7 @@ package com.official.read.ui;
 
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -35,12 +36,12 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
 
     }
 
     @Override
-    protected void initData() {
+    protected void initData(Bundle savedInstanceState) {
         // 权限判断
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermission();
@@ -81,7 +82,7 @@ public class WelcomeActivity extends BaseActivity {
 
     private void checkPermission() {
         if (PermissionUtil.hasPermission(WelcomeActivity.this, PermissionUtil.WRITE_EXTERNAL_STORAGE)) {
-            PermissionUtil.requestPermission(WelcomeActivity.this, PermissionUtil.STORAGE, PermissionUtil.WRITE_EXTERNAL_STORAGE);
+            PermissionUtil.requestPermission(WelcomeActivity.this, PermissionUtil.STORAGE_CODE, PermissionUtil.WRITE_EXTERNAL_STORAGE);
         } else {
             startSkip();
         }
@@ -89,7 +90,7 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if(requestCode == PermissionUtil.STORAGE){
+        if(requestCode == PermissionUtil.STORAGE_CODE){
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toaster.makeText("您已拒绝程序申请读写权限，部分功能将无法使用！程序已退出，您可到设置中打开文件读写权限！");
                 finish();
