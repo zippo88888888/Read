@@ -1,8 +1,7 @@
-package com.official.read.weight;
+package com.official.read.weight.my_diy;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;

@@ -370,4 +370,5 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
             Toaster.makeText(R.string.map_error_data);
         }
     }
+
 }

@@ -14,6 +14,8 @@ android {
             //设置支持的SO库架构
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86", "arm64-v8a", "x86_64"
         }
+
+        multiDexEnabled true
     }
     buildTypes {
 
@@ -22,15 +24,17 @@ android {
             buildConfigField "String", "PATH", "\"http://testing.91als.com\""
             buildConfigField "String", "BASE_URL", "\"/api/app_new/\""
             buildConfigField "String", "APP_ID", "\"59cdb790\""
+            buildConfigField "String", "BUGLY_ID", "\"924d37dc5d\""
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "Boolean", "IS_OFFICIAL", "true"
             buildConfigField "String", "PATH", "\"http://testing.91als.com\""
             buildConfigField "String", "BASE_URL", "\"/api/app_new/\""
             buildConfigField "String", "APP_ID", "\"59cdb790\""
+            buildConfigField "String", "BUGLY_ID", "\"924d37dc5d\""
         }
     }
 
@@ -40,8 +44,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':themelibrary')
+    compile files('libs/Msc.jar')
+    compile files('libs/uk-co-senab-photoview.jar')
+
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
@@ -61,12 +67,18 @@ dependencies {
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'com.itkimi.group:MobikeTags:1.0.1'
-//    compile 'com.amap.api:3dmap:latest.integration'
+
     compile 'com.amap.api:map2d:latest.integration'
     compile 'com.amap.api:navi-3dmap:latest.integration'
     compile 'com.amap.api:search:latest.integration'
     compile 'com.amap.api:location:latest.integration'
+
+    compile 'com.android.support:multidex:1.0.1'
+
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-    compile files('libs/Msc.jar')
+
 }

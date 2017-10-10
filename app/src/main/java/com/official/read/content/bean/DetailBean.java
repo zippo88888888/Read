@@ -45,7 +45,7 @@ public class DetailBean implements Serializable {
     public String map_address;
     public String is_collect;
 
-    public static class HouseInfoImage {
+    public static class HouseInfoImage implements Serializable {
         public String imgs;
     }
 }

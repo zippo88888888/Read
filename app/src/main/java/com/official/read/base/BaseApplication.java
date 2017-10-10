@@ -1,14 +1,18 @@
 package com.official.read.base;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
+import com.official.read.content.Content;
 import com.official.read.util.Toaster;
 import com.official.read.weight.attr.CollapsingToolbarLayoutAttr;
 import com.official.read.weight.attr.FloatingActionButtonAttr;
 import com.official.read.weight.attr.SuperTextViewAttr;
 import com.official.themelibrary.SkinConfig;
-import com.official.themelibrary.attr.SkinAttr;
 import com.official.themelibrary.loader.SkinManager;
 import com.official.themelibrary.utils.SkinFileUtils;
 import com.squareup.leakcanary.LeakCanary;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import org.litepal.LitePalApplication;
 
@@ -40,6 +44,14 @@ public class BaseApplication extends LitePalApplication {
         SkinConfig.addSupportAttr("toolbarLayoutAttr", new CollapsingToolbarLayoutAttr());
         SkinConfig.addSupportAttr("actionButtonAttr", new FloatingActionButtonAttr());
         SkinConfig.enableGlobalSkinApply();
+
+        CrashReport.initCrashReport(getApplicationContext(), Content.BUGLY_ID, Content.IS_OFFICIAL);
+    }
+
+    @Override
+    public void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     /**

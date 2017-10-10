@@ -10,9 +10,9 @@ import com.official.read.R;
 import com.official.read.base.BaseActivity;
 import com.official.read.base.BasePresenter;
 import com.official.read.util.Toaster;
-import com.official.read.weight.RadarView;
-import com.official.read.weight.StatisticsView;
-import com.official.read.weight.SuperStatisticsView;
+import com.official.read.weight.my_diy.RadarView;
+import com.official.read.weight.my_diy.StatisticsView;
+import com.official.read.weight.my_diy.SuperStatisticsView;
 
 import java.util.ArrayList;
 import java.util.List;

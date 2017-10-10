@@ -7,7 +7,7 @@
 
     <include layout="@layout/tool_bar_layout" />
 
-    <com.official.read.weight.SuperStatisticsView
+    <com.official.read.weight.my_diy.SuperStatisticsView
         android:id="@+id/diy_superStatisticsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,7 +15,7 @@
         zp:rectangleColor="@color/green"
         android:visibility="gone"/>
 
-    <com.official.read.weight.RadarView
+    <com.official.read.weight.my_diy.RadarView
         android:id="@+id/diy_twoView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -50,7 +50,7 @@
 
         </RadioGroup>
 
-        <com.official.read.weight.StatisticsView
+        <com.official.read.weight.my_diy.StatisticsView
             android:id="@+id/diy_statisticsView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

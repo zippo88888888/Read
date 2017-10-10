@@ -33,6 +33,11 @@ public class Content {
     public static final String APP_ID = BuildConfig.APP_ID;
 
     /**
+     * 腾讯 bugly ID
+     */
+    public static final String BUGLY_ID = BuildConfig.BUGLY_ID;
+
+    /**
      * 默认的当前定位位置
      */
     public static final double NO_LAT_LON_POINT_DATA = -1;

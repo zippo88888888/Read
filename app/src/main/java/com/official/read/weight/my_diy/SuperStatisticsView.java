@@ -1,4 +1,4 @@
-package com.official.read.weight;
+package com.official.read.weight.my_diy;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,10 +9,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.official.read.R;
-import com.official.read.util.L;
 import com.official.read.util.Toaster;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**

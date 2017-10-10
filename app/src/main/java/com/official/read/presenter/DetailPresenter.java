@@ -5,6 +5,8 @@ import com.amap.api.services.geocoder.GeocodeResult;
 import com.official.read.content.bean.CollectBean;
 import com.official.read.content.bean.DetailBean;
 
+import java.util.List;
+
 /**
  * com.official.read.presenter
  * Created by ZP on 2017/8/3.
@@ -68,4 +70,5 @@ public interface DetailPresenter {
      * 地理编码查询回调
      */
     void onGeocodeSearched(GeocodeResult result, int rCode);
+
 }

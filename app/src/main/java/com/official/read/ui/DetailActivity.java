@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.ArrayMap;
@@ -20,9 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
-import com.amap.api.services.geocoder.GeocodeAddress;
 import com.amap.api.services.geocoder.GeocodeQuery;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
@@ -33,6 +32,7 @@ import com.official.read.base.BaseActivity;
 import com.official.read.content.Content;
 import com.official.read.content.DisposeManager;
 import com.official.read.content.bean.DetailBean;
+import com.official.read.content.listener.AppBarChangeListener;
 import com.official.read.dialog.ShareDialog;
 import com.official.read.presenter.DetailPresenterImpl;
 import com.official.read.util.GlideImageLoader;
@@ -41,7 +41,6 @@ import com.official.read.util.Toaster;
 import com.official.read.util.anim.AnimUtil;
 import com.official.read.util.anim.EasyTransition;
 import com.official.read.view.DetailView;
-import com.official.read.content.listener.AppBarChangeListener;
 import com.official.read.weight.MyGridView;
 import com.official.read.weight.MyNestedScrollView;
 import com.youth.banner.Banner;
@@ -307,7 +306,6 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
         banner.isAutoPlay(false);
         banner.setIndicatorGravity(BannerConfig.CENTER);
         banner.start();
-
         presenter.checkSkipAnim(false);
 
         appBarLayout.addOnOffsetChangedListener(appBarChangeListener);
@@ -467,12 +465,6 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
     @Override
     public void skipMapView() {
-//        Intent intent = new Intent(DetailActivity.this, GDMapActivity.class);
-//        intent.putExtra("title", bean.house_name);
-//        Bundle bundle = new Bundle();
-//        bundle.putParcelable("point", point);
-//        intent.putExtras(bundle);
-//        startActivity(intent);
         ArrayMap<String, Object> map = new ArrayMap<>();
         map.put("title", bean.house_name);
         map.put("point", point);
@@ -510,4 +502,5 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
         super.onDestroy();
         DisposeManager.getInstance().cancel(Content.DISPOSABLE_DETAIL_DATA);
     }
+
 }
