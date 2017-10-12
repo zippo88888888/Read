@@ -15,16 +15,12 @@ import com.official.read.model.JusticeModel;
 import com.official.read.model.JusticeModelImpl;
 import com.official.read.model.RecommendModel;
 import com.official.read.model.RecommendModelImpl;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.view.HistoryView;
 
 import java.util.LinkedHashMap;
 import java.util.List;
-
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Function;
 
 /**
  * com.official.read.presenter
@@ -36,12 +32,12 @@ import io.reactivex.functions.Function;
 public class HistoryPresenterImpl extends BasePresenterImpl<HistoryView> implements HistoryPresenter {
 
     private RecommendModel model;
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
     private JusticeModel justiceModel;
 
     public HistoryPresenterImpl() {
         model = new RecommendModelImpl();
-        themeModel = new ThemeModelImpl();
+        themeModel = new SystemModelImpl();
         justiceModel = new JusticeModelImpl();
     }
 

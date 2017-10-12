@@ -38,4 +38,37 @@
         <attr name="rectanglePadding" format="integer" />
 
     </declare-styleable>
+
+    <declare-styleable name="MyKeyBoardView">
+        <!-- 距离屏幕左边，右边的间距 -->
+        <attr name="leftRightPadding" format="dimension" />
+        <!-- 距离屏幕顶部，底部的间距 -->
+        <attr name="topBottomPadding" format="dimension" />
+        <!-- 矩形的间距 -->
+        <attr name="rectPadding" format="dimension" />
+
+        <!-- 矩形的圆角大小 -->
+        <attr name="rectRound" format="integer" />
+        <!-- 矩形边框 -->
+        <attr name="rectStrokeWidth" format="float" />
+        <!-- 文字大小 -->
+        <attr name="txtSize" format="float" />
+        <!-- 密文大小 -->
+        <attr name="pwdSize" format="float" />
+        <!-- 长度 -->
+        <attr name="length" format="integer" />
+
+        <!-- 未输入矩形的颜色——默认颜色 -->
+        <attr name="defaultInputRectColor" format="color" />
+
+        <!-- 正在输入或已经输入时矩形的颜色 -->
+        <attr name="inputRectColor" format="color" />
+        <!-- 正在输入或已经输入时文字、密文的颜色 -->
+        <attr name="inputTxtColor" format="color" />
+
+
+        <!-- 是否显示密文 默认显示（如果不显示密文，下面两个属性无效） -->
+        <attr name="isShowPassWord" format="boolean" />
+
+    </declare-styleable>
 </resources>

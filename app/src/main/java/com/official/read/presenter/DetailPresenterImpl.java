@@ -19,8 +19,8 @@ import com.official.read.content.bean.RecommendBean;
 import com.official.read.content.http.AES;
 import com.official.read.model.DetailModel;
 import com.official.read.model.DetailModelImpl;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.PermissionUtil;
 import com.official.read.util.StringUtil;
 import com.official.read.util.Toaster;
@@ -44,11 +44,11 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     private int errorLatLonPoint = 0;
 
     private DetailModel model;
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
 
     public DetailPresenterImpl() {
         this.model = new DetailModelImpl();
-        this.themeModel = new ThemeModelImpl();
+        this.themeModel = new SystemModelImpl();
     }
 
     @Override

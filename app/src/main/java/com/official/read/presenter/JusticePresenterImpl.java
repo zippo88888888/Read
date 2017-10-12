@@ -18,8 +18,8 @@ import com.official.read.model.JusticeModel;
 import com.official.read.model.JusticeModelImpl;
 import com.official.read.model.RecommendModel;
 import com.official.read.model.RecommendModelImpl;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.ImageLoader;
 import com.official.read.util.StringUtil;
 import com.official.read.view.JusticeView;
@@ -38,12 +38,12 @@ public class JusticePresenterImpl extends BasePresenterImpl<JusticeView> impleme
 
     private JusticeModel model;
     private RecommendModel recommendModel;
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
 
     public JusticePresenterImpl() {
         model = new JusticeModelImpl();
         recommendModel = new RecommendModelImpl();
-        themeModel = new ThemeModelImpl();
+        themeModel = new SystemModelImpl();
     }
 
     @Override

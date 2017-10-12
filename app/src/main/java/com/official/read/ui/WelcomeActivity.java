@@ -11,9 +11,11 @@ import com.github.jdsjlzx.recyclerview.LuRecyclerView;
 import com.official.read.R;
 import com.official.read.base.BaseActivity;
 import com.official.read.base.BasePresenter;
+import com.official.read.content.Content;
 import com.official.read.dialog.CommonDialog;
 import com.official.read.util.NetworkUtil;
 import com.official.read.util.PermissionUtil;
+import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 
 import java.util.Timer;
@@ -106,9 +108,13 @@ public class WelcomeActivity extends BaseActivity {
             if (index == 3) {
                 if (timer != null) {
                     timer.cancel();
-                    timer = null;
                 }
-                jumpActivity(MainActivity.class);
+                boolean isOpen = (boolean) SPUtil.get(SPUtil.OPEN_LOCK, false);
+                if (isOpen) {
+                    jumpActivity(OpenLockActivity.class);
+                } else {
+                    jumpActivity(MainActivity.class);
+                }
                 finish();
             }
         }
@@ -125,7 +131,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        handler.removeCallbacksAndMessages(null);
+        handler.removeCallbacksAndMessages(task);
         if (timer != null) {
             timer.cancel();
             timer = null;

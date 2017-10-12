@@ -1,5 +1,7 @@
 package com.official.read.presenter;
 
+import android.content.Intent;
+
 /**
  * com.official.read.presenter
  * Created by ZP on 2017/8/18.
@@ -13,9 +15,18 @@ public interface SetPresenter {
 
     void setAnimState(boolean isOpen);
 
+    void getLockState();
+
+    void setLockState(boolean isFace);
+
     void checkErrorState(boolean state);
 
     void getErrorState();
 
     void setErrorState(boolean isError);
+
+    void onActivityResult(int requestCode, int resultCode, Intent data);
+
+    void onResume();
+
 }

@@ -1,5 +1,6 @@
 package com.official.read.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SwitchCompat;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.github.jdsjlzx.recyclerview.LuRecyclerView;
 import com.official.read.R;
 import com.official.read.base.BaseActivity;
+import com.official.read.content.Content;
 import com.official.read.dialog.CommonDialog;
 import com.official.read.presenter.SetPresenterImpl;
 import com.official.read.util.ClearCacheUtil;
@@ -21,6 +23,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         SetView, CompoundButton.OnCheckedChangeListener {
 
     SwitchCompat switchCompat;
+    SwitchCompat faceCompat;
     TextView cacheSize;
 
     LinearLayout errorLayout;
@@ -44,6 +47,8 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         errorSwitch.setOnCheckedChangeListener(this);
         switchCompat = $(R.id.set_switch);
         switchCompat.setOnCheckedChangeListener(this);
+        faceCompat = $(R.id.set_lock);
+        faceCompat.setOnCheckedChangeListener(this);
         cacheSize = $(R.id.set_cacheSize);
         $(R.id.set_clear).setOnClickListener(this);
         $(R.id.set_default).setOnClickListener(this);
@@ -54,6 +59,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         presenter.checkErrorState(isTabletDevice());
         getSize();
         presenter.getAnimState();
+        presenter.getLockState();
     }
 
     private void getSize() {
@@ -103,6 +109,37 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     }
 
     @Override
+    public void setLockState(boolean state) {
+        faceCompat.setChecked(state);
+    }
+
+    @Override
+    public void jumpToSetLockActivity() {
+        Intent intent = new Intent(this, LockActivity.class);
+        intent.putExtra("lockState", Content.LOCK_STATE_FIRST);
+        startActivityForResult(intent, Content.SET_LOCK_PWD_REQUEST_CODE);
+    }
+
+    @Override
+    public void jumpToClearLockActivity() {
+        Intent intent = new Intent(this, LockActivity.class);
+        intent.putExtra("lockState", Content.LOCK_STATE_CLEAR);
+        startActivityForResult(intent, Content.CLEAR_LOCK_PWD_REQUEST_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        presenter.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
+    @Override
     public void showErrorLayout() {
         errorLayout.setVisibility(View.VISIBLE);
         presenter.getErrorState();
@@ -133,6 +170,9 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         switch (buttonView.getId()) {
             case R.id.set_switch:
                 presenter.setAnimState(isChecked);
+                break;
+            case R.id.set_lock:
+                presenter.setLockState(isChecked);
                 break;
             case R.id.set_error:
                 presenter.setErrorState(isChecked);

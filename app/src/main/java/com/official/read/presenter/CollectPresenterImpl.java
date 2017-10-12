@@ -7,8 +7,8 @@ import com.official.read.content.bean.CollectBean;
 import com.official.read.dialog.CommonDialog;
 import com.official.read.model.CollectModel;
 import com.official.read.model.CollectModelImpl;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.view.CollectView;
@@ -27,11 +27,11 @@ import java.util.List;
 public class CollectPresenterImpl extends BasePresenterImpl<CollectView> implements CollectPresenter {
 
     private CollectModel model;
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
 
     public CollectPresenterImpl() {
         model = new CollectModelImpl();
-        themeModel = new ThemeModelImpl();
+        themeModel = new SystemModelImpl();
     }
 
     @Override

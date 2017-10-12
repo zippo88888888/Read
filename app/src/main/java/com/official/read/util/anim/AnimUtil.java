@@ -1,11 +1,14 @@
 package com.official.read.util.anim;
 
+import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 
 import com.official.read.R;
 import com.official.read.util.AndroidUtil;
+import com.official.read.util.L;
 
 /**
  * com.official.read.AnimUtil
@@ -72,6 +75,26 @@ public final class AnimUtil {
         });
     }
 
+    public static void setLeftRightVibratorAnim(final View view) {
+        int w = view.getWidth();
+        int width = AndroidUtil.getDisplay(view.getContext())[0];
+
+        int hasW = (width - w) / 2;
+
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "", hasW - 20, hasW + 20, hasW + 20, hasW - 20, hasW, hasW, hasW);
+        animator.setDuration(150);
+        animator.setRepeatCount(2);
+        animator.setInterpolator(new LinearInterpolator());
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float value = (float) animation.getAnimatedValue();
+                view.setX(value);
+            }
+        });
+        animator.start();
+    }
+
     /**
      * 为 DetailActivity 设置进入动画
      * @param view  FloatingActionButton
@@ -98,32 +121,6 @@ public final class AnimUtil {
                 .setDuration(ALL_ANIM_TIME)
                 .alpha(1)
                 .translationY(0);
-    }
-
-    /**
-     * 设置 往左移动还是往右移动动画
-     * @param context   Context
-     * @param view      View
-     * @param type      0--left；1--right
-     */
-    public static void setToLeftURight(Context context, final View view, final int type) {
-        int[] display = AndroidUtil.getDisplay(context);
-        int width = display[0];
-        ValueAnimator animator;
-        if (type == 0) {
-            animator = ValueAnimator.ofInt(0, width);
-        } else {
-            animator = ValueAnimator.ofInt(width, 0);
-        }
-        animator.setTarget(view);
-        animator.setDuration(ALL_ANIM_TIME).start();
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                int scroll = (int) animation.getAnimatedValue();
-                view.setX(scroll);
-            }
-        });
     }
 
     /**

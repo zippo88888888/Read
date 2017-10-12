@@ -52,6 +52,21 @@
         android:layout_marginRight="15dp"
         android:background="@color/gray"/>
 
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/set_lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:longClickable="false"
+        android:text="密码锁"
+        app:theme="@style/switchCompat" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gray"/>
 
     <RelativeLayout
         android:background="?attr/selectableItemBackground"

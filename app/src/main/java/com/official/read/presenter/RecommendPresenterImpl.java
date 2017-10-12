@@ -16,8 +16,8 @@ import com.official.read.content.bean.RecommendBean;
 import com.official.read.model.RecommendModel;
 import com.official.read.model.RecommendModelImpl;
 import com.official.read.content.http.AES;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.ImageLoader;
 import com.official.read.util.StringUtil;
 import com.official.read.view.RecommendView;
@@ -35,11 +35,11 @@ import java.util.List;
 public class RecommendPresenterImpl extends BasePresenterImpl<RecommendView> implements RecommendPresenter {
 
     private RecommendModel model;
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
 
     public RecommendPresenterImpl() {
         model = new RecommendModelImpl();
-        themeModel = new ThemeModelImpl();
+        themeModel = new SystemModelImpl();
     }
 
     @Override

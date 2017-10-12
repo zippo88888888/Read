@@ -7,8 +7,8 @@ import com.official.read.content.Content;
 import com.official.read.content.bean.SearchHistoryBean;
 import com.official.read.model.SearchModel;
 import com.official.read.model.SearchModelImpl;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.L;
 import com.official.read.util.Toaster;
 import com.official.read.view.SearchView;
@@ -28,11 +28,11 @@ import java.util.List;
 public class SearchPresenterImpl extends BasePresenterImpl<SearchView> implements SearchPresenter {
 
     private SearchModel model;
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
 
     public SearchPresenterImpl() {
         this.model = new SearchModelImpl();
-        this.themeModel = new ThemeModelImpl();
+        this.themeModel = new SystemModelImpl();
     }
 
     @Override

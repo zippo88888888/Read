@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="100%p" android:horizontalGap="1px"
+    android:verticalGap="1px" android:keyHeight="@dimen/keyBoardHeight" >
+
+    <Row>
+        <Key
+            android:codes="0" android:keyLabel="PIECE正在保护您的密码安全" />
+    </Row>
+
+    <Row>
+        <Key android:codes="10001" android:keyLabel="1" />
+        <Key android:codes="10002" android:keyLabel="2" />
+        <Key android:codes="10003" android:keyLabel="3" />
+    </Row>
+
+    <Row>
+        <Key android:codes="10004" android:keyLabel="4" />
+        <Key android:codes="10005" android:keyLabel="5" />
+        <Key android:codes="10006" android:keyLabel="6" />
+    </Row>
+
+    <Row>
+        <Key android:codes="10007" android:keyLabel="7" />
+        <Key android:codes="10008" android:keyLabel="8" />
+        <Key android:codes="10009" android:keyLabel="9" />
+    </Row>
+
+    <Row>
+        <Key android:codes="11000" android:keyLabel="OK" />
+        <Key android:codes="10000" android:keyLabel="0" />
+        <Key android:codes="10010" android:keyIcon="@drawable/keyboard_del" android:isRepeatable="true"/>
+    </Row>
+
+</Keyboard>

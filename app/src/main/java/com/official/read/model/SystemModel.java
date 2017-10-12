@@ -3,11 +3,11 @@ package com.official.read.model;
 /**
  * com.official.read.model
  * Created by ZP on 2017/8/9.
- * description:
+ * description:App相关的数据
  * version: 1.0
  */
 
-public interface ThemeModel {
+public interface SystemModel {
 
     /**
      * 得到当前主题
@@ -36,7 +36,15 @@ public interface ThemeModel {
 
     int getThemeBlack();
 
+    // 偷懒了
+
     boolean getAnimSet();
+
+    // 得到密码锁的配置
+    boolean getLockSet();
+
+    // 得到设置过密码锁数据
+    String getLockState();
 
     boolean getErrorSet();
 

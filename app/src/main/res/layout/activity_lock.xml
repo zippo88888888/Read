@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:zp="http://schemas.android.com/apk/res-auto"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    android:orientation="vertical">
+
+    <include layout="@layout/tool_bar_layout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.official.read.weight.MyKeyBoardView
+            android:id="@+id/lock_myKeyBoardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            skin:enable="true"
+            zp:defaultInputRectColor="@color/gray"
+            zp:inputTxtColor="@color/baseColor"
+            zp:inputRectColor="@color/baseColor"
+            zp:rectPadding="15dp"
+            zp:rectStrokeWidth="4"
+            zp:rectRound="10"
+            zp:pwdSize="23"
+            zp:txtSize="45"
+            zp:length="4"
+            zp:isShowPassWord="true" />
+
+        <TextView
+            android:id="@+id/lock_showMsg"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_below="@+id/lock_myKeyBoardView"
+            android:text="输入您的密码"/>
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/lock_keyBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black"
+            android:keyBackground="@drawable/key_board_selector"
+            android:keyTextColor="@color/black"
+            android:shadowColor="@color/transparent"
+            android:shadowRadius="0"
+            android:visibility="visible">
+
+        </android.inputmethodservice.KeyboardView>
+
+    </RelativeLayout>
+
+</LinearLayout>

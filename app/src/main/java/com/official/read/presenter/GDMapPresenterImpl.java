@@ -1,31 +1,22 @@
 package com.official.read.presenter;
 
 import android.content.DialogInterface;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.support.v7.app.AlertDialog;
 
 import com.amap.api.location.AMapLocation;
-import com.amap.api.maps2d.model.BitmapDescriptorFactory;
-import com.amap.api.maps2d.model.CircleOptions;
-import com.amap.api.maps2d.model.LatLng;
-import com.amap.api.maps2d.model.MarkerOptions;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
-import com.amap.api.services.core.SuggestionCity;
 import com.amap.api.services.poisearch.PoiResult;
 import com.official.read.base.BasePresenterImpl;
 import com.official.read.content.Content;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.GDMapUtil;
-import com.official.read.util.L;
 import com.official.read.util.Toaster;
 import com.official.read.view.GDMapView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * com.official.read.presenter
@@ -41,10 +32,10 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
     // 筛选内容
     private int selectItem = -1;
 
-    private ThemeModel themeModel;
+    private SystemModel themeModel;
 
     public GDMapPresenterImpl() {
-        this.themeModel = new ThemeModelImpl();
+        this.themeModel = new SystemModelImpl();
     }
 
     @Override

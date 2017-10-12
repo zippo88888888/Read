@@ -2,15 +2,10 @@ package com.official.read.base;
 
 import com.official.read.R;
 import com.official.read.content.Content;
-import com.official.read.content.ReadException;
-import com.official.read.content.bean.BaseBean;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
 import com.official.read.util.L;
 import com.official.read.util.NetworkUtil;
 import com.official.read.util.Toaster;
-
-import java.util.List;
 
 /**
  * com.official.read.base
@@ -64,7 +59,7 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter<V> {
     /**
      * 根据主题获取相对应的颜色
      */
-    protected int getColorByTheme(ThemeModel model, String theme) {
+    protected int getColorByTheme(SystemModel model, String theme) {
         if (Content.THEME_RED.equals(theme)) {
             return model.getThemeRed();
         } else if (Content.THEME_PINK.equals(theme)) {

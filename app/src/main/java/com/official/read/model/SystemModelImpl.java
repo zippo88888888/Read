@@ -12,7 +12,7 @@ import com.official.read.util.Toaster;
  * version: 1.0
  */
 
-public class ThemeModelImpl implements ThemeModel {
+public class SystemModelImpl implements SystemModel {
 
     @Override
     public String getTheme() {
@@ -62,6 +62,16 @@ public class ThemeModelImpl implements ThemeModel {
     @Override
     public boolean getAnimSet() {
         return (boolean) SPUtil.get(SPUtil.OPEN_ANIM, false);
+    }
+
+    @Override
+    public boolean getLockSet() {
+        return (boolean) SPUtil.get(SPUtil.OPEN_LOCK, false);
+    }
+
+    @Override
+    public String getLockState() {
+        return (String) SPUtil.get(SPUtil.LOCK_STATE, Content.LUCK_DEFAULT_PWD);
     }
 
     @Override

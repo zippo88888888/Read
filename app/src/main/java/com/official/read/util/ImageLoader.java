@@ -29,29 +29,4 @@ public class ImageLoader {
                 .into(pic);
     }
 
-    /**
-     * 加载圆角图片
-     */
-    public static void loadCircleImage(ImageView pic, String url) {
-        Glide.with(pic.getContext().getApplicationContext())
-                .load(url)
-                .placeholder(R.drawable.error_icon)
-                .error(R.drawable.error_icon)
-                .bitmapTransform(new CropCircleTransformation(pic.getContext().getApplicationContext()))
-                .into(pic);
-    }
-
-    /**
-     * 加载高斯模糊图片
-     */
-    public static void loadTransformImage(ImageView pic, String url) {
-        Glide.with(pic.getContext().getApplicationContext())
-                .load(url)
-//                .placeholder(R.drawable.placeholder_pic)
-                .error(R.drawable.error)
-                .bitmapTransform(new BlurTransformation(pic.getContext().getApplicationContext(), 25),
-                        new CenterCrop(pic.getContext().getApplicationContext()))
-                .into(pic);
-    }
-
 }

@@ -1,8 +1,8 @@
 package com.official.read.presenter;
 
 import com.official.read.base.BasePresenterImpl;
-import com.official.read.model.ThemeModel;
-import com.official.read.model.ThemeModelImpl;
+import com.official.read.model.SystemModel;
+import com.official.read.model.SystemModelImpl;
 import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.view.ThemeView;
@@ -19,10 +19,10 @@ import com.official.themelibrary.loader.SkinManager;
 
 public class ThemePresenterImpl extends BasePresenterImpl<ThemeView> implements ThemePresenter {
 
-    ThemeModel model;
+    SystemModel model;
 
     public ThemePresenterImpl() {
-        model = new ThemeModelImpl();
+        model = new SystemModelImpl();
     }
 
     @Override

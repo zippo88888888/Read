@@ -28,4 +28,8 @@
 
     <!--搜索弹窗背景色-->
     <color name="search_dialog_bg_color">#65000000</color>
+
+    <color name="keyBoardBgColor">#c6c8c8</color>
+
+    <color name="keyBoardBgColor2">#be9651</color>
 </resources>

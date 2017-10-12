@@ -24,6 +24,27 @@ public class Content {
 
     public static final String SEARCH_FRAGMENT_TAG = "fragment_search";
 
+    public static final String LUCK_DEFAULT_PWD = "####";
+
+    /** 第一次输入密码 */
+    public static final int LOCK_STATE_FIRST = 1;
+    /** 清除密码 */
+    public static final int LOCK_STATE_CLEAR = 2;
+    /** 检查输入密码 */
+    public static final int LOCK_STATE_CHECK = -1;
+
+    /** 去设置密码Code */
+    public static final int SET_LOCK_PWD_REQUEST_CODE = 10010;
+
+    /** 设置密码成功Code */
+    public static final int SET_LOCK_PWD_RESULT_CODE = 10011;
+
+    /** 去清除密码Code */
+    public static final int CLEAR_LOCK_PWD_REQUEST_CODE = 10012;
+
+    /** 清除密码成功Code */
+    public static final int CLEAR_LOCK_PWD_RESULT_CODE = 10013;
+
     // GDMap ---------------------------------------------------------------------------------------------------
 
     /**

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="750"
+    android:fromXDelta="0"
+    android:interpolator="@anim/cycle_4"
+    android:toXDelta="50" />
+
+	<!--
+		translate 
+		位置转移动画效果
+		整型值:      fromXDelta 属性为动画起始时X坐标上的位置
+		toXDelta   属性为动画结束时X坐标上的位置
+		fromYDelta 属性为动画起始时Y坐标上的位置
+		toYDelta   属性为动画结束时Y坐标上的位置
+		注意:      
+		没有指定fromXType toXType from YType toYType 时候，默认是以自己为相对参照物长整型值：
+		duration  属性为动画持续时间
+		说明:时间以毫秒为单位
+	-->
