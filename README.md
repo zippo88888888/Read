@@ -11,6 +11,5 @@ App 遵循谷歌Material design风格
 封装：BaseActivity，BaseFragment，BaseDialog，BasePresenterImpl等
 
 测试功能：
-自定义View--->>>雷达实现，图表实现（目前都还在完善当中）
+自定义View--->>>雷达实现，图表实现（完整版即将上传）
 
-PS: 还有一个小彩蛋，打开方式（如果你不修改代码的话^^）与Android系统彩蛋类似（目前也仅仅是一个彩蛋，实现方式使用了第三方库以及一个动画引擎！）
