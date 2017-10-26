@@ -58,7 +58,7 @@ public class TelDialog extends BaseDialog {
     @Override
     protected void setDialogProperty() {
         setDialogAnimations(android.R.style.Animation_Translucent);
-        setDialog((int) (getWidth() * 0.8), 0);
+        setDialog((int) (getWidth() * 0.85), 0);
     }
 
     @Override

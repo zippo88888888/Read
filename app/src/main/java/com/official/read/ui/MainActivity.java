@@ -1,7 +1,11 @@
 package com.official.read.ui;
 
+import android.app.Service;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -22,22 +26,25 @@ import com.official.read.content.Content;
 import com.official.read.content.DisposeManager;
 import com.official.read.presenter.MainPresenterImpl;
 import com.official.read.util.AndroidUtil;
-import com.official.read.util.Toaster;
 import com.official.read.view.MainView;
 
 import java.util.List;
+
 
 public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> implements MainView,
         NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
+    CoordinatorLayout coordinatorLayout;
     NavigationView navigationView;
+    FloatingActionButton actionButton;
     TabLayout tabLayout;
 
     ViewPager viewPager;
     HomeFragmentAdapter vpAdapter;
 
     TextView header_title;
+    Vibrator vibrator;
 
     @Override
     protected int getContentView() {
@@ -57,13 +64,14 @@ public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> impl
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-
+        vibrator = (Vibrator) getApplication().getSystemService(Service.VIBRATOR_SERVICE);
         drawerLayout = $(R.id.navigation_DrawerLayout);
+        coordinatorLayout = $(R.id.coordinatorLayout);
         navigationView = $(R.id.navigation_view);
         tabLayout = $(R.id.sliding_tabs);
         viewPager = $(R.id.allVP);
-        $(R.id.snackBar_FButton).setOnClickListener(this);
-        $(R.id.snackBar_FButton).setVisibility(View.GONE);
+        actionButton = $(R.id.snackBar_FButton);
+        actionButton.setVisibility(View.GONE);
 
         // 初始化toolbar
         setTitle(R.string.app_name);
@@ -82,17 +90,19 @@ public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> impl
 
     @Override
     protected void initData(Bundle savedInstanceState) {
+        dynamicAddView(actionButton, "actionButtonAttr", R.color.baseColor);
         presenter.initVPData();
+    }
+
+    @Override
+    public void telActivity(Fragment fragment, Object value) {
+        presenter.telActivity(fragment, value);
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.snackBar_FButton: {
-                Toaster.makeText("add");
-                break;
-            }
             case R.id.navigation_title: {
                 break;
             }
@@ -124,22 +134,18 @@ public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> impl
         switch (id) {
             case R.id.navigation_item_collection:
                 jumpActivity(CollectActivity.class);
-                drawerLayout.closeDrawer(Gravity.START);
                 break;
             case R.id.navigation_item_theme:
                 jumpActivity(ThemeActivity.class);
-                drawerLayout.closeDrawer(Gravity.START);
                 break;
             case R.id.navigation_item_set:
                 jumpActivity(SetActivity.class);
-                drawerLayout.closeDrawer(Gravity.START);
                 break;
             case R.id.navigation_item_egg:
                 presenter.checkEgg();
                 break;
             case R.id.navigation_item_about:
                 jumpActivity(AboutActivity.class);
-                drawerLayout.closeDrawer(Gravity.START);
                 break;
         }
         return true;
@@ -161,11 +167,16 @@ public class MainActivity extends BaseActivity<MainPresenterImpl, MainView> impl
     }
 
     @Override
-    public void initMainVPData(List<Fragment> data) {
+    public void initVpDataAndListener(List<Fragment> data, RecommendFragment recommendFragment,
+                                      JusticeFragment justiceFragment, HistoryFragment historyFragment) {
+        recommendFragment.setTelActivityListener(this);
+        justiceFragment.setTelActivityListener(this);
+        historyFragment.setTelActivityListener(this);
         vpAdapter = new HomeFragmentAdapter(getSupportFragmentManager(), Content.TITLE, data);
         viewPager.setAdapter(vpAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
 
     @Override
     public void finishActivity() {

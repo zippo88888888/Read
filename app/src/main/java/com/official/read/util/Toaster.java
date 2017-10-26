@@ -40,18 +40,34 @@ public class Toaster extends Toast {
         Toaster.color = context.getResources().getColor(color);
     }
 
+    public static void makeTextS(int textID) {
+        String s = context.getResources().getString(textID);
+        makeTextS(s);
+    }
+
+    /**
+     *  使用系统的Toast
+     */
+    public static void makeTextS(String str) {
+        if (toast != null) {
+            toast.cancel();
+        }
+        toast = Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
     public static void makeText(String str) {
-//        if (toast != null) {
-//            toast.cancel();
-//        }
-//        toast = Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT);
-//        toast.show();
         makeText(TOP, str);
     }
 
     public static void makeText(int textID) {
         String s = context.getResources().getString(textID);
         makeText(s);
+    }
+
+    public static void makeText(int type, int textID) {
+        String s = context.getResources().getString(textID);
+        makeText(type, s);
     }
 
     /**
@@ -67,9 +83,7 @@ public class Toaster extends Toast {
         View v = LayoutInflater.from(context).inflate(R.layout.layout_toast, null);
         v.setAlpha(0.9f);
         v.setTranslationY(-300);
-        v.animate()
-                .setDuration(300)
-                .translationY(0);
+        v.animate().setDuration(300).translationY(0);
         TextView msg = (TextView) v.findViewById(R.id.toast_msg);
         msg.setText(text);
         if (color == 0) {
@@ -86,7 +100,7 @@ public class Toaster extends Toast {
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         msg.setLayoutParams(params);
         toast = new Toast(context);
-        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setDuration(Toast.LENGTH_SHORT);
         if (type != TOP && type != BOTTOM) {
             throw new RuntimeException("type only is TOP or BOTTOM");
         }
@@ -97,11 +111,6 @@ public class Toaster extends Toast {
         }
         toast.setView(v);
         toast.show();
-    }
-
-    public static void makeText(int type, int textID) {
-        String s = context.getResources().getString(textID);
-        makeText(type, s);
     }
 
     public static Context getContext() {

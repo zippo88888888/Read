@@ -14,6 +14,8 @@ import android.view.inputmethod.InputMethodManager;
 import com.official.read.R;
 import com.official.read.content.Content;
 
+import java.io.File;
+
 /**
  * com.official.casual.util
  * Created by ZP on 2017/6/23.
@@ -21,6 +23,8 @@ import com.official.read.content.Content;
  * version: 1.0
  */
 public class AndroidUtil {
+
+    private final static String FILE_DATA = "/data/data/";
 
     /**
      * 获取状态栏高度
@@ -140,6 +144,15 @@ public class AndroidUtil {
         ClipboardManager cmb = (ClipboardManager) context
                 .getSystemService(Context.CLIPBOARD_SERVICE);
         cmb.setText(content.trim());
+    }
+
+    /**
+     * 根据包名检测某个APP是否安装
+     * @param packageName 包名
+     * @return true-安装；false-没有安装
+     */
+    public static boolean isInstallByRead(String packageName) {
+        return new File(FILE_DATA + packageName).exists();
     }
 
 }

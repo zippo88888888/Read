@@ -5,6 +5,8 @@
     <dimen name="default_divider_padding">1dp</dimen>
     <dimen name="detail_bottom_height">50dp</dimen>
 
+    <dimen name="main_actionButton_margin">15dp</dimen>
+
     <dimen name="new_md_bottomPadding">3dp</dimen>
 
     <!-- ToolBar的高度 -->
@@ -13,5 +15,14 @@
     <dimen name="dialogRadius">3dp</dimen>
 
     <dimen name="keyBoardHeight">45dp</dimen>
+
+    <!-- dialog小圆的大小 -->
+    <dimen name="dialog_spot_size">6dp</dimen>
+    <!-- dialog标题的margin -->
+    <dimen name="dialog_title_margin">@dimen/dialog_progress_margin</dimen>
+    <!-- dialog progress的margin -->
+    <dimen name="dialog_progress_margin">15dp</dimen>
+    <!-- dialog progress的width -->
+    <dimen name="dialog_progress_width">250dp</dimen>
 
 </resources>

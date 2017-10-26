@@ -18,6 +18,7 @@ import com.official.read.presenter.SetPresenterImpl;
 import com.official.read.util.ClearCacheUtil;
 import com.official.read.util.Toaster;
 import com.official.read.view.SetView;
+import com.official.read.weight.dialog.SpotsDialog;
 
 public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> implements
         SetView, CompoundButton.OnCheckedChangeListener {
@@ -52,6 +53,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         cacheSize = $(R.id.set_cacheSize);
         $(R.id.set_clear).setOnClickListener(this);
         $(R.id.set_default).setOnClickListener(this);
+
     }
 
     @Override

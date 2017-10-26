@@ -23,13 +23,7 @@ public interface GDMapView extends BaseView {
     void moveToChange(AMapLocation aMapLocation);
 
     // 开始导航，默认驾车导航
-    void startNavigateForCar(int navigateType);
-
-    // 步行导航
-    void startNavigateForWalk(int navigateType);
-
-    // 骑行导航
-    void startNavigateForCycling(int navigateType);
+    void startNavigate(int navigateType);
 
     void showMarkerByKey(String key);
 
@@ -44,5 +38,15 @@ public interface GDMapView extends BaseView {
      * 去掉PoiOverlay上所有的Marker。
      */
     void removeFromMap();
+
+    /**
+     * 全屏显示
+     */
+    void fullShow();
+
+    /**
+     * 正常显示
+     */
+    void normalShow();
 
 }

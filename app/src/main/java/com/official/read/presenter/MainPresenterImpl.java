@@ -3,10 +3,15 @@ package com.official.read.presenter;
 import android.support.v4.app.Fragment;
 
 import com.official.read.base.BasePresenterImpl;
+import com.official.read.content.Content;
 import com.official.read.model.MainModel;
 import com.official.read.model.MainModelImpl;
+import com.official.read.ui.HistoryFragment;
+import com.official.read.ui.JusticeFragment;
+import com.official.read.ui.RecommendFragment;
 import com.official.read.ui.SearchFragment;
 import com.official.read.util.AndroidUtil;
+import com.official.read.util.L;
 import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.view.MainView;
@@ -31,7 +36,23 @@ public class MainPresenterImpl extends BasePresenterImpl<MainView> implements Ma
     @Override
     public void initVPData() {
         List<Fragment> data = mainModel.initViewPagerData();
-        getMvpView().initMainVPData(data);
+        RecommendFragment recommendFragment = null;
+        JusticeFragment justiceFragment = null;
+        HistoryFragment historyFragment = null;
+        for (Fragment f : data) {
+            if (f instanceof RecommendFragment) {
+                recommendFragment  = (RecommendFragment) f;
+            } else if (f instanceof JusticeFragment) {
+                justiceFragment  = (JusticeFragment) f;
+            } else if (f instanceof HistoryFragment) {
+                historyFragment  = (HistoryFragment) f;
+            }
+        }
+        if (recommendFragment == null || justiceFragment == null || historyFragment == null) {
+            Toaster.makeText("未知错误");
+            return;
+        }
+        getMvpView().initVpDataAndListener(data, recommendFragment, justiceFragment, historyFragment);
     }
 
     @Override
@@ -66,4 +87,10 @@ public class MainPresenterImpl extends BasePresenterImpl<MainView> implements Ma
             }
         }
     }
+
+    @Override
+    public void telActivity(Fragment fragment, Object value) {
+
+    }
+
 }

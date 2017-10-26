@@ -16,4 +16,6 @@ public interface MainPresenter {
     void checkFragment(Fragment fragment);
 
     void checkEgg();
+
+    void telActivity(Fragment fragment, Object value);
 }

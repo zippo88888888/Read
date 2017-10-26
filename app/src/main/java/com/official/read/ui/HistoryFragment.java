@@ -78,7 +78,7 @@ public class HistoryFragment extends BaseFragment<HistoryPresenterImpl,HistoryVi
         RecyclerUtil.setSwipeLuRecyclerViewProperty(recyclerView, swipeRefreshLayout);
 
         RecyclerUtil.setLuRecyclerViewDisplay(fragmentActivity, lRecyclerViewAdapter, recyclerView);
-
+        recyclerView.setLScrollListener(this);
         swipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setOnLoadMoreListener(this);
         recyclerView.setLoadMoreEnabled(true);
@@ -230,5 +230,15 @@ public class HistoryFragment extends BaseFragment<HistoryPresenterImpl,HistoryVi
         ArrayMap<String, Object> map = new ArrayMap<>();
         map.put("fID", bean.id + "");
         jumpActivity(map, DetailActivity.class);
+    }
+
+    @Override
+    public void onScrollUp() {
+        getTelActivityListener().telActivity(this, Content.SCROLL_TOP);
+    }
+
+    @Override
+    public void onScrollDown() {
+        getTelActivityListener().telActivity(this, Content.SCROLL_DOWN);
     }
 }

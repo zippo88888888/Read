@@ -9,6 +9,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.ArrayMap;
@@ -30,6 +31,7 @@ import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.util.anim.EasyTransition;
 import com.official.read.util.anim.EasyTransitionOptions;
+import com.official.read.weight.dialog.SpotsDialog;
 import com.official.themelibrary.base.SkinBaseActivity;
 
 import java.io.Serializable;
@@ -44,9 +46,11 @@ import java.io.Serializable;
 
 public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseView> extends /*AppCompatActivity*/SkinBaseActivity
         implements View.OnClickListener, Toolbar.OnMenuItemClickListener, BaseView, BaseDialog.DialogChildClickListener,
-        SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener, OnNetWorkErrorListener {
+        SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener, OnNetWorkErrorListener,
+        BaseFragment.TelActivityListener {
 
     protected boolean isSetBar = true;
+    private boolean isDiy = true;
 
     Dialog dialog;
     protected P presenter;
@@ -152,6 +156,11 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     }
 
     @Override
+    public void telActivity(Fragment fragment, Object value) {
+
+    }
+
+    @Override
     public boolean onMenuItemClick(MenuItem item) {
         return true;
     }
@@ -191,11 +200,17 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     }
 
     private Dialog createDialog() {
-        ProgressDialog dialog = new ProgressDialog(this);
-        dialog.setMessage("请稍后...");
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
-        return dialog;
+        if (isDiy) {
+            SpotsDialog dialog = new SpotsDialog(this);
+            dialog.getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
+            return dialog;
+        } else {
+            ProgressDialog dialog = new ProgressDialog(this);
+            dialog.setMessage("请稍后...");
+            dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            dialog.getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
+            return dialog;
+        }
     }
 
     @Override

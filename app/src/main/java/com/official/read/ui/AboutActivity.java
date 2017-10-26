@@ -68,13 +68,20 @@ public class AboutActivity extends BaseActivity {
                 jumpActivity(DIYActivity.class);
                 break;
             case R.id.about_check:
+                showDialog(false);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         checkNew();
                         Toaster.makeText("已是最新版本");
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                dismissDialog();
+                            }
+                        });
                     }
-                }, 1500);
+                }, 2500);
                 break;
         }
     }

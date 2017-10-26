@@ -7,8 +7,8 @@ android {
         applicationId "com.official.read"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 22
-        versionName "2.0.12"
+        versionCode 23
+        versionName "2.0.13"
 
         ndk {
             //设置支持的SO库架构
@@ -48,6 +48,8 @@ dependencies {
     compile files('libs/Msc.jar')
     compile files('libs/uk-co-senab-photoview.jar')
 
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile 'com.youth.banner:banner:1.4.9'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:25.3.1'
@@ -67,17 +69,11 @@ dependencies {
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.jaeger.statusbarutil:library:1.4.0'
     compile 'com.itkimi.group:MobikeTags:1.0.1'
-
     compile 'com.amap.api:map2d:latest.integration'
     compile 'com.amap.api:navi-3dmap:latest.integration'
     compile 'com.amap.api:search:latest.integration'
     compile 'com.amap.api:location:latest.integration'
-
     compile 'com.android.support:multidex:1.0.1'
-
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
-
-//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 }

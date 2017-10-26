@@ -126,14 +126,14 @@ public class Content {
     }
 
     /**
-     * 刷新状态
+     * 向上
      */
-    public static final int REFRESH = 0;
+    public static final int SCROLL_TOP = 0;
 
     /**
-     * 加载更多状态
+     * 向下
      */
-    public static final int LOADMORE = 1;
+    public static final int SCROLL_DOWN = 1;
 
     /**
      * 是否是正式版

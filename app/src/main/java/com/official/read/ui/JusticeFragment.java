@@ -75,7 +75,7 @@ public class JusticeFragment extends BaseFragment<JusticePresenterImpl, JusticeV
         RecyclerUtil.setSwipeLuRecyclerViewProperty(recyclerView, swipeRefreshLayout);
 
         RecyclerUtil.setLuRecyclerViewDisplay(fragmentActivity, lRecyclerViewAdapter, recyclerView);
-
+        recyclerView.setLScrollListener(this);
         fragmentAdapter.setCheckRecommendStateListener(this);
         swipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setOnLoadMoreListener(this);
@@ -236,5 +236,15 @@ public class JusticeFragment extends BaseFragment<JusticePresenterImpl, JusticeV
         ArrayMap<String, Object> map = new ArrayMap<>();
         map.put("fID", bean.id + "");
         jumpActivity(map, DetailActivity.class);
+    }
+
+    @Override
+    public void onScrollUp() {
+        getTelActivityListener().telActivity(this, Content.SCROLL_TOP);
+    }
+
+    @Override
+    public void onScrollDown() {
+        getTelActivityListener().telActivity(this, Content.SCROLL_DOWN);
     }
 }

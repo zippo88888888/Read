@@ -1,14 +1,22 @@
 package com.official.read.util.anim;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.BounceInterpolator;
 import android.view.animation.LinearInterpolator;
+import android.view.animation.OvershootInterpolator;
 
 import com.official.read.R;
 import com.official.read.util.AndroidUtil;
 import com.official.read.util.L;
+import com.official.read.util.Toaster;
 
 /**
  * com.official.read.AnimUtil
@@ -136,4 +144,31 @@ public final class AnimUtil {
                 .alpha(1)
                 .translationY(0);
     }
+
+    /**
+     * 地图页面动画实现
+     * @param view      View
+     * @param isShow    显示or隐藏
+     */
+    public static void startAnimForMap(final View view, final boolean isShow) {
+        int height = view.getHeight();
+        ObjectAnimator animator;
+        if (isShow) { // 显示
+            animator = ObjectAnimator.ofFloat(view, "y", -height, 0);
+            animator.setInterpolator(new BounceInterpolator());
+        } else { // 隐藏
+            animator = ObjectAnimator.ofFloat(view, "y", 0, -height);
+            animator.setInterpolator(new LinearInterpolator());
+        }
+        animator.setDuration(400).start();
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if (!isShow) {
+                    view.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
 }

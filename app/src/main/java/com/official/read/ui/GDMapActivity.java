@@ -2,11 +2,13 @@ package com.official.read.ui;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.ArrayMap;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -34,9 +36,11 @@ import com.official.read.R;
 import com.official.read.base.BaseActivity;
 import com.official.read.content.Content;
 import com.official.read.presenter.GDMapPresenterImpl;
+import com.official.read.util.AndroidUtil;
 import com.official.read.util.GDMapUtil;
 import com.official.read.util.L;
 import com.official.read.util.Toaster;
+import com.official.read.util.anim.AnimUtil;
 import com.official.read.view.GDMapView;
 
 import java.util.ArrayList;
@@ -45,6 +49,8 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
         GeocodeSearch.OnGeocodeSearchListener, AMapLocationListener, AMap.OnMapClickListener,
         PoiSearch.OnPoiSearchListener, AMap.OnMarkerClickListener {
 
+    AppBarLayout barLayout;
+    boolean isFull = false;
 
     private MapView mapView;
     private AMap map;
@@ -91,10 +97,13 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
         setToolbarInMenu();
         setOnMenuItemClickListener(this);
         setNavigationIconClickListener(this);
+
+        barLayout = $(R.id.tool_app_barLayout);
         mapView = $(R.id.gd_map_mapView);
 
         $(R.id.map_select).setOnClickListener(this);
         $(R.id.map_location).setOnClickListener(this);
+        $(R.id.map_full_screen).setOnClickListener(this);
 
         mapView.onCreate(savedInstanceState);
 
@@ -152,6 +161,7 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
         presenter.onLocationChanged(aMapLocation, isAutoLocation);
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -165,6 +175,9 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
                 isAutoLocation = false;
                 // 启动定位
                 locationClient.startLocation();
+                break;
+            case R.id.map_full_screen:
+                presenter.checkAppBarState(isFull);
                 break;
             default:
                 back();
@@ -314,7 +327,8 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
      * 导航
      * @param navigateType  导航方式
      */
-    private void startNavigate(int navigateType) {
+    @Override
+    public void startNavigate(int navigateType) {
         ArrayMap<String, Object> map = new ArrayMap<>();
         map.put("point", point);
         map.put("nowPoint", nowPoint);
@@ -322,21 +336,6 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
         // 将当前的主题色传给导航页面
         map.put("theme", presenter.getTheme());
         jumpActivity(map, NavigateActivity.class);
-    }
-
-    @Override
-    public void startNavigateForCar(int navigateType) {
-        startNavigate(navigateType);
-    }
-
-    @Override
-    public void startNavigateForWalk(int navigateType) {
-        startNavigate(navigateType);
-    }
-
-    @Override
-    public void startNavigateForCycling(int navigateType) {
-        startNavigate(navigateType);
     }
 
     /**
@@ -394,6 +393,32 @@ public class GDMapActivity extends BaseActivity<GDMapPresenterImpl, GDMapView> i
     public void removeFromMap() {
         // 清理之前搜索结果的marker
         poiOverlay.removeFromMap();
+    }
+
+    @Override
+    public void fullShow() {
+        AnimUtil.startAnimForMap(barLayout, false);
+        isFull = true;
+        setFullScreen(true);
+    }
+
+    @Override
+    public void normalShow() {
+        AnimUtil.startAnimForMap(barLayout, true);
+        barLayout.setVisibility(View.VISIBLE);
+        isFull = false;
+        setFullScreen(false);
+    }
+
+    private void setFullScreen(boolean enable) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        if (enable) {
+            lp.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        } else {
+            lp.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        getWindow().setAttributes(lp);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
     }
 
     @Override

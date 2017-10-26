@@ -29,23 +29,10 @@ import java.util.List;
  */
 public class GDMapUtil {
 
-
-    private final static String FILE_DATA = "/data/data/";
     private final static String ANDROID_MAP = "androidamap://navi?sourceApplication=";
     /** 高德包名 */
     public final static String GAO_DE_PAGE = "com.autonavi.minimap";
-    private final static String ACTION_VIEW= "android.intent.action.VIEW";
-
-
-    /**
-     * 根据包名检测某个APP是否安装
-     *
-     * @param packageName 包名
-     * @return true 安装 false 没有安装
-     */
-    public static boolean isInstallByRead(String packageName) {
-        return new File(FILE_DATA + packageName).exists();
-    }
+    private final static String ACTION_VIEW = "android.intent.action.VIEW";
 
     /**
      * 启动高德App进行导航

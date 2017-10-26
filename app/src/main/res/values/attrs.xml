@@ -71,4 +71,11 @@
         <attr name="isShowPassWord" format="boolean" />
 
     </declare-styleable>
+
+    <declare-styleable name="Dialog">
+        <!-- color可以不在xml中设置，自动从当前主题判断颜色 -->
+        <attr name="DialogSpotColor" format="reference|color"/>
+        <attr name="DialogSpotCount" format="integer"/>
+        <attr name="DialogSpotSize" format="integer"/>
+    </declare-styleable>
 </resources>

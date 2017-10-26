@@ -185,7 +185,7 @@ public class SearchFragment extends BaseFragment<SearchPresenterImpl,SearchView>
     @Override
     public void notSearchHistoryData() {
         adapter.clear();
-        Toaster.makeText("暂无搜索记录");
+        Toaster.makeTextS("暂无搜索记录");
     }
 
     @Override

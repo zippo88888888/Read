@@ -54,6 +54,7 @@ public class RecommendFragment extends BaseFragment<RecommendPresenterImpl,Recom
         swipeRefreshLayout.setOnRefreshListener(this);
         recyclerView.setOnLoadMoreListener(this);
         recyclerView.setLoadMoreEnabled(false);
+        recyclerView.setLScrollListener(this);
         lRecyclerViewAdapter.setOnItemClickListener(this);
     }
 
@@ -138,5 +139,15 @@ public class RecommendFragment extends BaseFragment<RecommendPresenterImpl,Recom
     @Override
     public void check(BaseViewHolder holder, RecommendBean bean, int listSize,int position) {
         presenter.checkRecommendState(holder, bean, listSize, position);
+    }
+
+    @Override
+    public void onScrollUp() {
+        getTelActivityListener().telActivity(this, Content.SCROLL_TOP);
+    }
+
+    @Override
+    public void onScrollDown() {
+        getTelActivityListener().telActivity(this, Content.SCROLL_DOWN);
     }
 }

@@ -3,6 +3,9 @@ package com.official.read.view;
 import android.support.v4.app.Fragment;
 
 import com.official.read.base.BaseView;
+import com.official.read.ui.HistoryFragment;
+import com.official.read.ui.JusticeFragment;
+import com.official.read.ui.RecommendFragment;
 
 import java.util.List;
 
@@ -15,9 +18,11 @@ import java.util.List;
 
 public interface MainView extends BaseView {
 
-    void initMainVPData(List<Fragment> data);
+    void initVpDataAndListener(List<Fragment> data, RecommendFragment recommendFragment,
+                               JusticeFragment justiceFragment, HistoryFragment historyFragment);
 
     void finishActivity();
 
     void openEgg();
+
 }

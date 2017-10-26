@@ -41,4 +41,10 @@ public interface GDMapPresenter {
      * 检查是否为空
      */
     void checkPoiOverlay(GDMapUtil.MyPoiOverlay poiOverlay);
+
+    /**
+     * 检查AppBarLayout状态
+     * @param isFull 是否是全屏
+     */
+    void checkAppBarState(boolean isFull);
 }

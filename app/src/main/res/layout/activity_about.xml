@@ -71,13 +71,7 @@
                     android:src="@drawable/right_jt"/>
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                skin:enable="true"
-                android:background="@color/baseColor" />
+            <View style="@style/xingStyle" />
 
             <RelativeLayout
                 android:background="?attr/selectableItemBackground"
@@ -104,13 +98,7 @@
                     android:src="@drawable/right_jt"/>
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                skin:enable="true"
-                android:background="@color/baseColor" />
+            <View style="@style/xingStyle" />
 
             <RelativeLayout
                 android:background="?attr/selectableItemBackground"
@@ -137,13 +125,7 @@
                     android:src="@drawable/right_jt"/>
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                skin:enable="true"
-                android:background="@color/baseColor" />
+            <View style="@style/xingStyle" />
 
             <RelativeLayout
                 android:background="?attr/selectableItemBackground"
@@ -170,13 +152,7 @@
                     android:src="@drawable/right_jt"/>
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                skin:enable="true"
-                android:background="@color/baseColor" />
+            <View style="@style/xingStyle" />
 
 
             <RelativeLayout
@@ -204,13 +180,7 @@
                     android:src="@drawable/right_jt"/>
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                skin:enable="true"
-                android:background="@color/baseColor" />
+            <View style="@style/xingStyle" />
 
 
         </LinearLayout>

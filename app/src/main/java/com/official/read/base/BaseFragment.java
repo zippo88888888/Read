@@ -24,7 +24,6 @@ import com.official.read.content.Content;
 import com.official.read.content.ReadException;
 import com.official.read.util.L;
 import com.official.read.util.RecyclerUtil;
-import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.util.anim.EasyTransition;
 import com.official.read.util.anim.EasyTransitionOptions;
@@ -42,12 +41,15 @@ import java.io.Serializable;
 
 public abstract class BaseFragment<P extends BasePresenter<V>,V extends BaseView> extends /*Fragment*/SkinBaseFragment implements
         View.OnClickListener, BaseView, BaseDialog.DialogChildClickListener, OnNetWorkErrorListener,
-        SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener {
+        SwipeRefreshLayout.OnRefreshListener, OnLoadMoreListener, OnRefreshListener, OnItemClickListener,
+        LuRecyclerView.LScrollListener {
 
     protected View rootView;
     private Dialog dialog;
     protected P presenter;
     protected FragmentActivity fragmentActivity;
+
+    private TelActivityListener telActivityListener;
 
     //当前Fragment是否处于可见状态标志，防止因ViewPager的缓存机制而导致回调函数的触发
     private boolean isFragmentVisible;
@@ -330,5 +332,51 @@ public abstract class BaseFragment<P extends BasePresenter<V>,V extends BaseView
         if (!Content.IS_OFFICIAL && e != null) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onScrollUp() {
+
+    }
+
+    @Override
+    public void onScrollDown() {
+
+    }
+
+    @Override
+    public void onScrolled(int distanceX, int distanceY) {
+
+    }
+
+    @Override
+    public void onScrollStateChanged(int state) {
+
+    }
+
+    public TelActivityListener getTelActivityListener() {
+        if (telActivityListener == null) {
+            fragmentActivity.finish();
+            return new TelActivityListener() {
+                @Override
+                public void telActivity(Fragment fragment, Object value) {
+                    Toaster.makeText("开发人员调试阶段");
+                }
+            };
+        } else {
+            return telActivityListener;
+        }
+    }
+
+    public void setTelActivityListener(TelActivityListener telActivityListener) {
+        this.telActivityListener = telActivityListener;
+    }
+
+    /**
+     * 与Activity交互
+     */
+    public interface TelActivityListener {
+
+        void telActivity(Fragment fragment, Object value);
     }
 }

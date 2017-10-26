@@ -142,6 +142,9 @@
 
 -dontwarn com.amap.api.**
 
+-dontwarn com.official.read.weight.dialog.**
+-keep public class com.official.read.weight.dialog.**{*;}
+
 # 第三方库
 -dontwarn com.iflytek.**
 -keep class com.iflytek.** { *;}

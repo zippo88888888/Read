@@ -67,6 +67,7 @@
 
         </android.support.design.widget.AppBarLayout>
 
+        <!-- 滚动动画实现还可使用自定义Behavior -->
         <com.official.read.weight.MyNestedScrollView
             android:id="@+id/detailScrollView"
             android:layout_width="match_parent"

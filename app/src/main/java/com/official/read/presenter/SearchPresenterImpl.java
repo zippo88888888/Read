@@ -68,8 +68,6 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView> implement
         int i = DataSupport.deleteAll(SearchHistoryBean.class);
         if (i > 0) {
             getSearchHistory();
-        } else {
-            Toaster.makeText("还没有搜索记录");
         }
     }
 

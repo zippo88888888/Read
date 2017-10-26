@@ -12,6 +12,7 @@ import com.official.read.base.BasePresenterImpl;
 import com.official.read.content.Content;
 import com.official.read.model.SystemModel;
 import com.official.read.model.SystemModelImpl;
+import com.official.read.util.AndroidUtil;
 import com.official.read.util.GDMapUtil;
 import com.official.read.util.Toaster;
 import com.official.read.view.GDMapView;
@@ -61,7 +62,7 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
     public void checkNavigateData(LatLonPoint nowPoint, final LatLonPoint point) {
         if (nowPoint != null && nowPoint.getLatitude() != Content.NO_LAT_LON_POINT_DATA) {
             String[] type;
-            if (GDMapUtil.isInstallByRead(GDMapUtil.GAO_DE_PAGE)) {
+            if (AndroidUtil.isInstallByRead(GDMapUtil.GAO_DE_PAGE)) {
                 type = new String[]{"使用高德导航(推荐)", "驾车", "步行", "骑行"};
             } else {
                 type = new String[]{"驾车", "步行", "骑行"};
@@ -79,24 +80,24 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
             builder.setPositiveButton("开始导航", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if (GDMapUtil.isInstallByRead(GDMapUtil.GAO_DE_PAGE)) {
+                    if (AndroidUtil.isInstallByRead(GDMapUtil.GAO_DE_PAGE)) {
                         if (navigateItem == 0) {
                             GDMapUtil.goToGaoDeMap(getMvpView().getBaseViewContext(), "", "Price", point.getLatitude() + "",
                                     point.getLongitude() + "", "0", "2");
                         } else if (navigateItem == 1) {
-                            getMvpView().startNavigateForCar(Content.NAVIGATE_CAR);
+                            getMvpView().startNavigate(Content.NAVIGATE_CAR);
                         } else if (navigateItem == 2) {
-                            getMvpView().startNavigateForWalk(Content.NAVIGATE_WALK);
+                            getMvpView().startNavigate(Content.NAVIGATE_WALK);
                         } else if (navigateItem == 3) {
-                            getMvpView().startNavigateForCycling(Content.NAVIGATE_CYCLING);
+                            getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
                         }
                     } else {
                         if (navigateItem == 0) {
-                            getMvpView().startNavigateForCar(Content.NAVIGATE_CAR);
+                            getMvpView().startNavigate(Content.NAVIGATE_CAR);
                         } else if (navigateItem == 1) {
-                            getMvpView().startNavigateForWalk(Content.NAVIGATE_WALK);
+                            getMvpView().startNavigate(Content.NAVIGATE_WALK);
                         } else if (navigateItem == 2) {
-                            getMvpView().startNavigateForCycling(Content.NAVIGATE_CYCLING);
+                            getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
                         }
                     }
                     dialog.dismiss();
@@ -188,6 +189,15 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
     public void checkPoiOverlay(GDMapUtil.MyPoiOverlay poiOverlay) {
         if (poiOverlay != null) {
             getMvpView().removeFromMap();
+        }
+    }
+
+    @Override
+    public void checkAppBarState(boolean isFull) {
+        if (isFull) { // 退出全屏
+            getMvpView().normalShow();
+        } else {
+            getMvpView().fullShow();
         }
     }
 }
