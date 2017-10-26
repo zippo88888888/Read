@@ -22,8 +22,6 @@ public class SpotsDialog extends AlertDialog {
     private static final int DELAY = 150;
     private static final int DURATION = 1500;
 
-    private static final String DEFAULT_MSG = "Loading . . .";
-
     private SpotsAnimView[] spots;
     private SpotsAnimator animator;
 
@@ -130,7 +128,7 @@ public class SpotsDialog extends AlertDialog {
         if (message != null && message.length() > 0) {
             textView.setText(message);
         } else {
-            textView.setText(DEFAULT_MSG);
+            textView.setText(R.string.loading);
         }
     }
 

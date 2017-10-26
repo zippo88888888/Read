@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.official.read.R;
 import com.official.read.util.AndroidUtil;
 
 /**
@@ -58,7 +59,7 @@ public class LoadDialog extends AlertDialog {
         if (title != null && title.length() > 0) {
             titleTxt.setText(title);
         } else {
-            titleTxt.setText("Loading...");
+            titleTxt.setText(R.string.loading);
         }
 
         loadingView = new LoadingView(getContext());
