@@ -3,12 +3,12 @@ package com.official.read.weight.dialog;
 import android.animation.*;
 import android.view.animation.Interpolator;
 
-public class DialogAnimator extends AnimatorListenerAdapter {
+public class SpotsAnimator extends AnimatorListenerAdapter {
 
     private boolean interrupted = false;
     private Animator[] animators;
 
-    public DialogAnimator(Animator[] animators) {
+    public SpotsAnimator(Animator[] animators) {
         this.animators = animators;
     }
 

@@ -4,11 +4,11 @@ import android.content.Context;
 import android.view.View;
 
 
-public class AnimatedView extends View {
+public class SpotsAnimView extends View {
 
     private int target;
 
-    public AnimatedView(Context context) {
+    public SpotsAnimView(Context context) {
         super(context);
     }
 

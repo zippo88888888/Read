@@ -14,7 +14,7 @@
         android:textSize="18sp"
         android:textColor="@color/black" />
 
-    <com.official.read.weight.dialog.ProgressLayout
+    <com.official.read.weight.dialog.SpotsLayout
         android:id="@+id/dialog_wait_progress"
         android:layout_width="@dimen/dialog_progress_width"
         android:layout_height="wrap_content"

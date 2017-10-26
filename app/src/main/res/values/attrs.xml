@@ -72,10 +72,26 @@
 
     </declare-styleable>
 
-    <declare-styleable name="Dialog">
+    <declare-styleable name="SpotsDialog">
         <!-- color可以不在xml中设置，自动从当前主题判断颜色 -->
         <attr name="DialogSpotColor" format="reference|color"/>
         <attr name="DialogSpotCount" format="integer"/>
         <attr name="DialogSpotSize" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="LoadingView">
+        <!-- 小球半径 -->
+        <attr name="loadR" format="dimension" />
+        <!-- 中间小球颜色 -->
+        <attr name="loadColor" format="color" />
+        <!-- 外层小球的颜色（默认为小球颜色为loadColor） -->
+        <attr name="load2Color" format="color" />
+        <!-- 小球数量，最小为3 -->
+        <attr name="loadCount" format="integer" />
+        <attr name="loadPadding" format="dimension" />
+        <!-- 外层小球左右摇摆的距离 -->
+        <attr name="loadSwingL" format="dimension" />
+        <!-- 动画时间 -->
+        <attr name="loadAnimTime" format="integer" />
     </declare-styleable>
 </resources>

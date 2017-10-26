@@ -24,14 +24,14 @@ public class SpotsDialog extends AlertDialog {
 
     private static final String DEFAULT_MSG = "Loading . . .";
 
-    private AnimatedView[] spots;
-    private DialogAnimator animator;
+    private SpotsAnimView[] spots;
+    private SpotsAnimator animator;
 
     private int count;
     private CharSequence message;
 
     private TextView textView;
-    private ProgressLayout progress;
+    private SpotsLayout progress;
 
     public SpotsDialog(Context context) {
         super(context);
@@ -91,7 +91,7 @@ public class SpotsDialog extends AlertDialog {
         textView.setTextColor(R.color.black);
 
         int w = (int) (AndroidUtil.getDisplay(getContext())[0] * 0.85);
-        progress = new ProgressLayout(getContext());
+        progress = new SpotsLayout(getContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 w, LinearLayout.LayoutParams.WRAP_CONTENT);
         params.gravity = Gravity.CENTER;
@@ -114,7 +114,7 @@ public class SpotsDialog extends AlertDialog {
 
     private void initView() {
         textView = (TextView) findViewById(R.id.dialog_wait_title);
-        progress = (ProgressLayout) findViewById(R.id.dialog_wait_progress);
+        progress = (SpotsLayout) findViewById(R.id.dialog_wait_progress);
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 getValue(R.dimen.dialog_progress_width), LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -142,10 +142,10 @@ public class SpotsDialog extends AlertDialog {
         if (count <= 0) {
             count = progress.getSpotsCount();
         }
-        spots = new AnimatedView[count];
+        spots = new SpotsAnimView[count];
         int size = progress.getSpotsSize();
         for (int i = 0; i < spots.length; i++) {
-            AnimatedView v = new AnimatedView(getContext());
+            SpotsAnimView v = new SpotsAnimView(getContext());
             v.setBackground(getDrawable());
             v.setTarget(progressWidth);
             v.setXFactor(-1f);
@@ -162,7 +162,7 @@ public class SpotsDialog extends AlertDialog {
     @Override
     protected void onStart() {
         super.onStart();
-        animator = new DialogAnimator(createAnimations());
+        animator = new SpotsAnimator(createAnimations());
         animator.play();
     }
 
@@ -177,7 +177,7 @@ public class SpotsDialog extends AlertDialog {
         for (int i = 0; i < spots.length; i++) {
             Animator move = ObjectAnimator.ofFloat(spots[i], "xFactor", 0, 1);
             move.setDuration(DURATION);
-            move.setInterpolator(new DialogAnimator.HesitateInterpolator());
+            move.setInterpolator(new SpotsAnimator.HesitateInterpolator());
             // 设置延时时间
             move.setStartDelay(DELAY * i);
             animators[i] = move;

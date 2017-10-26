@@ -13,7 +13,7 @@ import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 
 
-public class ProgressLayout extends FrameLayout {
+public class SpotsLayout extends FrameLayout {
 
     private static final int DEFAULT_COUNT = 6;
     private static final int DEFAULT_SIZE = Toaster.getContext().getResources().getDimensionPixelSize(R.dimen.dialog_spot_size);
@@ -21,30 +21,30 @@ public class ProgressLayout extends FrameLayout {
     private int spotsColor;
     private int spotsSize;
 
-    public ProgressLayout(Context context) {
+    public SpotsLayout(Context context) {
         this(context, null);
     }
 
-    public ProgressLayout(Context context, AttributeSet attrs) {
+    public SpotsLayout(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public ProgressLayout(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SpotsLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs, defStyleAttr, 0);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public ProgressLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public SpotsLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs, defStyleAttr, defStyleRes);
     }
 
     private void init(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        TypedArray a = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.Dialog, defStyleAttr, defStyleRes);
-        spotsCount = a.getInt(R.styleable.Dialog_DialogSpotCount, DEFAULT_COUNT);
-        spotsColor = a.getColor(R.styleable.Dialog_DialogSpotColor, getThemeColor());
-        spotsSize = a.getInt(R.styleable.Dialog_DialogSpotSize, DEFAULT_SIZE);
+        TypedArray a = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.SpotsDialog, defStyleAttr, defStyleRes);
+        spotsCount = a.getInt(R.styleable.SpotsDialog_DialogSpotCount, DEFAULT_COUNT);
+        spotsColor = a.getColor(R.styleable.SpotsDialog_DialogSpotColor, getThemeColor());
+        spotsSize = a.getInt(R.styleable.SpotsDialog_DialogSpotSize, DEFAULT_SIZE);
         a.recycle();
     }
 

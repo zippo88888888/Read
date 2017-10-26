@@ -31,6 +31,7 @@ import com.official.read.util.SPUtil;
 import com.official.read.util.Toaster;
 import com.official.read.util.anim.EasyTransition;
 import com.official.read.util.anim.EasyTransitionOptions;
+import com.official.read.weight.dialog.LoadDialog;
 import com.official.read.weight.dialog.SpotsDialog;
 import com.official.themelibrary.base.SkinBaseActivity;
 
@@ -50,7 +51,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
         BaseFragment.TelActivityListener {
 
     protected boolean isSetBar = true;
-    private boolean isDiy = true;
+    protected boolean isDiy = true;
 
     Dialog dialog;
     protected P presenter;
@@ -202,11 +203,12 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     private Dialog createDialog() {
         if (isDiy) {
             SpotsDialog dialog = new SpotsDialog(this);
+//            LoadDialog dialog = new LoadDialog(this);
             dialog.getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
             return dialog;
         } else {
             ProgressDialog dialog = new ProgressDialog(this);
-            dialog.setMessage("请稍后...");
+            dialog.setMessage("Loading...");
             dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             dialog.getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
             return dialog;
