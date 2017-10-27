@@ -56,6 +56,7 @@ public class LoadDialog extends AlertDialog {
         titleTxt.setGravity(Gravity.CENTER);
         titleTxt.setPadding(padding, padding, padding, padding);
         titleTxt.setTextSize(18f);
+        titleTxt.setTextColor(getContext().getResources().getColor(R.color.black));
         if (title != null && title.length() > 0) {
             titleTxt.setText(title);
         } else {
@@ -70,6 +71,7 @@ public class LoadDialog extends AlertDialog {
         loadingView.setLoadCount(7)
                 .setAnimTime(700)
                 .setLoadSwingL(AndroidUtil.dip2px(40f))
+                .setColorByTheme()
                 .complete();
 
         layout.addView(titleTxt);

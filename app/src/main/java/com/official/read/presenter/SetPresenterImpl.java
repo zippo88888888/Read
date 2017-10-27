@@ -38,6 +38,17 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     }
 
     @Override
+    public void getDialogState() {
+        boolean set = systemModel.getDialogSet();
+        getMvpView().setDialogState(set);
+    }
+
+    @Override
+    public void setDialogState(boolean isChecked) {
+        SPUtil.put(SPUtil.DIALOG_STATE, isChecked);
+    }
+
+    @Override
     public void getLockState() {
         boolean faceState = systemModel.getLockSet();
         getMvpView().setLockState(faceState);

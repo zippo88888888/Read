@@ -41,6 +41,11 @@ public class SPUtil {
     public static final String OPEN_ANIM = "anim_open";
 
     /**
+     * loading state
+     */
+    public static final String DIALOG_STATE = "dialog_state";
+
+    /**
      * 是否启动密码锁
      */
     public static final String OPEN_LOCK = "lock_open";

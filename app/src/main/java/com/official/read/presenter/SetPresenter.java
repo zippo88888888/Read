@@ -15,6 +15,10 @@ public interface SetPresenter {
 
     void setAnimState(boolean isOpen);
 
+    void getDialogState();
+
+    void setDialogState(boolean isChecked);
+
     void getLockState();
 
     void setLockState(boolean isFace);

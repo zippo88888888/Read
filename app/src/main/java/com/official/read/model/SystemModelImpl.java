@@ -65,6 +65,11 @@ public class SystemModelImpl implements SystemModel {
     }
 
     @Override
+    public boolean getDialogSet() {
+        return (boolean) SPUtil.get(SPUtil.DIALOG_STATE, false);
+    }
+
+    @Override
     public boolean getLockSet() {
         return (boolean) SPUtil.get(SPUtil.OPEN_LOCK, false);
     }

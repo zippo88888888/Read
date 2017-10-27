@@ -40,6 +40,8 @@ public interface SystemModel {
 
     boolean getAnimSet();
 
+    boolean getDialogSet();
+
     // 得到密码锁的配置
     boolean getLockSet();
 

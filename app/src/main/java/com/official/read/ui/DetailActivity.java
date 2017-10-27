@@ -383,7 +383,7 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
             case R.id.share_qq:
             case R.id.share_weibo:
             case R.id.share_webChat:
-                Toaster.makeText("BUILDING...");
+                Toaster.makeTextS("BUILDING...");
                 break;
             case R.id.share_more:
                 String msg = "这是分享内容";

@@ -18,13 +18,13 @@ import com.official.read.presenter.SetPresenterImpl;
 import com.official.read.util.ClearCacheUtil;
 import com.official.read.util.Toaster;
 import com.official.read.view.SetView;
-import com.official.read.weight.dialog.SpotsDialog;
 
 public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> implements
         SetView, CompoundButton.OnCheckedChangeListener {
 
     SwitchCompat switchCompat;
-    SwitchCompat faceCompat;
+    SwitchCompat dialogCompat;
+    SwitchCompat lockCompat;
     TextView cacheSize;
 
     LinearLayout errorLayout;
@@ -48,8 +48,10 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         errorSwitch.setOnCheckedChangeListener(this);
         switchCompat = $(R.id.set_switch);
         switchCompat.setOnCheckedChangeListener(this);
-        faceCompat = $(R.id.set_lock);
-        faceCompat.setOnCheckedChangeListener(this);
+        dialogCompat = $(R.id.set_dialog);
+        dialogCompat.setOnCheckedChangeListener(this);
+        lockCompat = $(R.id.set_lock);
+        lockCompat.setOnCheckedChangeListener(this);
         cacheSize = $(R.id.set_cacheSize);
         $(R.id.set_clear).setOnClickListener(this);
         $(R.id.set_default).setOnClickListener(this);
@@ -61,6 +63,7 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         presenter.checkErrorState(isTabletDevice());
         getSize();
         presenter.getAnimState();
+        presenter.getDialogState();
         presenter.getLockState();
     }
 
@@ -111,8 +114,13 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
     }
 
     @Override
+    public void setDialogState(boolean state) {
+        dialogCompat.setChecked(state);
+    }
+
+    @Override
     public void setLockState(boolean state) {
-        faceCompat.setChecked(state);
+        lockCompat.setChecked(state);
     }
 
     @Override
@@ -172,6 +180,9 @@ public class SetActivity extends BaseActivity<SetPresenterImpl, SetView> impleme
         switch (buttonView.getId()) {
             case R.id.set_switch:
                 presenter.setAnimState(isChecked);
+                break;
+            case R.id.set_dialog:
+                presenter.setDialogState(isChecked);
                 break;
             case R.id.set_lock:
                 presenter.setLockState(isChecked);

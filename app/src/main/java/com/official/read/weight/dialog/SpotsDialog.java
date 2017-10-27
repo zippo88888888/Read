@@ -86,7 +86,8 @@ public class SpotsDialog extends AlertDialog {
         textLP.gravity = Gravity.CENTER;
         textView.setLayoutParams(textLP);
         textView.setTextSize(18f);
-        textView.setTextColor(R.color.black);
+
+        textView.setTextColor(getContext().getResources().getColor(R.color.black));
 
         int w = (int) (AndroidUtil.getDisplay(getContext())[0] * 0.85);
         progress = new SpotsLayout(getContext());

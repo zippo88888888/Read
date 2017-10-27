@@ -25,7 +25,7 @@ import com.official.read.util.Toaster;
 public class LoadingView extends View {
 
     /** 默认小球的半径 */
-    private static final float DEFAULT_LOAD_R = 15F;
+    private static final float DEFAULT_LOAD_R = 13F;
     /** 默认小球的padding */
     private static final float DEFAULT_LOAD_PADDING = 20F;
     /** 默认小球的个数 */
@@ -204,18 +204,6 @@ public class LoadingView extends View {
         }
     }
 
-    public void endAnim() {
-        isChange = true;
-        if (leftAnim != null) {
-            leftAnim.end();
-            leftAnim = null;
-        }
-        if (rightAnim != null) {
-            rightAnim.end();
-            rightAnim = null;
-        }
-    }
-
     public void startAnim() {
 
         if (leftAnim == null) {
@@ -279,6 +267,18 @@ public class LoadingView extends View {
         }
     }
 
+    public void endAnim() {
+        isChange = true;
+        if (leftAnim != null) {
+            leftAnim.end();
+            leftAnim = null;
+        }
+        if (rightAnim != null) {
+            rightAnim.end();
+            rightAnim = null;
+        }
+    }
+
     private void setLeftSwing(float w) {
         this.leftSwing = w;
         invalidate();
@@ -304,24 +304,6 @@ public class LoadingView extends View {
         return this;
     }
 
-    /**
-     * 不推荐使用 颜色已自动根据主题获取
-     */
-    @Deprecated
-    public LoadingView setLoadColor(int loadColor) {
-        this.loadColor = loadColor;
-        return this;
-    }
-
-    /**
-     * 不推荐使用 颜色已自动根据主题获取
-     */
-    @Deprecated
-    public LoadingView setLoadColor2(int loadColor2) {
-        this.loadColor2 = loadColor2;
-        return this;
-    }
-
     public LoadingView setLoadSwingL(float loadSwingL) {
         this.loadSwingL = loadSwingL;
         return this;
@@ -329,6 +311,12 @@ public class LoadingView extends View {
 
     public LoadingView setAnimTime(int animTime) {
         this.animTime = animTime;
+        return this;
+    }
+
+    public LoadingView setColorByTheme() {
+        this.paint.setColor(getThemeColor());
+        this.paint2.setColor(getThemeColor());
         return this;
     }
 

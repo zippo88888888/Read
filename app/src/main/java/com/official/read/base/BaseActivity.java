@@ -1,5 +1,6 @@
 package com.official.read.base;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -202,8 +203,13 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
 
     private Dialog createDialog() {
         if (isDiy) {
-            SpotsDialog dialog = new SpotsDialog(this);
-//            LoadDialog dialog = new LoadDialog(this);
+            boolean dialogState = (boolean) SPUtil.get(SPUtil.DIALOG_STATE, false);
+            Dialog dialog;
+            if (dialogState) {
+                dialog = new LoadDialog(this);
+            } else {
+                dialog = new SpotsDialog(this);
+            }
             dialog.getWindow().setWindowAnimations(android.R.style.Animation_Translucent);
             return dialog;
         } else {

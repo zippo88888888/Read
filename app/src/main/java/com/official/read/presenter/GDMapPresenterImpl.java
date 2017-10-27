@@ -59,7 +59,7 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
     }
 
     @Override
-    public void checkNavigateData(LatLonPoint nowPoint, final LatLonPoint point) {
+    public void checkNavigateData(final LatLonPoint nowPoint, final LatLonPoint point) {
         if (nowPoint != null && nowPoint.getLatitude() != Content.NO_LAT_LON_POINT_DATA) {
             String[] type;
             if (AndroidUtil.isInstallByRead(GDMapUtil.GAO_DE_PAGE)) {
@@ -84,21 +84,11 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
                         if (navigateItem == 0) {
                             GDMapUtil.goToGaoDeMap(getMvpView().getBaseViewContext(), "", "Price", point.getLatitude() + "",
                                     point.getLongitude() + "", "0", "2");
-                        } else if (navigateItem == 1) {
-                            getMvpView().startNavigate(Content.NAVIGATE_CAR);
-                        } else if (navigateItem == 2) {
-                            getMvpView().startNavigate(Content.NAVIGATE_WALK);
-                        } else if (navigateItem == 3) {
-                            getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
+                        } else {
+                            startNavigate(navigateItem - 1);
                         }
                     } else {
-                        if (navigateItem == 0) {
-                            getMvpView().startNavigate(Content.NAVIGATE_CAR);
-                        } else if (navigateItem == 1) {
-                            getMvpView().startNavigate(Content.NAVIGATE_WALK);
-                        } else if (navigateItem == 2) {
-                            getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
-                        }
+                        startNavigate(navigateItem);
                     }
                     dialog.dismiss();
                 }
@@ -111,6 +101,16 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
             }).show();
         } else {
             Toaster.makeText("定位中，请稍后...");
+        }
+    }
+
+    private void startNavigate(int navigateItem) {
+        if (navigateItem == 0) {
+            getMvpView().startNavigate(Content.NAVIGATE_CAR);
+        } else if (navigateItem == 1) {
+            getMvpView().startNavigate(Content.NAVIGATE_WALK);
+        } else if (navigateItem == 2) {
+            getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
         }
     }
 

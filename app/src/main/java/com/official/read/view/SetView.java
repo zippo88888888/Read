@@ -13,6 +13,8 @@ public interface SetView extends BaseView {
 
     void setAnimState(boolean state);
 
+    void setDialogState(boolean state);
+
     void setLockState(boolean state);
 
     void jumpToSetLockActivity();
