@@ -3,24 +3,24 @@ package com.official.read.content;
 
 import com.official.read.BuildConfig;
 import com.official.read.R;
-import com.official.read.content.bean.JusticeBean;
 import com.official.read.util.Toaster;
 
-import java.util.List;
 import java.util.Map;
 
 public class Content {
 
     public static final String FILE_PROVIDER = "com.official.read.fileProvider";
 
-    public static final String[] TITLE = Toaster.getContext().getResources().getStringArray(R.array.titles);
+    public static final String[] TITLE = Toaster.getApplicationContext().getResources().getStringArray(R.array.titles);
 
-    public static final String[] COLORS = Toaster.getContext().getResources().getStringArray(R.array.colors);
+    public static final String[] COLORS = Toaster.getApplicationContext().getResources().getStringArray(R.array.colors);
 
-    public static final String HOT_HP = Toaster.getContext().getResources().getString(R.string.hot_hp);
-    public static final String HOT_JA = Toaster.getContext().getResources().getString(R.string.hot_ja);
-    public static final String HOT_PD = Toaster.getContext().getResources().getString(R.string.hot_pd);
-    public static final String HOT_XH = Toaster.getContext().getResources().getString(R.string.hot_xh);
+    public static final String[] MAP_ITEMS = Toaster.getApplicationContext().getResources().getStringArray(R.array.mapItems);
+
+    public static final String HOT_HP = Toaster.getApplicationContext().getResources().getString(R.string.hot_hp);
+    public static final String HOT_JA = Toaster.getApplicationContext().getResources().getString(R.string.hot_ja);
+    public static final String HOT_PD = Toaster.getApplicationContext().getResources().getString(R.string.hot_pd);
+    public static final String HOT_XH = Toaster.getApplicationContext().getResources().getString(R.string.hot_xh);
 
     public static final String SEARCH_FRAGMENT_TAG = "fragment_search";
 
@@ -154,6 +154,7 @@ public class Content {
     /**
      * 创建连接
      */
+    @Deprecated
     public static Map<String, Object> createMapForUrl(Map<String, Object> map) {
         if (map == null) {
             throw new NullPointerException("Map is not null");
@@ -208,6 +209,7 @@ public class Content {
     /**
      * GDMapActivity Dialog Tag
      */
+    @Deprecated
     public static final String DIALOG_MAP_SELECT_TAG = "mapSelectDialog";
 
 

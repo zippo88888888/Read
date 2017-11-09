@@ -16,7 +16,7 @@ import com.official.read.util.Toaster;
 public class SpotsLayout extends FrameLayout {
 
     private static final int DEFAULT_COUNT = 6;
-    private static final int DEFAULT_SIZE = Toaster.getContext().getResources().getDimensionPixelSize(R.dimen.dialog_spot_size);
+    private static final int DEFAULT_SIZE = Toaster.getApplicationContext().getResources().getDimensionPixelSize(R.dimen.dialog_spot_size);
     private int spotsCount;
     private int spotsColor;
     private int spotsSize;

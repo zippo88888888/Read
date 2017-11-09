@@ -27,19 +27,19 @@ public class SuperStatisticsView extends View {
     private int y_padding;
 
     /** 默认矩形图表最大值的颜色 */
-    private final static int DEFAULT_MAX_RECTANGLE_COLOR = Toaster.getContext().getResources().getColor(R.color.red);
+    private final static int DEFAULT_MAX_RECTANGLE_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.red);
 
     /** 默认矩形图表常规颜色 */
-    private final static int DEFAULT_RECTANGLE_COLOR = Toaster.getContext().getResources().getColor(R.color.blue);
+    private final static int DEFAULT_RECTANGLE_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.blue);
 
     /** 默认字颜色 */
-    private final static int DEFAULT_TEXT_COLOR = Toaster.getContext().getResources().getColor(R.color.black);
+    private final static int DEFAULT_TEXT_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.black);
 
     /** 默认折线颜色 */
-    private final static int DEFAULT_DISCOUNT_COLOR = Toaster.getContext().getResources().getColor(R.color.gray);
+    private final static int DEFAULT_DISCOUNT_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.gray);
 
     /** 默认X、Y轴的颜色 */
-    private final static int DEFAULT_XY_COLOR = Toaster.getContext().getResources().getColor(R.color.gray);
+    private final static int DEFAULT_XY_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.gray);
 
     /** 默认的文字大小 */
     private final static float DEFAULT_TEXT_SIZE = 25f;

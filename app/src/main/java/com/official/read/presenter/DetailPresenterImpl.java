@@ -9,6 +9,7 @@ import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.geocoder.GeocodeAddress;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.official.read.R;
+import com.official.read.base.BaseModel;
 import com.official.read.base.BasePresenterImpl;
 import com.official.read.content.Content;
 import com.official.read.content.listener.MyObserver;
@@ -43,11 +44,13 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     // 地理编码查询失败的次数
     private int errorLatLonPoint = 0;
 
-    private DetailModel model;
+    private BaseModel model;
     private SystemModel themeModel;
 
     public DetailPresenterImpl() {
-        this.model = new DetailModelImpl();
+
+        model = BaseModel.METHOD.method(BaseModel.METHOD.DETAIL_MODEL);
+
         this.themeModel = new SystemModelImpl();
     }
 
@@ -62,11 +65,11 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
         } else {
             mMap.put("sign", AES.getSign(""));
         }
-        model.getDetailData(mMap).subscribe(new MyObserver<CommonBean<DetailBean>>(Content.DISPOSABLE_DETAIL_DATA) {
+        model.execute(mMap).subscribe(new MyObserver<CommonBean<DetailBean>>(Content.DISPOSABLE_DETAIL_DATA) {
             @Override
             protected void next(CommonBean<DetailBean> value) {
                 DetailBean data = value.data;
-                getMvpView().initDetailData(data);
+                if (isAttachView()) getMvpView().initDetailData(data);
             }
 
         });
@@ -80,10 +83,10 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
             if (PermissionUtil.hasPermission(getMvpView().getBaseViewContext(), PermissionUtil.CALL_PHONE)) {
                 PermissionUtil.requestPermission(context, PermissionUtil.PHONE_CODE, PermissionUtil.CALL_PHONE);
             } else {
-                getMvpView().tel();
+                if (isAttachView()) getMvpView().tel();
             }
         } else {
-            getMvpView().tel();
+            if (isAttachView()) getMvpView().tel();
         }
     }
 
@@ -95,10 +98,10 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
             if (PermissionUtil.hasPermission(getMvpView().getBaseViewContext(), PermissionUtil.ACCESS_COARSE_LOCATION)) {
                 PermissionUtil.requestPermission(context, PermissionUtil.LOCATION_CODE, PermissionUtil.ACCESS_COARSE_LOCATION);
             } else {
-                getMvpView().skipMapView();
+                if (isAttachView()) getMvpView().skipMapView();
             }
         } else {
-            getMvpView().skipMapView();
+            if (isAttachView()) getMvpView().skipMapView();
         }
     }
 
@@ -108,13 +111,13 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toaster.makeText("您已拒绝程序申请拨打电话权限，该功能将暂时无法使用！");
             } else {
-                getMvpView().tel();
+                if (isAttachView()) getMvpView().tel();
             }
         } else if (requestCode == PermissionUtil.LOCATION_CODE) {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                 Toaster.makeText("您已拒绝程序申请定位权限，暂时无法查看相关地图信息！");
             } else {
-                getMvpView().skipMapView();
+                if (isAttachView()) getMvpView().skipMapView();
             }
         }
     }
@@ -122,9 +125,9 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     @Override
     public void isShowOrHidden(boolean isShow) {
         if (isShow) { // 变为显示
-            getMvpView().show();
+            if (isAttachView()) getMvpView().show();
         } else {
-            getMvpView().hidden();
+            if (isAttachView()) getMvpView().hidden();
         }
     }
 
@@ -133,9 +136,9 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
         if(data != null && data.length() > 0){
             String[] tags = data.split("#");
             List<String> list = Arrays.asList(tags);
-            getMvpView().setLightGridViewData(list);
+            if (isAttachView()) getMvpView().setLightGridViewData(list);
         } else {
-            getMvpView().hiddenLightGridView();
+            if (isAttachView()) getMvpView().hiddenLightGridView();
         }
     }
 
@@ -169,9 +172,9 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
             if (errorLatLonPoint > 3) {
                 Toaster.makeText("当前网络不稳定，请稍后再试！");
             } else {
-                getMvpView().showDialog(null);
+                if (isAttachView()) getMvpView().showDialog(null);
                 errorLatLonPoint ++;
-                getMvpView().getLatLonPoint();
+                if (isAttachView()) getMvpView().getLatLonPoint();
             }
         } else {
             checkLocationPermission();
@@ -201,7 +204,7 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
         } else {
             p = priority;
         }
-        getMvpView().setTop3Value(d, s, p);
+        if (isAttachView()) getMvpView().setTop3Value(d, s, p);
     }
 
     @Override
@@ -297,22 +300,22 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
                 houseTime = "已结束";
                 break;
         }
-        getMvpView().setValue(bidPrice, bidPriceT, qpPrice, qpPriceT, houseTime);
+        if (isAttachView()) getMvpView().setValue(bidPrice, bidPriceT, qpPrice, qpPriceT, houseTime);
     }
 
     @Override
     public void checkConnectionByFID(String fID) {
-        List<CollectBean> list = model.findConnectionByFID(fID);
+        List<CollectBean> list = model.get(fID);
         if (list != null && list.size() > 0) {
-            getMvpView().setConnectionState("已收藏");
+            if (isAttachView()) getMvpView().setConnectionState("已收藏");
         } else {
-            getMvpView().setConnectionState("收藏");
+            if (isAttachView()) getMvpView().setConnectionState("收藏");
         }
     }
 
     @Override
     public void connection(CollectBean bean) {
-        List<CollectBean> list = model.findConnectionByFID(bean.fID);
+        List<CollectBean> list = model.get(bean.fID);
         if(list == null || list.size() <= 0) {
             boolean save = bean.save();
             if (save) {
@@ -325,7 +328,7 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     @Override
     public void showBottomLayout(boolean isShow) {
         if (!isShow) {
-            getMvpView().showBottomLayout();
+            if (isAttachView()) getMvpView().showBottomLayout();
         }
     }
 
@@ -333,7 +336,7 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
     public void hiddenBottomLayout(boolean isShow) {
         // 如果是显示状态就隐藏
         if (isShow) {
-            getMvpView().hiddenBottomLayout();
+            if (isAttachView()) getMvpView().hiddenBottomLayout();
         }
     }
 
@@ -343,26 +346,26 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
         if (isFirst) {
             // 表示是在initView中初始化，不需要跳转
             if (animSet) {
-                getMvpView().firstNotUseAnim();
+                if (isAttachView()) getMvpView().firstNotUseAnim();
             } else {
-                getMvpView().firstUseAnim();
+                if (isAttachView()) getMvpView().firstUseAnim();
             }
         } else {
             if (animSet) {
-                getMvpView().notUseAnim();
+                if (isAttachView()) getMvpView().notUseAnim();
             } else {
-                getMvpView().useAnim();
+                if (isAttachView()) getMvpView().useAnim();
             }
         }
     }
 
     @Override
     public void onGeocodeSearched(GeocodeResult result, int rCode) {
-        getMvpView().dismissDialog();
+        if (isAttachView()) getMvpView().dismissDialog();
         if (rCode == AMapException.CODE_AMAP_SUCCESS) {
             if (result != null && result.getGeocodeAddressList() != null && result.getGeocodeAddressList().size() > 0) {
                 GeocodeAddress address = result.getGeocodeAddressList().get(0);
-                getMvpView().setLatLonPoint(address.getLatLonPoint());
+                if (isAttachView()) getMvpView().setLatLonPoint(address.getLatLonPoint());
             } else {
                 Toaster.makeText(R.string.map_error_data);
             }

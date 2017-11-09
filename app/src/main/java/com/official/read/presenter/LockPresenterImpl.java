@@ -32,33 +32,33 @@ public class LockPresenterImpl extends BasePresenterImpl<LockView> implements Lo
             if (getMvpView().isOpenLock()) {
                 color = R.color.white;
             }
-            getMvpView().showMsg("密码输入有误", Toaster.getContext().getResources().getColor(color));
+            if (isAttachView()) getMvpView().showMsg("密码输入有误", Toaster.getApplicationContext().getResources().getColor(color));
             return;
         }
         switch (type) {
             case Content.LOCK_STATE_FIRST:
                 SPUtil.put(SPUtil.LOCK_STATE, txt);
-                getMvpView().setLockSuccess();
+                if (isAttachView()) getMvpView().setLockSuccess();
                 break;
             case Content.LOCK_STATE_CLEAR: // 清除密码
                 String lockState = model.getLockState();
                 if (lockState.equals(txt)) {
-                    getMvpView().clearLockSuccess();
+                    if (isAttachView()) getMvpView().clearLockSuccess();
                     SPUtil.put(SPUtil.LOCK_STATE, Content.LUCK_DEFAULT_PWD);
                 } else {
-                    getMvpView().showMsg("密码输入有误", Toaster.getContext().getResources().getColor(color));
+                    if (isAttachView()) getMvpView().showMsg("密码输入有误", Toaster.getApplicationContext().getResources().getColor(color));
                 }
                 break;
             case Content.LOCK_STATE_CHECK:
                 String state = model.getLockState();
                 L.e(state);
                 if (state.equals(txt)) {
-                    getMvpView().checkSuccess();
+                    if (isAttachView()) getMvpView().checkSuccess();
                 } else {
                     if (getMvpView().isOpenLock()) {
                         color = R.color.white;
                     }
-                    getMvpView().showMsg("密码输入有误", Toaster.getContext().getResources().getColor(color));
+                    if (isAttachView()) getMvpView().showMsg("密码输入有误", Toaster.getApplicationContext().getResources().getColor(color));
                 }
                 break;
         }

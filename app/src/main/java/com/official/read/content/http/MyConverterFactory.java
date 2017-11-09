@@ -14,7 +14,7 @@ import retrofit2.Retrofit;
  * description:
  * version: 1.0
  */
-
+@Deprecated
 public class MyConverterFactory extends Converter.Factory {
 
     /**

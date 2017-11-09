@@ -14,9 +14,11 @@ import java.util.List;
  */
 
 public class SearchModelImpl implements SearchModel {
+
     @Override
     public List<SearchHistoryBean> getSearchHistory() {
         return DataSupport.findAll(SearchHistoryBean.class);
     }
+
 
 }

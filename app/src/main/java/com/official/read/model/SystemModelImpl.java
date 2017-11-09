@@ -31,32 +31,32 @@ public class SystemModelImpl implements SystemModel {
 
     @Override
     public int getThemeRed() {
-        return Toaster.getContext().getResources().getColor(R.color.red);
+        return Toaster.getApplicationContext().getResources().getColor(R.color.red);
     }
 
     @Override
     public int getThemePink() {
-        return Toaster.getContext().getResources().getColor(R.color.pink);
+        return Toaster.getApplicationContext().getResources().getColor(R.color.pink);
     }
 
     @Override
     public int getThemeViolet() {
-        return Toaster.getContext().getResources().getColor(R.color.violet);
+        return Toaster.getApplicationContext().getResources().getColor(R.color.violet);
     }
 
     @Override
     public int getThemeBlue() {
-        return Toaster.getContext().getResources().getColor(R.color.blue);
+        return Toaster.getApplicationContext().getResources().getColor(R.color.blue);
     }
 
     @Override
     public int getThemeGreen() {
-        return Toaster.getContext().getResources().getColor(R.color.green);
+        return Toaster.getApplicationContext().getResources().getColor(R.color.green);
     }
 
     @Override
     public int getThemeBlack() {
-        return Toaster.getContext().getResources().getColor(R.color.black);
+        return Toaster.getApplicationContext().getResources().getColor(R.color.black);
     }
 
     @Override

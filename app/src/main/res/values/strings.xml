@@ -37,6 +37,16 @@
         <item>TEST</item>
     </string-array>
 
+    <string-array name="mapItems">
+        <item>地铁</item>
+        <item>公交</item>
+        <item>银行</item>
+        <item>医疗</item>
+        <item>教育</item>
+        <item>餐饮</item>
+        <item>购物</item>
+    </string-array>
+
     <string-array name="colors">
         <item>姨妈红</item>
         <item>脑残粉</item>

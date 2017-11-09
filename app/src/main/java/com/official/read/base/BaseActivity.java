@@ -247,26 +247,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     }
 
     protected void jumpActivity(ArrayMap<String, Object> map, Class clazz) {
-        if (map.isEmpty()) {
-            throw new NullPointerException("ArrayMap<String, Object> map is not null");
-        }
-        Intent intent = new Intent(this, clazz);
-        Bundle bundle = new Bundle();
-        for (String key : map.keySet()) {
-            Object o = map.get(key);
-            if (o instanceof String) {
-                // int,double,float,String
-                bundle.putString(key, (String) o);
-            } else if (o instanceof Serializable) {
-                bundle.putSerializable(key, (Serializable) o);
-            } else if (o instanceof Parcelable){
-                bundle.putParcelable(key, (Parcelable) o);
-            } else {
-                throw new ReadException("type error");
-            }
-        }
-        intent.putExtras(bundle);
-        startActivity(intent);
+        jumpActivity(map, clazz, null);
     }
 
     // view 的id必须相同
@@ -274,8 +255,9 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
         if (map.isEmpty()) {
             throw new NullPointerException("ArrayMap<String, Object> map is not null");
         }
-        if (views == null || views.length <= 0) {
-            throw new NullPointerException("View is not null");
+        boolean isAnim = false;
+        if (views != null && views.length > 0) {
+            isAnim = true;
         }
         Intent intent = new Intent(this, clazz);
         Bundle bundle = new Bundle();
@@ -286,16 +268,21 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
                 bundle.putString(key, (String) o);
             } else if (o instanceof Serializable) {
                 bundle.putSerializable(key, (Serializable) o);
-            } else if (o instanceof Parcelable){
+            } else if (o instanceof Parcelable) {
                 bundle.putParcelable(key, (Parcelable) o);
             } else {
                 throw new ReadException("type error");
             }
         }
         intent.putExtras(bundle);
-        EasyTransitionOptions options = EasyTransitionOptions.makeTransitionOptions(this, views);
-        EasyTransition.startActivity(intent, options);
+        if (isAnim) {
+            EasyTransitionOptions options = EasyTransitionOptions.makeTransitionOptions(this, views);
+            EasyTransition.startActivity(intent, options);
+        } else {
+            startActivity(intent);
+        }
     }
+
 
     @Override
     public Context getBaseViewContext() {

@@ -7,8 +7,8 @@ android {
         applicationId "com.official.read"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 24
-        versionName "2.1.01"
+        versionCode 26
+        versionName "2.1.12"
 
         ndk {
             //设置支持的SO库架构

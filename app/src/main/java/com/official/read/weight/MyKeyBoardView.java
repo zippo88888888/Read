@@ -48,11 +48,11 @@ public class MyKeyBoardView extends View implements KeyBoardUtil.KeyBoardOutPutL
     /** 默认的 输入框的长度 */
     private static final int DEFAULT_LENGTH = 6;
     /** 默认的 未输入时矩形的颜色 */
-    private static final int DEFAULT_DEFAULT_INPUT_RECT_COLOR = Toaster.getContext().getResources().getColor(R.color.gray);
+    private static final int DEFAULT_DEFAULT_INPUT_RECT_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.gray);
     /** 默认的 正在输入或已经输入过的矩形颜色 */
-    private static final int DEFAULT_INPUT_RECT_COLOR = Toaster.getContext().getResources().getColor(R.color.blue);
+    private static final int DEFAULT_INPUT_RECT_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.blue);
     /** 默认的 正在输入或已经输入过的文字、密文颜色 */
-    private static final int DEFAULT_INPUT_TXT_COLOR = Toaster.getContext().getResources().getColor(R.color.blue);
+    private static final int DEFAULT_INPUT_TXT_COLOR = Toaster.getApplicationContext().getResources().getColor(R.color.blue);
 
     /** 距离屏幕左边，右边的间距 */
     private float leftRightPadding;

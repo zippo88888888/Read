@@ -16,7 +16,7 @@ import com.official.read.util.Toaster;
 
 public class BasePresenterImpl<V extends BaseView> implements BasePresenter<V> {
 
-    private final static String ERROR_MESSAGE = Toaster.getContext().getResources().getString(R.string.mvpView_message);
+    private final static String ERROR_MESSAGE = Toaster.getApplicationContext().getResources().getString(R.string.mvpView_message);
 
     private V mvpView;
 
@@ -33,15 +33,20 @@ public class BasePresenterImpl<V extends BaseView> implements BasePresenter<V> {
     /**
      * 判断 view是否为空
      */
-    private boolean isAttachView() {
-        return mvpView != null;
+    protected boolean isAttachView() {
+        if (mvpView == null) {
+            L.e(ERROR_MESSAGE);
+            return false;
+        } else {
+            return true;
+        }
+//        return mvpView != null;
     }
 
     /**
      * 返回目标view
      */
     public V getMvpView() {
-        checkViewAttach();
         return mvpView;
     }
 

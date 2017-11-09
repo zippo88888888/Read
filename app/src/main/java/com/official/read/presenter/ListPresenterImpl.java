@@ -68,25 +68,25 @@ public class ListPresenterImpl extends BasePresenterImpl<ListView> implements Li
                 List<RecommendBean> list = value.data.list;
                 if (list != null && list.size() > 0) {
                     if (page == 1 && page == maxPage) {
-                        getMvpView().initListData(list);
-                        getMvpView().noLoadMoreData();
+                        if (isAttachView()) getMvpView().initListData(list);
+                        if (isAttachView()) getMvpView().noLoadMoreData();
                     } else if (page == 1){
-                        getMvpView().initListData(list); // 第一页
+                        if (isAttachView()) getMvpView().initListData(list); // 第一页
                     } else {
                         if (page == maxPage) {  // 已经没有数据了
-                            getMvpView().noLoadMoreData();
+                            if (isAttachView()) getMvpView().noLoadMoreData();
                         } else {
-                            getMvpView().loadMoreData(list);
+                            if (isAttachView()) getMvpView().loadMoreData(list);
                         }
                     }
                 } else {
-                    getMvpView().noAnywayData();
+                    if (isAttachView()) getMvpView().noAnywayData();
                 }
             }
 
             @Override
             protected void error(Throwable e) {
-                getMvpView().error(0, null);
+                if (isAttachView()) getMvpView().error(0, null);
             }
         });
     }
@@ -229,9 +229,9 @@ public class ListPresenterImpl extends BasePresenterImpl<ListView> implements Li
     public void checkSkipAnim(RecommendBean bean, View view) {
         boolean animSet = themeModel.getAnimSet();
         if (animSet) {
-            getMvpView().skipNotUseAnim(bean);
+            if (isAttachView()) getMvpView().skipNotUseAnim(bean);
         } else {
-            getMvpView().skipUseAnim(bean, view);
+            if (isAttachView()) getMvpView().skipUseAnim(bean, view);
         }
     }
 }

@@ -23,7 +23,7 @@ public interface HttpApi {
 
     @FormUrlEncoded
     @POST(URL.RECOMMEND_HOUSE_URL)
-    Observable<BaseBean<RecommendBean>> initRecommendData(@FieldMap LinkedHashMap<String, String> mMap);
+    Observable<BaseBean<RecommendBean>> getListDataForAll(@FieldMap LinkedHashMap<String, String> mMap);
 
     @FormUrlEncoded
     @POST(URL.DETAIL_URL)

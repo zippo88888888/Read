@@ -39,9 +39,9 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView> implement
     public void getSearchHistory() {
         List<SearchHistoryBean> list = model.getSearchHistory();
         if (list != null && list.size() > 0) {
-            getMvpView().initSearchHistoryData(list);
+            if (isAttachView()) getMvpView().initSearchHistoryData(list);
         } else {
-            getMvpView().notSearchHistoryData();
+            if (isAttachView()) getMvpView().notSearchHistoryData();
         }
     }
 
@@ -59,7 +59,7 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView> implement
                     L.e("添加数据库成功");
                 }
             }
-            getMvpView().skipActivity(history);
+            if (isAttachView()) getMvpView().skipActivity(history);
         }
     }
 
@@ -82,9 +82,9 @@ public class SearchPresenterImpl extends BasePresenterImpl<SearchView> implement
             return;
         }
         if (state == Content.STATUE_NORMAL) {
-            getMvpView().setStatusBarNormal();
+            if (isAttachView()) getMvpView().setStatusBarNormal();
         } else if (state == Content.STATUE_TRANSPARENT) {
-            getMvpView().setStatusBarTransparent();
+            if (isAttachView()) getMvpView().setStatusBarTransparent();
         } else {
             L.e("没有这个选项");
         }

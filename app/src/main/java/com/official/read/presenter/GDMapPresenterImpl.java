@@ -49,9 +49,9 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
         getMvpView().dismissDialog();
         if (aMapLocation != null) {
             if (isAutoLocation) {
-                getMvpView().change(aMapLocation);
+                if (isAttachView()) getMvpView().change(aMapLocation);
             } else {
-                getMvpView().moveToChange(aMapLocation);
+                if (isAttachView()) getMvpView().moveToChange(aMapLocation);
             }
         } else {
             Toaster.makeText("定位失败！");
@@ -106,21 +106,20 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
 
     private void startNavigate(int navigateItem) {
         if (navigateItem == 0) {
-            getMvpView().startNavigate(Content.NAVIGATE_CAR);
+            if (isAttachView()) getMvpView().startNavigate(Content.NAVIGATE_CAR);
         } else if (navigateItem == 1) {
-            getMvpView().startNavigate(Content.NAVIGATE_WALK);
+            if (isAttachView()) getMvpView().startNavigate(Content.NAVIGATE_WALK);
         } else if (navigateItem == 2) {
-            getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
+            if (isAttachView()) getMvpView().startNavigate(Content.NAVIGATE_CYCLING);
         }
     }
 
     @Override
     public void createSelectDialog() {
-        String[] type = {"地铁","公交","银行","医疗","教育","餐饮","购物"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getMvpView().getBaseViewContext());
         builder.setTitle("请选择筛选内容");
         builder.setCancelable(false);
-        builder.setSingleChoiceItems(type, selectItem, new DialogInterface.OnClickListener() {
+        builder.setSingleChoiceItems(Content.MAP_ITEMS, selectItem, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 selectItem = which;
@@ -131,25 +130,25 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
             public void onClick(DialogInterface dialog, int which) {
                 switch (selectItem) {
                     case 0:
-                        getMvpView().showMarkerByKey(Content.MARKER_KEY_METRO);
+                        if (isAttachView()) getMvpView().showMarkerByKey(Content.MARKER_KEY_METRO);
                         break;
                     case 1:
-                        getMvpView().showMarkerByKey(Content.MARKER_KEY_BUS);
+                        if (isAttachView()) getMvpView().showMarkerByKey(Content.MARKER_KEY_BUS);
                         break;
                     case 2:
                         getMvpView().showMarkerByKey(Content.MARKER_KEY_BANK);
                         break;
                     case 3:
-                        getMvpView().showMarkerByKey(Content.MARKER_KEY_MEDICAL);
+                        if (isAttachView()) getMvpView().showMarkerByKey(Content.MARKER_KEY_MEDICAL);
                         break;
                     case 4:
-                        getMvpView().showMarkerByKey(Content.MARKER_KEY_EDUCATION);
+                        if (isAttachView()) getMvpView().showMarkerByKey(Content.MARKER_KEY_EDUCATION);
                         break;
                     case 5:
-                        getMvpView().showMarkerByKey(Content.MARKER_KEY_EAT);
+                        if (isAttachView()) getMvpView().showMarkerByKey(Content.MARKER_KEY_EAT);
                         break;
                     case 6:
-                        getMvpView().showMarkerByKey(Content.MARKER_KEY_SHOPPING);
+                        if (isAttachView()) getMvpView().showMarkerByKey(Content.MARKER_KEY_SHOPPING);
                         break;
                 }
                 dialog.dismiss();
@@ -170,7 +169,7 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
             if (result != null && result.getQuery() != null) {// 搜索poi的结果
                 ArrayList<PoiItem> items = result.getPois();
                 if (items != null && items.size() > 0) {
-                    getMvpView().showMarker(items, result);
+                    if (isAttachView()) getMvpView().showMarker(items, result);
                 } else {
                     // 当搜索不到poi item数据时，会返回含有搜索关键字的城市信息
 //                    List<SuggestionCity> cityList = result.getSearchSuggestionCitys();
@@ -188,16 +187,16 @@ public class GDMapPresenterImpl extends BasePresenterImpl<GDMapView> implements 
     @Override
     public void checkPoiOverlay(GDMapUtil.MyPoiOverlay poiOverlay) {
         if (poiOverlay != null) {
-            getMvpView().removeFromMap();
+            if (isAttachView()) getMvpView().removeFromMap();
         }
     }
 
     @Override
     public void checkAppBarState(boolean isFull) {
         if (isFull) { // 退出全屏
-            getMvpView().normalShow();
+            if (isAttachView()) getMvpView().normalShow();
         } else {
-            getMvpView().fullShow();
+            if (isAttachView()) getMvpView().fullShow();
         }
     }
 }

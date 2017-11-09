@@ -29,7 +29,7 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     @Override
     public void getAnimState() {
         boolean animSet = systemModel.getAnimSet();
-        getMvpView().setAnimState(animSet);
+        if (isAttachView()) getMvpView().setAnimState(animSet);
     }
 
     @Override
@@ -40,7 +40,7 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     @Override
     public void getDialogState() {
         boolean set = systemModel.getDialogSet();
-        getMvpView().setDialogState(set);
+        if (isAttachView()) getMvpView().setDialogState(set);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     @Override
     public void getLockState() {
         boolean faceState = systemModel.getLockSet();
-        getMvpView().setLockState(faceState);
+        if (isAttachView()) getMvpView().setLockState(faceState);
     }
 
     @Override
@@ -64,13 +64,13 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
                 dialog.showDialog1(new CommonDialog.DialogClickListener(){
                     @Override
                     public void click1() {
-                        getMvpView().jumpToSetLockActivity();
+                        if (isAttachView()) getMvpView().jumpToSetLockActivity();
                     }
                 }, "您还未创建密码！", "马上去创建");
             }
         } else { // 设置关闭，跳转密码锁，确认后关闭
             if (!Content.LUCK_DEFAULT_PWD.equals(state)) { // 已经设置密码锁
-                getMvpView().jumpToClearLockActivity();
+                if (isAttachView()) getMvpView().jumpToClearLockActivity();
             }
         }
 
@@ -79,14 +79,14 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     @Override
     public void checkErrorState(boolean state) {
         if (state) {
-            getMvpView().showErrorLayout();
+            if (isAttachView()) getMvpView().showErrorLayout();
         }
     }
 
     @Override
     public void getErrorState() {
         boolean errorSet = systemModel.getErrorSet();
-        getMvpView().setErrorState(errorSet);
+        if (isAttachView()) getMvpView().setErrorState(errorSet);
     }
 
     @Override
@@ -98,10 +98,10 @@ public class SetPresenterImpl extends BasePresenterImpl<SetView> implements SetP
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Content.SET_LOCK_PWD_REQUEST_CODE && resultCode == Content.SET_LOCK_PWD_RESULT_CODE) {
             SPUtil.put(SPUtil.OPEN_LOCK, true);
-            getMvpView().setLockState(true);
+            if (isAttachView()) getMvpView().setLockState(true);
         } else if (requestCode == Content.CLEAR_LOCK_PWD_REQUEST_CODE && resultCode == Content.CLEAR_LOCK_PWD_RESULT_CODE) {
             SPUtil.put(SPUtil.OPEN_LOCK, false);
-            getMvpView().setLockState(false);
+            if (isAttachView()) getMvpView().setLockState(false);
         }
     }
 

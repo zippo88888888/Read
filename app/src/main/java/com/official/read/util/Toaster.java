@@ -24,7 +24,7 @@ public class Toaster extends Toast {
     public final static int TOP = Gravity.TOP;
     public final static int BOTTOM = Gravity.BOTTOM;
 
-    private static Context context;
+    private static Context applicationContext;
     private static int color = 0;
     private static Toast toast;
 
@@ -33,15 +33,15 @@ public class Toaster extends Toast {
     }
 
     public static void init(Context context) {
-        Toaster.context = context;
+        Toaster.applicationContext = context;
     }
 
     public static void setColor(int color) {
-        Toaster.color = context.getResources().getColor(color);
+        Toaster.color = applicationContext.getResources().getColor(color);
     }
 
     public static void makeTextS(int textID) {
-        String s = context.getResources().getString(textID);
+        String s = applicationContext.getResources().getString(textID);
         makeTextS(s);
     }
 
@@ -52,7 +52,7 @@ public class Toaster extends Toast {
         if (toast != null) {
             toast.cancel();
         }
-        toast = Toast.makeText(context.getApplicationContext(), str, Toast.LENGTH_SHORT);
+        toast = Toast.makeText(applicationContext.getApplicationContext(), str, Toast.LENGTH_SHORT);
         toast.show();
     }
 
@@ -61,12 +61,12 @@ public class Toaster extends Toast {
     }
 
     public static void makeText(int textID) {
-        String s = context.getResources().getString(textID);
+        String s = applicationContext.getResources().getString(textID);
         makeText(s);
     }
 
     public static void makeText(int type, int textID) {
-        String s = context.getResources().getString(textID);
+        String s = applicationContext.getResources().getString(textID);
         makeText(type, s);
     }
 
@@ -79,8 +79,8 @@ public class Toaster extends Toast {
         if (toast != null) {
             toast.cancel();
         }
-        int[] display = AndroidUtil.getDisplay(context);
-        View v = LayoutInflater.from(context).inflate(R.layout.layout_toast, null);
+        int[] display = AndroidUtil.getDisplay(applicationContext);
+        View v = LayoutInflater.from(applicationContext).inflate(R.layout.layout_toast, null);
         v.setAlpha(0.9f);
         v.setTranslationY(-300);
         v.animate().setDuration(300).translationY(0);
@@ -89,9 +89,9 @@ public class Toaster extends Toast {
         if (color == 0) {
             int color = Content.getBaseColorByTheme((String) SPUtil.get(SPUtil.BASE_COLOR, Content.THEME_RED));
             if (color == R.color.red) {
-                msg.setBackgroundColor(context.getResources().getColor(R.color.green));
+                msg.setBackgroundColor(applicationContext.getResources().getColor(R.color.green));
             } else {
-                msg.setBackgroundColor(context.getResources().getColor(R.color.red));
+                msg.setBackgroundColor(applicationContext.getResources().getColor(R.color.red));
             }
         } else {
             msg.setBackgroundColor(color);
@@ -99,13 +99,13 @@ public class Toaster extends Toast {
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(display[0],
                 ViewGroup.LayoutParams.WRAP_CONTENT);
         msg.setLayoutParams(params);
-        toast = new Toast(context);
+        toast = new Toast(applicationContext);
         toast.setDuration(Toast.LENGTH_SHORT);
         if (type != TOP && type != BOTTOM) {
             throw new RuntimeException("type only is TOP or BOTTOM");
         }
         if (type == TOP) {
-            toast.setGravity(type, 0, AndroidUtil.getToolBarHeight(context));
+            toast.setGravity(type, 0, AndroidUtil.getToolBarHeight(applicationContext));
         } else {
             toast.setGravity(type, 0, 0);
         }
@@ -113,7 +113,11 @@ public class Toaster extends Toast {
         toast.show();
     }
 
-    public static Context getContext() {
-        return context;
+    public static Context getApplicationContext() {
+        if (applicationContext != null) {
+            return applicationContext;
+        } else {
+            throw new NullPointerException("Please first Application invokes the \"init()\" method");
+        }
     }
 }

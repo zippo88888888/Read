@@ -1,5 +1,6 @@
 package com.official.read.model;
 
+import com.official.read.base.BaseModel;
 import com.official.read.content.bean.CommonBean;
 import com.official.read.content.bean.CollectBean;
 import com.official.read.content.bean.DetailBean;
@@ -22,8 +23,24 @@ import io.reactivex.schedulers.Schedulers;
  * version: 1.0
  */
 
-public class DetailModelImpl implements DetailModel {
+public class DetailModelImpl extends BaseModel<CommonBean<DetailBean>, CollectBean> /*implements DetailModel*/ {
+
     @Override
+    public Observable<CommonBean<DetailBean>> execute(LinkedHashMap<String, String> map) {
+        return HttpClient
+                .getInstance(HttpClient.DEFAULT_FACTORY)
+                .create(HttpApi.class)
+                .getDetailData(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public List<CollectBean> get(String... str) {
+        return DataSupport.where("fID=?", str[0]).find(CollectBean.class);
+    }
+
+    /*@Override
     public Observable<CommonBean<DetailBean>> getDetailData(LinkedHashMap<String, String> mMap) {
         return HttpClient
                 .getInstance(HttpClient.DEFAULT_FACTORY)
@@ -36,5 +53,6 @@ public class DetailModelImpl implements DetailModel {
     @Override
     public List<CollectBean> findConnectionByFID(String fID) {
         return DataSupport.where("fID=?", fID).find(CollectBean.class);
-    }
+    }*/
+
 }

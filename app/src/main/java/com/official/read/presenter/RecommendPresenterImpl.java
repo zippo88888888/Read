@@ -58,13 +58,13 @@ public class RecommendPresenterImpl extends BasePresenterImpl<RecommendView> imp
             @Override
             public void next(BaseBean<RecommendBean> bean) {
                 List<RecommendBean> list = bean.data.list;
-                getMvpView().initListData(list);
+                if (isAttachView()) getMvpView().initListData(list);
             }
 
             @Override
             protected void error(Throwable e) {
                 super.error(e);
-                getMvpView().error(0, null);
+                if (isAttachView()) getMvpView().error(0, null);
             }
         });
     }
@@ -72,7 +72,7 @@ public class RecommendPresenterImpl extends BasePresenterImpl<RecommendView> imp
     @Override
     public void getBannerData() {
         List<DetailBean.HouseInfoImage> bannerData = model.getBannerData();
-        getMvpView().initBannerData(bannerData);
+        if (isAttachView()) getMvpView().initBannerData(bannerData);
     }
 
     @Override
@@ -218,9 +218,9 @@ public class RecommendPresenterImpl extends BasePresenterImpl<RecommendView> imp
     public void checkSkipAnim(RecommendBean bean, View view) {
         boolean animSet = themeModel.getAnimSet();
         if (animSet) {
-            getMvpView().skipNotUseAnim(bean);
+            if (isAttachView()) getMvpView().skipNotUseAnim(bean);
         } else {
-            getMvpView().skipUseAnim(bean, view);
+            if (isAttachView()) getMvpView().skipUseAnim(bean, view);
         }
     }
 }

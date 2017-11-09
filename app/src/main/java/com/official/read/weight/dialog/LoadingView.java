@@ -333,7 +333,7 @@ public class LoadingView extends View {
     private static int getThemeColor() {
         String theme = (String) SPUtil.get(SPUtil.BASE_COLOR, Content.THEME_RED);
         int colorByTheme = Content.getBaseColorByTheme(theme);
-        return Toaster.getContext().getResources().getColor(colorByTheme);
+        return Toaster.getApplicationContext().getResources().getColor(colorByTheme);
     }
 
     private static class LoadInterpolator implements Interpolator {

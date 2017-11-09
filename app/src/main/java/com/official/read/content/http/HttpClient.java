@@ -27,6 +27,7 @@ public class HttpClient {
     /**
      * 拦截解析
      */
+    @Deprecated
     public static final int INTERCEPT_FACTORY = 1;
 
     private static HttpClient client;

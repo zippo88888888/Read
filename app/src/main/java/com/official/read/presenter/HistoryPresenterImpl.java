@@ -85,26 +85,26 @@ public class HistoryPresenterImpl extends BasePresenterImpl<HistoryView> impleme
 
                 if (list != null && list.size() > 0) {
                     if (page == 1 && page == maxPage) { // 只有第一页数据
-                        getMvpView().initHistoryData(list);
-                        getMvpView().noLoadMoreData();
+                        if (isAttachView()) getMvpView().initHistoryData(list);
+                        if (isAttachView()) getMvpView().noLoadMoreData();
                     } else if (page == 1) {
-                        getMvpView().initHistoryData(list); // 第一页
+                        if (isAttachView()) getMvpView().initHistoryData(list); // 第一页
                     } else {
                         if (page < maxPage) { // 加载更多数据
-                            getMvpView().loadMoreData(list);
+                            if (isAttachView()) getMvpView().loadMoreData(list);
                         } else { // 已经没有更多数据了
-                            getMvpView().noLoadMoreData();
+                            if (isAttachView()) getMvpView().noLoadMoreData();
                         }
                     }
                 } else { // 没有任何数据
-                    getMvpView().noAnywayData();
+                    if (isAttachView()) getMvpView().noAnywayData();
                 }
             }
 
             @Override
             protected void error(Throwable e) {
                 super.error(e);
-                getMvpView().error(0, null);
+                if (isAttachView()) getMvpView().error(0, null);
             }
         });
     }
@@ -114,16 +114,16 @@ public class HistoryPresenterImpl extends BasePresenterImpl<HistoryView> impleme
         int id = bean.id;
         switch (bean.type) {
             case JusticeBean.DISTRICT_TYPE:
-                getMvpView().setDistrict(id, bean.name);
+                if (isAttachView()) getMvpView().setDistrict(id, bean.name);
                 break;
             case JusticeBean.TYPE_TYPE:
-                getMvpView().setType(id, bean.name);
+                if (isAttachView()) getMvpView().setType(id, bean.name);
                 break;
             case JusticeBean.PRICE_TYPE:
-                getMvpView().setPrice(id, bean.name);
+                if (isAttachView()) getMvpView().setPrice(id, bean.name);
                 break;
             case JusticeBean.AREA_TYPE:
-                getMvpView().setArea(id, bean.name);
+                if (isAttachView()) getMvpView().setArea(id, bean.name);
                 break;
         }
     }
@@ -138,9 +138,9 @@ public class HistoryPresenterImpl extends BasePresenterImpl<HistoryView> impleme
     public void checkSkipAnim(RecommendBean bean, View view) {
         boolean animSet = themeModel.getAnimSet();
         if (animSet) {
-            getMvpView().skipNotUseAnim(bean);
+            if (isAttachView()) getMvpView().skipNotUseAnim(bean);
         } else {
-            getMvpView().skipUseAnim(bean, view);
+            if (isAttachView()) getMvpView().skipUseAnim(bean, view);
         }
     }
 }

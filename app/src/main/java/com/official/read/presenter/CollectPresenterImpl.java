@@ -38,9 +38,9 @@ public class CollectPresenterImpl extends BasePresenterImpl<CollectView> impleme
     public void getCollectData() {
         List<CollectBean> collectData = model.getCollectData();
         if (collectData != null && collectData.size() > 0) {
-            getMvpView().setCollectData(collectData);
+            if (isAttachView()) getMvpView().setCollectData(collectData);
         } else {
-            getMvpView().noAnywayData();
+            if (isAttachView()) getMvpView().noAnywayData();
         }
     }
 
@@ -70,7 +70,7 @@ public class CollectPresenterImpl extends BasePresenterImpl<CollectView> impleme
         int i = DataSupport.deleteAll(CollectBean.class, "fID=?", bean.fID);
         if (i > 0) {
             Toaster.makeText("操作成功");
-            getMvpView().deleteSuccess(bean, position);
+            if (isAttachView()) getMvpView().deleteSuccess(bean, position);
         } else {
             Toaster.makeText("操作失败");
         }
@@ -80,9 +80,9 @@ public class CollectPresenterImpl extends BasePresenterImpl<CollectView> impleme
     public void checkSkipAnim(CollectBean bean, View view) {
         boolean animSet = themeModel.getAnimSet();
         if (animSet) {
-            getMvpView().skipNotUseAnim(bean);
+            if (isAttachView()) getMvpView().skipNotUseAnim(bean);
         } else {
-            getMvpView().skipUseAnim(bean, view);
+            if (isAttachView()) getMvpView().skipUseAnim(bean, view);
         }
     }
 }

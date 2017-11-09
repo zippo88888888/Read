@@ -69,7 +69,7 @@ public class SPUtil {
      */
     public static void put(String key, Object object) {
 
-        SharedPreferences sp = Toaster.getContext().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = Toaster.getApplicationContext().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
 
@@ -98,7 +98,7 @@ public class SPUtil {
      * @return
      */
     public static Object get(String key, Object defaultObject) {
-        SharedPreferences sp = Toaster.getContext().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = Toaster.getApplicationContext().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
 
         if (defaultObject instanceof String) {
@@ -120,7 +120,7 @@ public class SPUtil {
      * 移除某个key值已经对应的值
      */
     public static void remove(String key) {
-        SharedPreferences sp = Toaster.getContext().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = Toaster.getApplicationContext().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.remove(key);
@@ -131,7 +131,7 @@ public class SPUtil {
      * 清除所有数据
      */
     public static void clear() {
-        SharedPreferences sp = Toaster.getContext().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = Toaster.getApplicationContext().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
@@ -142,7 +142,7 @@ public class SPUtil {
      * 查询某个key是否已经存在
      */
     public static boolean contains(String key) {
-        SharedPreferences sp = Toaster.getContext().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = Toaster.getApplicationContext().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         return sp.contains(key);
     }
@@ -151,7 +151,7 @@ public class SPUtil {
      * 返回所有的键值对
      */
     public static Map<String, ?> getAll() {
-        SharedPreferences sp = Toaster.getContext().getSharedPreferences(FILE_NAME,
+        SharedPreferences sp = Toaster.getApplicationContext().getSharedPreferences(FILE_NAME,
                 Context.MODE_PRIVATE);
         return sp.getAll();
     }

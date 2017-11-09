@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 public class CollectModelImpl implements CollectModel {
+
     @Override
     public List<CollectBean> getCollectData() {
         return DataSupport.findAll(CollectBean.class);

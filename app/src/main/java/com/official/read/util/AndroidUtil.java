@@ -72,7 +72,7 @@ public class AndroidUtil {
      * 从 dp 转成为 px
      */
     public static int dip2px(float dpValue) {
-        float scale = Toaster.getContext().getResources().getDisplayMetrics().density;
+        float scale = Toaster.getApplicationContext().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
     }
 

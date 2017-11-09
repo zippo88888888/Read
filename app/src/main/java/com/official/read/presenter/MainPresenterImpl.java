@@ -52,7 +52,7 @@ public class MainPresenterImpl extends BasePresenterImpl<MainView> implements Ma
             Toaster.makeText("未知错误");
             return;
         }
-        getMvpView().initVpDataAndListener(data, recommendFragment, justiceFragment, historyFragment);
+        if (isAttachView()) getMvpView().initVpDataAndListener(data, recommendFragment, justiceFragment, historyFragment);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class MainPresenterImpl extends BasePresenterImpl<MainView> implements Ma
             SearchFragment searchFragment = (SearchFragment) fragment;
             searchFragment.onBackPressed();
         } else {
-            getMvpView().finishActivity();
+            if (isAttachView()) getMvpView().finishActivity();
         }
     }
 
@@ -72,13 +72,13 @@ public class MainPresenterImpl extends BasePresenterImpl<MainView> implements Ma
             SPUtil.put(SPUtil.EGG, 10);
         } else {
             if (count == 0) {
-                getMvpView().openEgg();
+                if (isAttachView()) getMvpView().openEgg();
                 return;
             }
             count = count - 1;
             if (count == 0) {
                 SPUtil.put(SPUtil.EGG, 0);
-                getMvpView().openEgg();
+                if (isAttachView()) getMvpView().openEgg();
             } else {
                 SPUtil.put(SPUtil.EGG, count);
                 if (count <= 7) {

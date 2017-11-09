@@ -46,6 +46,7 @@ public interface BaseView {
     /**
      * 设置提示信息
      */
+    @Deprecated
     void setMessage(String message, ReadException e);
 
 }
