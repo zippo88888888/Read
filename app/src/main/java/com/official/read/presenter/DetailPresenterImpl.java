@@ -65,6 +65,7 @@ public class DetailPresenterImpl extends BasePresenterImpl<DetailView> implement
         } else {
             mMap.put("sign", AES.getSign(""));
         }
+        // 由于使用了反射，所以不能混淆
         model.execute(mMap).subscribe(new MyObserver<CommonBean<DetailBean>>(Content.DISPOSABLE_DETAIL_DATA) {
             @Override
             protected void next(CommonBean<DetailBean> value) {

@@ -35,6 +35,7 @@ import com.official.read.content.bean.DetailBean;
 import com.official.read.content.listener.AppBarChangeListener;
 import com.official.read.dialog.ShareDialog;
 import com.official.read.presenter.DetailPresenterImpl;
+import com.official.read.util.AndroidUtil;
 import com.official.read.util.GlideImageLoader;
 import com.official.read.util.L;
 import com.official.read.util.Toaster;
@@ -125,6 +126,7 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        AndroidUtil.setStatusBarTransparent(this);
         appBarLayout = $(R.id.new_home_list_item_pic);
         scrollView = $(R.id.detailScrollView);
         scrollView.setScrollChangeListener(this);
@@ -423,7 +425,7 @@ public class DetailActivity extends BaseActivity<DetailPresenterImpl, DetailView
 
     @Override
     public void firstUseAnim() {
-        AnimUtil.setToBottomHiddenForDetail(DetailActivity.this, bottomLayout);
+        AnimUtil.setToBottomHiddenForDetail(this, bottomLayout);
     }
 
     @Override

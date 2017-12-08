@@ -41,8 +41,9 @@ public final class AnimUtil {
         int h = (int) context.getResources().getDimension(R.dimen.detail_bottom_height);
         // 控件的起始位置
         int startY = height - h;
-        int statusHeight = AndroidUtil.getStatusBarHeight(context);
-        ValueAnimator animator = ValueAnimator.ofInt(startY - statusHeight, height);
+        // 已变成沉浸式状态栏了，所以不需要了
+        /*int statusHeight = AndroidUtil.getStatusBarHeight(context);*/
+        ValueAnimator animator = ValueAnimator.ofInt(startY /*- statusHeight*/, height);
         animator.setTarget(view);
         animator.setDuration(ANIM_TIME).start();
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -65,8 +66,8 @@ public final class AnimUtil {
         int h = (int) context.getResources().getDimension(R.dimen.detail_bottom_height);
         // 控件的结束位置
         int endY = height - h;
-        int statusHeight = AndroidUtil.getStatusBarHeight(context);
-        ValueAnimator animator = ValueAnimator.ofInt(height, endY - statusHeight);
+       /* int statusHeight = AndroidUtil.getStatusBarHeight(context);*/
+        ValueAnimator animator = ValueAnimator.ofInt(height, endY /*- statusHeight*/);
         animator.setTarget(view);
         if (isFirst) {
             animator.setDuration(ALL_ANIM_TIME);

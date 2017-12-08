@@ -187,7 +187,7 @@ public abstract class BaseFragment<P extends BasePresenter<V>,V extends BaseView
     }
 
     protected void jumpActivity(ArrayMap<String, Object> map, Class clazz) {
-        jumpActivity(map, clazz, null);
+        jumpActivity(map, clazz, new View[0]);
     }
 
     protected void jumpActivity(ArrayMap<String, Object> map, Class clazz, View... views) {

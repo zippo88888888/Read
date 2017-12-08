@@ -5,9 +5,11 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
@@ -25,6 +27,14 @@ import java.io.File;
 public class AndroidUtil {
 
     private final static String FILE_DATA = "/data/data/";
+
+    /** 设置状态栏透明 */
+    public static void setStatusBarTransparent(Activity activity) {
+        View decorView = activity.getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+        decorView.setSystemUiVisibility(option);
+        activity.getWindow().setStatusBarColor(Color.TRANSPARENT);
+    }
 
     /**
      * 获取状态栏高度

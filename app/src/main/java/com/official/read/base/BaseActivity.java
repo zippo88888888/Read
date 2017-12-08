@@ -247,7 +247,7 @@ public abstract class BaseActivity<P extends BasePresenter<V>, V extends BaseVie
     }
 
     protected void jumpActivity(ArrayMap<String, Object> map, Class clazz) {
-        jumpActivity(map, clazz, null);
+        jumpActivity(map, clazz, new View[0]);
     }
 
     // view 的id必须相同

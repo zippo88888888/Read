@@ -118,6 +118,10 @@
 
 # 实体类不混淆
 -keep class com.official.read.content.bean.**{*;}
+# 使用了反射以及相关的类不混淆
+-keep class com.official.read.base.BaseModel {*;}
+-keep class com.official.read.model.DetailModel {*;}
+-keep class com.official.read.model.DetailModelImpl {*;}
 
 # 3D 地图 V5.0.0之后：
 -keep   class com.amap.api.maps.**{*;}
